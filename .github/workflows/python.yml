@@ -1,4 +1,4 @@
-name: Build Lazar Severin Bumbaru WebView
+name: Build Severin Bumbaru API
 on:
   push:
     branches:
@@ -13,23 +13,23 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
-        name: [docker-severin-bumbaru-2023-webview]
+        name: [docker-severin-bumbaru-2023-api]
     steps:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Build
-      run: sudo docker build . -f ./bumbaru/Dockerfile -t monsieurlazar/docker-severin-bumbaru-2023-webview
+      run: sudo docker build . -f ./python_api/Dockerfile -t monsieurlazar/docker-severin-bumbaru-2023-api
     - name: Login to Docker Hub
       env:
         DOCKER_KEY: ${{ secrets.DOCKER_KEY }}
       run: sudo docker login --username monsieurlazar --password $DOCKER_KEY
     - name: Push
-      run: sudo docker push monsieurlazar/docker-severin-bumbaru-2023-webview
+      run: sudo docker push monsieurlazar/docker-severin-bumbaru-2023-api
   update_severin_bumbaru_2023_doker_img:
     name: Update
     needs: "build_severin_bumbaru_2023_doker_img"
     runs-on: self-hosted
     steps:
-    - run: sudo docker stop docker-severin-bumbaru-2023-webview || true && sudo docker rm docker-severin-bumbaru-2023-webview || true
-    - run: sudo docker rmi monsieurlazar/docker-severin-bumbaru-2023-webview || true
-    - run: sudo docker run --network lazar-network -d --name docker-severin-bumbaru-2023-webview monsieurlazar/docker-severin-bumbaru-2023-webview
+    - run: sudo docker stop docker-severin-bumbaru-2023-api || true && sudo docker rm docker-severin-bumbaru-2023-api || true
+    - run: sudo docker rmi monsieurlazar/docker-severin-bumbaru-2023-api || true
+    - run: sudo docker run --network lazar-network -d --name docker-severin-bumbaru-2023-api monsieurlazar/docker-severin-bumbaru-2023-api
