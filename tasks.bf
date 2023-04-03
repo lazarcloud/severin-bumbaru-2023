@@ -8,3 +8,4 @@
 
 # Lazar
 # locul de dat cu capul in tastatura cand nu merge javascriptu
+uzc sgksgusavguiv
