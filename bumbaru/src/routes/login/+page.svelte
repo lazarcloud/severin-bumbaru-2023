@@ -7,24 +7,24 @@
 	  <meta name="description" content="login" />
 </svelte:head>
 <section class = "gradient_bg" >
-<div class = "mx-10 my-28">
-	<h1 class="text-6xl pt-6 pl-6 text font-bold" >Authenticate</h1>
+<div>
+	<h1 class="bold">Authenticate</h1>
 	<!-- <h1>Providers</h1>
 	<div class="providers">
 	  <a href="">Login with Google</a>
 	  <a href="">Login with Github</a>
 	</div> -->
-	<h2 class = "text-4xl pl-6 pb-10">Continue your Journey</h2>
+	<h2>Continue your Journey</h2>
 	{#if form}
 	  {JSON.stringify(form)}
 	{/if}
-	<form class = "pl-4 text-3xl focus:border-collapse" method="POST" action="?/login" use:enhance autocomplete="off">
-	  <input class = "p-3 rounded-md bg-gray-100" type="email" name="email" placeholder="email@domain.com"/>
-	  <input class = "p-3 rounded-md bg-gray-100" type = "password" name="password" placeholder="password"/>
-	  <input class = "px-36 py-2 rounded-xl bg-mango font-bold text-white" type = "submit" value="Login"/>
+	<form method="POST" action="?/login" use:enhance autocomplete="off">
+	  <input type="email" name="email" placeholder="email@domain.com"/>
+	  <input type = "password" name="password" placeholder="password"/>
+	  <input type = "submit" value="Login"/>
 	</form>
-	<p class = "pl-6">Don't have an account? <a href="/register" class = "font-bold text-mango">Register!</a></p>
-	<p class = "pl-6">Forgot password? <a href="/" class = "font-bold text-mango" >Reset it!</a></p>
+	<p>Don't have an account? <a href="/register" class = "font-bold text-mango">Register!</a></p>
+	<p>Forgot password? <a href="/" class = "font-bold text-mango" >Reset it!</a></p>
 </div>
 </section>
   
@@ -43,10 +43,10 @@
 	section{
 		display: flex;
 		flex-direction: column;
+		place-content: center;
 	}
-
+	
 	.gradient_bg{
-
 		background-image:
 		linear-gradient(115deg, rgb(255, 255, 255) 35%, rgba(223, 119, 103, 0.10)),
 		url('./background.jpg');
@@ -70,5 +70,29 @@
 	input:focus{
 		outline: none;
 	}
-
+	input{
+        margin: 0.5rem 0;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid var(--dark);
+		width:60%;
+    }
+	input[type="submit"]{
+		background-color: var(--primary);
+		color: white;
+		border: none;
+	}
+	h1{
+		font-size: 4rem;
+	}
+	h2{
+		font-size: 2rem;
+	}
+	div{
+		width: 50%;
+		
+		padding: 3rem 1rem;
+		border-radius: 0.5rem;
+		margin-left: 2rem;
+	}
 </style>
