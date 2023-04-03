@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - .github/workflows/webview.yml
+      - .shared/**
+      - bumbaru/**
   workflow_dispatch:
 jobs:
   build_severin_bumbaru_2023_doker_img:
