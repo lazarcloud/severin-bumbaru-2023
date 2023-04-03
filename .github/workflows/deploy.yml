@@ -20,7 +20,10 @@ jobs:
     - name: Build
       run: sudo docker build . -f ./bumbaru/Dockerfile -t monsieurlazar/docker-severin-bumbaru-2023-lazar
     - name: Login
-      run: sudo docker login --username monsieurlazar --password ${{ secrets.SECRET_NAME }
+    - name: Run a BUILD
+      env:
+        DOCKER_KEY: ${{ secrets.DOCKER_KEY }
+      run: sudo docker login --username monsieurlazar --password $DOCKER_KEY
     - name: Push
       run: sudo docker push monsieurlazar/docker-severin-bumbaru-2023-lazar
   update_severin_bumbaru_2023_doker_img:
