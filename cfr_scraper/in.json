@@ -1,0 +1,13 @@
+{
+    "dep" : {
+        "city":"Galati",
+        "time":""
+    },
+    "arrival":{
+        "city":"Galati"
+    },
+    "visits":{
+        "Braila":5,
+        "Sibiu":2
+    }
+}
