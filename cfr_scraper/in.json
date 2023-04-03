@@ -1,10 +1,10 @@
 {
     "dep" : {
         "city":"Galati",
-        "time":""
+        "time":"1680528787.6595812"
     },
     "arrival":{
-        "city":"Galati"
+        "city":"Braila"
     },
     "visits":{
         "Braila":5,
