@@ -1,31 +1,17 @@
-import { start_mongo as start_mongo_LazarAuth } from "$db/auth/mongo";
-import { start_mongo as start_mongo_LazarChat } from "$db/chat/mongo";
-import { start_mongo as start_mongo_LazarMessages } from "$db/messages/mongo";
+import { start_mongo as start_mongo_Auth } from "$db/auth/mongo";
 
-start_mongo_LazarAuth().then(() => {
+start_mongo_Auth().then(() => {
 	console.log('Mongo started!');
 }).catch(e => {console.error(e)})
 
-start_mongo_LazarChat().then(() => {
-	console.log('Mongo started!');
-}).catch(e => {console.error(e)})
-
-start_mongo_LazarMessages().then(() => {
-   console.log('Mongo started!');
-}).catch(e => {console.error(e)})
 
 import { dbAuth } from '$db/mongo'
-import { dbChat } from '$db/mongo'
-import { dbMessages } from '$db/mongo'
 
 const tutorials = dbAuth.collection('Data')
-const tutorials2 = dbChat.collection('Data')
-const tutorials3 = dbMessages.collection('Data')
 
 const doc = { name: "Neapolitan pizza", shape: "round", time:Date.now() };
 const result = await tutorials.insertOne(doc);
-const result2 = await tutorials2.insertOne(doc);
-const result3 = await tutorials3.insertOne(doc);
+
 console.log(
    `A document was inserted with the _id: ${result.insertedId}`,
 );

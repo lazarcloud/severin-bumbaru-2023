@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb';
-let MONGO_URL = 'mongodb://lazar:lazar@130.61.113.206:27017/LazarServices?authMechanism=DEFAULT'
+import { MONGO_AUTH_URI } from '$env/static/private'; 
 
-const client = new MongoClient(MONGO_URL)
+const client = new MongoClient(MONGO_AUTH_URI)
 
 export function start_mongo() {
 	console.log('Starting mongo...');
