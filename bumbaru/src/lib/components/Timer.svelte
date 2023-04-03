@@ -1,38 +1,23 @@
 <script>
-    export let time = 100
-    export let maxTime = 100
-    let minutes, seconds;
-    $: minutes = Math.floor(time / 60)
-    $ : seconds = time % 60
-    $: maxMinutes = Math.floor(maxTime / 60)
-    $: maxSeconds = maxTime % 60
-    $: if(seconds<10){
-        seconds = "0" + seconds
-    }
-    $: if(maxSeconds<10){
-        maxSeconds = "0" + maxSeconds
-    }
+    export let time = '8:00'
 </script>
-
 <section>
-    <div>
-        {minutes}:{seconds}/{maxMinutes}:{maxSeconds}
-    </div>
+    <img src="clockLong.png" alt="clock" style="transform: rotate({time.split(':')[1]*360/60 - 90}deg);"/>
+    <img src="clockShort.png" alt="clock" style="transform: rotate({time.split(':')[0]*360/12 - 90}deg);"/>
 </section>
 
 <style>
     section{
-        width: 100%;
-        margin: 4px;
+        width: 2rem;
+        aspect-ratio: 1/1;
+        position: relative;
     }
-    div{
-        background-color: var(--primary);
-        width: 40%;
-        text-align: center;
-        padding: 2rem;
-        border-radius: 0.5rem;
-        font-size: 2rem;
-        color: white;
-        margin: 0 auto;
+    img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.5s;
     }
 </style>

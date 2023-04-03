@@ -5,7 +5,7 @@
 </script>
 <nav>
     <div class="left">
-        <img src="/favicon.png" alt="logo" />
+        <img src="/logobig.png" alt="logo" />
         <p class="bold">LazarMun</p>
     </div>
     <div class="right">

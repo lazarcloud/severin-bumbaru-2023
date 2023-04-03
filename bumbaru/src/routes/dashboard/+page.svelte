@@ -1,5 +1,6 @@
 <script>
     import { forms, cities } from '$lib/store';
+    import { Timer, Map } from '$lib/components';
     let orase = [
         'Galați',
         'Alba Iulia',
@@ -8,23 +9,30 @@
         'Timișoara',
     ]
     let filteredData = []
+    let filteredData2 = []
     function filterData(param){
+        let emptyArray
         console.log(param)
         if(param=='' || param==null || param==undefined){
-            filteredData = []
-            return
+            emptyArray = []
+            return emptyArray
         }
         param = param.toLowerCase()
 
-        filteredData = orase.filter(o => o.toLowerCase().includes(param.toLowerCase()))
-        console.log(filteredData)
-        filteredData.sort((a, b) => {
+        emptyArray = orase.filter(o => o.toLowerCase().includes(param.toLowerCase()))
+        console.log(emptyArray)
+        emptyArray.sort((a, b) => {
             a = a.toLowerCase();
             b = b.toLowerCase();
             return a.indexOf(param) - b.indexOf(param);
         });
+        if(emptyArray[0].toLowerCase() == param.toLowerCase()){
+            emptyArray = []
+        }
+        return emptyArray
     }
-    $: filterData($forms.new)
+    $: filteredData = filterData($forms.new)
+    $: filteredData2 = filterData($forms.departure)
     function addNewCity(city){
         if($cities.includes(city)){
             return
@@ -42,10 +50,18 @@
     function removeCity(city){
         cities.update(n => n.filter(c => c !== city))
     }
+    function addDepartureCity(){
+        if(filteredData2.length==0){
+            $forms.departure = ''
+            return
+        }
+        $forms.departure = filteredData2[0]
+    }
 </script>
 { JSON.stringify($forms) }
 { JSON.stringify($cities) }
 { JSON.stringify(filteredData) }
+{ JSON.stringify(filteredData2) }
 <section>
     <div class="tab form">
         <div class="forms">
@@ -53,8 +69,14 @@
                 <h2 class="bold">Your departure</h2>
                 <p>Departure location</p>
                 <input type="text" placeholder="departure" bind:value={$forms.departure} />
+                {#each filteredData2 as city}
+                    <button on:click={ addDepartureCity(city) }>{city}</button>
+                {/each}
                 <p>Departure time</p>
-                <input type="time" placeholder="10:00" bind:value={$forms.departureTime} />
+                <div class="input">
+                    <Timer time={$forms.departureTime}/>
+                    <input type="time" placeholder="10:00" bind:value={$forms.departureTime} />
+                </div>
             </form>
             <form class="form" autocomplete="off">
                 <h2 class="bold">Your destination(s)</h2>
@@ -73,7 +95,7 @@
         
     </div>
     <div class="tab map">
-
+        <Map />
     </div>
 </section>
 <style>
@@ -102,5 +124,10 @@
         padding: 0.5rem;
         border-radius: 0.5rem;
         border: 1px solid var(--dark);
+    }
+    .input{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
     }
 </style>
