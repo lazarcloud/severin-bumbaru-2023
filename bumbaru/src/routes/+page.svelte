@@ -33,7 +33,7 @@
 
 <section>
     <div class="container text">
-        <h1>Welcome, let's spark a <span class="medium">debate</span>!</h1>
+        <h1>Welcome, let's spark a <span class="medium">adventure</span>!</h1>
     </div>
     <div class="container">
         <div class="form panel">
