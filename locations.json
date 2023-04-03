@@ -1,0 +1,25 @@
+{
+    "name": "Galati",
+    "places":{
+        "Faleza": {
+            "link":"",
+            "type": "park",
+            "time": 1
+        },
+        "Casa de Cultura": {
+            "link":"",
+            "type": "museum",
+            "time": 2
+        },
+        "Catedrala": {
+            "link":"",
+            "type": "church",
+            "time": 1
+        },
+        "Muzeul de Istorie": {
+            "link":"",
+            "type": "museum",
+            "time": 2
+        }
+    }
+}

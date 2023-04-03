@@ -8,10 +8,29 @@
 </svelte:head>
 
 <section>
-    <div class="container text">
-        <h1>Pack your <span class="medium">bags</span>, let's chase the <span class="medium">adventure</span>!</h1>
+    <div class = "step">
+        <div class = "circle text-8xl">
+            1
+        </div>
+        <div>
+            <div class = "step-title text-5xl">
+                Your Departure
+            </div>
+            <div class = "step-under">
+                <div>
+                    lol
+                </div>
+                <div>
+                    lol
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="container">
+    <div class = "circle text-8xl">
+        2
+    </div>
+    <div class = "circle text-8xl">
+        3
     </div>
 </section>
 
@@ -21,8 +40,32 @@
         background-color: var(--dark);
         min-height: calc(100vh - 64px);
     }
-    img{
-        height: 60%;
+    .step{
+        display: flex;
+    }
+    .step-title{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .step-under{
+        margin-left: 8px;
+        margin-right: 20px;
+        display: flex;
+    }
+    .circle{
+        margin-left: 78px;
+        margin-top: 40px;
+        border-radius: 50%;
+        width: 12rem;
+        height: 12rem;
+        background: #ffffff;
+
+        display:grid;
+        place-items: center;
+    }    
+    .cell{
+        border-radius: 50%;
+        background: #ffffff;
     }
     .scroll{
         height: 57.5%;
