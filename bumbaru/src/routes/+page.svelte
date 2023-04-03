@@ -1,72 +1,17 @@
 <script>
-    import { persons, presents, speakers } from '$lib/persons.js';
     import { slide, fly, fade } from 'svelte/transition';
-
-    let members = []
-    let newmember = ''
-    function addMember(){
-        if(newmember == ''){
-            return
-        }
-        if($persons.includes(newmember)){
-            return
-        }
-        persons.update(n => [...n, newmember])
-        newmember = ''
-    }
-    function deletePerson(person){
-        persons.update(n => n.filter(p => p != person))
-        presents.update(n => n.filter(p => p != person))
-        speakers.update(n => n.filter(p => p != person))
-    }
-    function deleteAll(){
-        persons.set([])
-        presents.set([])
-        speakers.set([])
-    }
 </script>
 
 <svelte:head>
-	<title>Mun Home</title>
-	<meta name="description" content="Lazar MUN" />
+	<title>RoTravel Home</title>
+	<meta name="description" content="RoTravel" />
 </svelte:head>
 
 <section>
     <div class="container text">
-        <h1>Welcome, let's spark a <span class="medium">adventure</span>!</h1>
+        <h1>Pack your <span class="medium">bags</span>, let's chase the <span class="medium">adventure</span>!</h1>
     </div>
     <div class="container">
-        <div class="form panel">
-        <h2 class="bold">New committee</h2>
-        <h3>Add members</h3>
-        <form on:submit|preventDefault={addMember}>
-            <input type="text" placeholder="Name" bind:value={newmember} >
-            <input type="submit" value="Add">
-        </form>
-            
-        <div class="bottom">
-            <a class="btn" href="/dashboard">Start</a>
-        </div>
-            
-        </div>
-        
-        
-        <div class="ppl panel">
-            <h2 class="bold">Your committee</h2>
-            <h3>{$persons.length} members</h3>
-            <div class="scroll">
-                {#each $persons as person}
-                    <div class="member">
-                        <img src="/avatar.png" alt="avatar">
-                        <p>{person}</p>
-                        <button class="btn" on:click={deletePerson(person)}>delete</button>
-                    </div>
-                {/each}
-            </div>
-            <div class="">
-                <button class="btn" on:click={() => deleteAll()}>Clear All</button>
-            </div>
-        </div>
     </div>
 </section>
 
