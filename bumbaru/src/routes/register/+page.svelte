@@ -6,37 +6,40 @@
       <title>Register</title>
       <meta name="description" content="Lazar Auth Register" />
   </svelte:head>
-  <section>
-    <h1>Register</h1>
-    <!-- <h1>Providers</h1>
-    <div class="providers">
-      <a href="/auth/google">Register with Google</a>
-      <a href="/auth/github">Register with Github</a>
-    </div> -->
-    <h2>with Lazar</h2>
+  <section class = "gradient_bg">
+    <div>
+      <h1 class="bold">Register</h1>
+      <!-- <h1>Providers</h1>
+      <div class="providers">
+        <a href="">Login with Google</a>
+        <a href="">Login with Github</a>
+      </div> -->
+      <h2>Start your Journey</h2>
 
-    {#if form && form.field==0}
-      {JSON.stringify(form)}
-    {/if}
- 
-    <form method="POST" action="?/register" use:enhance>
-      <input type="email" name="email" placeholder="john@lazar.lol"/>
-      {#if form && form.field=='email'}
-      {JSON.stringify(form)}
+      {#if form && form.field==0}
+        {JSON.stringify(form)}
       {/if}
-      <input type="password" name="password" placeholder="password"/>
-      {#if form && form.field=='password'}
-      {JSON.stringify(form)}
-      {/if}
-      <input type="password" name="password2" placeholder="confirm password"/>
-      {#if form && form.field=='password2'}
-      {JSON.stringify(form)}
-      {/if}
-      <input type="submit" value="Register"/>
-    </form>
-    <p>Already have an account? <a href="/">Login!</a></p>
+  
+      <form method="POST" action="?/register" use:enhance>
+        <input type="email" name="email" placeholder="john@lazar.lol"/>
+        {#if form && form.field=='email'}
+        {JSON.stringify(form)}
+        {/if}
+        <input type="password" name="password" placeholder="password"/>
+        {#if form && form.field=='password'}
+        {JSON.stringify(form)}
+        {/if}
+        <input type="password" name="password2" placeholder="confirm password"/>
+        {#if form && form.field=='password2'}
+        {JSON.stringify(form)}
+        {/if}
+        <input type="submit" value="Register"/>
+      </form>
+      <p>Already have an account? <a href="/">Login!</a></p>
+    </div>
   </section>
   
+
   <style>
     input{
       display: block;
@@ -50,12 +53,12 @@
     section{
       display: flex;
       flex-direction: column;
+      place-content: center;
     }
-  
+    
     .gradient_bg{
-  
       background-image:
-      linear-gradient(160deg, rgb(255, 255, 255) 30%, rgba(223, 119, 103, 0.10)),
+      linear-gradient(115deg, rgb(255, 255, 255) 35%, rgba(223, 119, 103, 0.10)),
       url('./background.jpg');
       width: 100%;
       height: calc(100vh - 64px);
@@ -64,18 +67,44 @@
     }
   
     ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: rgb(0, 0, 0);
+      color: rgb(120, 120, 120);
       opacity: 1; /* Firefox */
       outline: none;
     }
   
     :-ms-input-placeholder { /* Internet Explorer 10-11 & Microsoft Edge */
-      color: rgb(0, 0, 0);
+      color: rgb(120, 120, 120);
   
     }
   
     input:focus{
       outline: none;
     }
-  
+    input{
+          margin: 0.5rem 0;
+          padding: 0.5rem;
+          border-radius: 0.5rem;
+          border: 1px solid var(--dark);
+      width:60%;
+      }
+    input[type="submit"]{
+      background-color: var(--primary);
+      color: white;
+      border: none;
+    }
+    a{
+      color: var(--primary);
+    }
+    h1{
+      font-size: 4rem;
+    }
+    h2{
+      font-size: 2rem;
+    }
+    div{
+      width: 50%;
+      padding: 3rem 1rem;
+      border-radius: 0.5rem;
+      margin-left: 2rem;
+    }
   </style>
