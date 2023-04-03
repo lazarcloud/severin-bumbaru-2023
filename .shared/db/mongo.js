@@ -14,4 +14,4 @@ import { dbAuth } from '$db/auth/mongo'
 import { dbChat } from '$db/chat/mongo'
 import { dbMessages } from '$db/messages/mongo'
 
-export { dbAuth, dbChat, dbMessages }
+export { dbAuth }
