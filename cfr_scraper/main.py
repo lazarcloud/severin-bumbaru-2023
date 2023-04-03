@@ -9,4 +9,4 @@ input_file_path=os.path.join("cfr_scraper","in.json")
 if __name__=="__main__":
     with open(input_file_path,"r") as fin:
          travel_data= json.loads(fin.read())
-    print(train_search.Trip(travel_data).start_time)
+    print(train_search.Trip(travel_data).stops[0])
