@@ -1,6 +1,7 @@
 <script>
 	import './styles.css'
-
+	import "../app.css";
+	
 	import { Nav } from '$lib/components'
 	export let data;
 </script>
