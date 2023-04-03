@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900');
+:root{
+    --dark: #eceef1;
+    --light: #ffffff;
+    --primary: #b798ec;
+}
+body{
+    overflow:overlay;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+* {
+    font-family: Montserrat;
+    font-weight: 400;
+    /* -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; */
+    box-sizing: border-box;
+}
+.medium{
+    font-weight: 600;
+}
+.bold{
+    font-weight: 700;
+}

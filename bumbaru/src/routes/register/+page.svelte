@@ -1,0 +1,41 @@
+<script>
+    import { enhance } from '$app/forms';
+    export let form
+  </script>
+  <svelte:head>
+      <title>Register</title>
+      <meta name="description" content="Lazar Auth Register" />
+  </svelte:head>
+  <section>
+    <h1>Register</h1>
+    <!-- <h1>Providers</h1>
+    <div class="providers">
+      <a href="/auth/google">Register with Google</a>
+      <a href="/auth/github">Register with Github</a>
+    </div> -->
+    <h2>with Lazar</h2>
+
+    {#if form && form.field==0}
+      {JSON.stringify(form)}
+    {/if}
+ 
+    <form method="POST" action="?/register" use:enhance>
+      <input type="email" name="email" placeholder="john@lazar.lol"/>
+      {#if form && form.field=='email'}
+      {JSON.stringify(form)}
+      {/if}
+      <input type="password" name="password" placeholder="password"/>
+      {#if form && form.field=='password'}
+      {JSON.stringify(form)}
+      {/if}
+      <input type="password" name="password2" placeholder="confirm password"/>
+      {#if form && form.field=='password2'}
+      {JSON.stringify(form)}
+      {/if}
+      <input type="submit" value="Register"/>
+    </form>
+    <p>Already have an account? <a href="/">Login!</a></p>
+  </section>
+  
+  <style>
+  </style>
