@@ -18,7 +18,6 @@
 <style>
     section{
         width:100%;
-        background-color: var(--dark);
         min-height: calc(100vh - 64px);
     }
     img{

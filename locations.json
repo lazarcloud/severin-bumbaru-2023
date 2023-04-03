@@ -1,25 +1,40 @@
 {
     "name": "Galati",
     "places":{
-        "Faleza": {
-            "link":"",
-            "type": "park",
-            "time": 1
+        "Faleza Dunării": {
+            "link":"https://www.google.com/maps/place/Faleza+Dunării/@45.4286167,28.0509547,17z/data=!3m1!4b1!4m6!3m5!1s0x40b6df019fc191cb:0x36e2479e7acfe1c0!8m2!3d45.4286167!4d28.0531487!16s%2Fg%2F11gf9gdwmk",
+            "Y": 45.4286167,
+            "X": 28.0509547,
+            "photo": "https://live.staticflickr.com/33/98876773_f0da1d5bfb_b.jpg",
+            "type": "park"
         },
-        "Casa de Cultura": {
-            "link":"",
-            "type": "museum",
-            "time": 2
+        "Grădina Publică": {
+            "link":"https://www.google.com/maps/place/Grădina+Publică/@45.4521507,28.0511017,17z/data=!3m1!4b1!4m6!3m5!1s0x40b6de47165cd97b:0x6797e5883e2be213!8m2!3d45.4521507!4d28.0532957!16s%2Fg%2F1tcxh8bh",
+            "Y": 45.4521507,
+            "X": 28.0511017,
+            "photo": "https://destepti.ro/wp-content/uploads/2016/08/fantana-arteziana-din-gradina-publica-din-galati-judetul-galati.jpg",
+            "type": "park"
         },
-        "Catedrala": {
-            "link":"",
-            "type": "church",
-            "time": 1
+        "Colegiul Național „Vasile Alecsandri”": {
+            "link":"https://www.google.com/maps/place/Colegiul+Național+\"Vasile+Alecsandri\"/@45.4407762,28.0495392,17z/data=!3m1!4b1!4m6!3m5!1s0x40b6de50e440d681:0xac0b9a8494776ecb!8m2!3d45.4407762!4d28.0517332!16s%2Fg%2F120ry0xk",
+            "Y": 45.4407762,
+            "X": 28.0495392,
+            "photo": "https://www.monitoruldegalati.ro/media/k2/items/cache/63a9f899f11accbf51f4cab4be286622_XL.jpg",
+            "type": "institution"
         },
-        "Muzeul de Istorie": {
-            "link":"",
-            "type": "museum",
-            "time": 2
+        "Restaurant Gossip Café": {
+            "link":"https://www.google.com/maps/place/Colegiul+Național+\"Vasile+Alecsandri\"/@45.4407762,28.0495392,17z/data=!3m1!4b1!4m6!3m5!1s0x40b6de50e440d681:0xac0b9a8494776ecb!8m2!3d45.4407762!4d28.0517332!16s%2Fg%2F120ry0xk",
+            "Y": 45.4407762,
+            "X": 28.0495392,
+            "photo": "https://b.zmtcdn.com/data/reviews_photos/e87/dbe415bc5be5c50ffacf9c67fb458e87_1539024064.jpg?fit=around|750:500&crop=750:500;*,*",
+            "type": "restaurant"
+        },
+        "Grădina Botanică": {
+            "link":"https://www.google.com/maps/place/Grădina+Botanică+Galați/@45.4239805,28.0136551,15z/data=!4m10!1m2!2m1!1sgradina+botanica!3m6!1s0x40b6dee67535eb07:0xe8877b089f42755!8m2!3d45.4239805!4d28.0311646!15sChBncmFkaW5hIGJvdGFuaWNhWhIiEGdyYWRpbmEgYm90YW5pY2GSARBib3RhbmljYWxfZ2FyZGVumgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVVJsZW1GcFVtcFJSUkFC4AEA!16s%2Fg%2F11c2npb9s_",
+            "Y": 45.4239805,
+            "X": 28.0136551,
+            "photo": "https://www.uaic.ro/wp-content/uploads/2018/02/Foto-1-660x495.jpg",
+            "type": "park"
         }
     }
 }

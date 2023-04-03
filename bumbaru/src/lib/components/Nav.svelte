@@ -6,7 +6,7 @@
 <nav class="bg-gradient-to-r from-white from-10% via-white via-20% to-white to-85%">
     <div class="left">
         <img src="/favicon.png" alt="logo" />
-        <p class="bold text-2xl">Travel, Romania</p>
+        <p class="bold text-2xl">Journey</p>
     </div>
     <div class="right">
         <a href="/" class="{path == '/' ? 'active' : ''}">Home</a>
