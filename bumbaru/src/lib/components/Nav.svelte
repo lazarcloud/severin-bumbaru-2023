@@ -3,16 +3,16 @@
     let path;
     $: path = $page.url.pathname;
 </script>
-<nav>
+<nav class="bg-gradient-to-r from-white from-10% via-white via-20% to-white to-85%">
     <div class="left">
         <img src="/favicon.png" alt="logo" />
-        <p class="bold">LazarMun</p>
+        <p class="bold text-2xl">Journey</p>
     </div>
     <div class="right">
         <a href="/" class="{path == '/' ? 'active' : ''}">Home</a>
-        <a href="/dashboard" class="{path == '/dashboard' ? 'active' : ''}">Dashboard</a>
-        <a href="/newmoderated" class="{path == '/newmoderated' ? 'active' : ''}">Moderated</a>
-        <a href="/unmoderated" class="{path == '/unmoderated' ? 'active' : ''}">Unmoderated</a>
+        <a href="/map" class="{path == '/dashboard' ? 'active' : ''}">Map</a>
+        <a href="/journeys" class="{path == '/newmoderated' ? 'active' : ''}">Journeys</a>
+        <a href="/newjourney" class="{path == '/unmoderated' ? 'active' : ''}, bg-red-700, text-white"> Start New </a>
     </div>
 </nav>
 
@@ -38,6 +38,6 @@
         color: black;
     }
     .active{
-        border-bottom: 2px solid var(--primary);
+        border-bottom: 2px solid var(--black);
     }
 </style>
