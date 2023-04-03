@@ -13,17 +13,11 @@ const httpServer = createServer(app);
 const port = process.env.PORT || 8600;
 
 import { Server } from "socket.io";
-const io = new Server(httpServer, { cors: { origin: '*' }, path: '/chat' });
-// import { start_mongo } from "../../.shared/db/messages/mongo";
-// start_mongo().then(() => {
-//   console.log('MongoDB connected');
-// });
-// Send current time to all connected clients
+const io = new Server(httpServer, { cors: { origin: '*' }, path: '/main' });
+
 function sendTime() {
   io.emit('time', { time: new Date().toJSON() });
 }
-
-// Send current time every 10 secs
 setInterval(sendTime, 10000);
 
 // Emit welcome message on connection
@@ -37,11 +31,6 @@ io.on('connection', function(socket) {
     console.log(data)
     socket.to(chatId).emit('message', data);
   })
-  //socket.emit('welcome', { message: 'Welcome!', id: socket.id });
-  // Use socket to communicate with this particular client only, sending it it's own id
-  
-
-  //socket.on('i am client', console.log);
 });
 
 
