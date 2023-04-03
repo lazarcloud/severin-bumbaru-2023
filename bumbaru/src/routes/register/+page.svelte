@@ -38,4 +38,44 @@
   </section>
   
   <style>
+    input{
+      display: block;
+      margin: 0.5rem 0;
+    }
+  
+    form{
+      margin: 1rem 0;
+    }
+  
+    section{
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .gradient_bg{
+  
+      background-image:
+      linear-gradient(160deg, rgb(255, 255, 255) 30%, rgba(223, 119, 103, 0.10)),
+      url('./background.jpg');
+      width: 100%;
+      height: calc(100vh - 64px);
+      background-size: cover;
+      color: black;
+    }
+  
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: rgb(0, 0, 0);
+      opacity: 1; /* Firefox */
+      outline: none;
+    }
+  
+    :-ms-input-placeholder { /* Internet Explorer 10-11 & Microsoft Edge */
+      color: rgb(0, 0, 0);
+  
+    }
+  
+    input:focus{
+      outline: none;
+    }
+  
   </style>
