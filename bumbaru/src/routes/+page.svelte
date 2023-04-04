@@ -6,7 +6,7 @@
 	  <title>Journey - Home</title>
 	  <meta name="description" content="home" />
 </svelte:head>
-<section class = "gradient_bg" >
+<section class="gradient_bg">
 <div>
 	<h1 class="bold">Journey</h1>
 	<!-- <h1>Providers</h1>
@@ -14,7 +14,7 @@
 	  <a href="">Login with Google</a>
 	  <a href="">Login with Github</a>
 	</div> -->
-	<h2>Pack your <span class="medium">bags</span> and let's explore de <span class="medium">world</span>!</h2>
+	<h2>Pack your <span class="medium">bags</span> and let's explore the <span class="medium">world</span>!</h2>
 	<p>Don't have an account? <a href="/register" class = "font-bold text-mango">Register!</a></p>
 	<p>Forgot password? <a href="/" class = "font-bold text-mango" >Reset it!</a></p>
 </div>
@@ -44,7 +44,7 @@
 	.gradient_bg{
 		background-image:
 		linear-gradient(180deg, rgb(255, 255, 255) 35%, rgba(223, 119, 103, 0.10)),
-		url('/background1.png');
+		url('./background1.png');
 		width: 100%;
 		min-height: calc(100vh - 64px);
 		background-size: cover;
