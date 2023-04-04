@@ -2,22 +2,20 @@
     import logo from '$lib/imgs/favicon.png';
     import { page } from '$app/stores';
     import { onMount } from 'svelte';
+    let isMobile = true
     function query(e) {
         // Reset mobile state
         console.log(e)
-        if (!e.matches) {
-            show = true;
-        }else{
-            show = false
-        }
+        isMobile = e.matches;
     };
     onMount(() => {
         const mediaListener = window.matchMedia("(max-width: 600px)");
-
+        
         mediaListener.addListener(query);
+        query(mediaListener)
     });
     let path;
-    let show = true;
+    let show = false;
     $: path = $page.url.pathname;
     function swap(){
         show = !show
@@ -28,22 +26,27 @@
     <div class="left" style="gap:0.5rem">
         <img src={logo} alt="logo" />
         <a href= '/' class="bold text-2xl">Journey</a>
+        {isMobile}
     </div>
     <div class="btn">
-        <button on:click={()=>swap()}>|||</button>
+        <button on:click={()=>swap()} style="transform: rotate({show?'0':'90deg'});">|||</button>
     </div>
-    {#if show}
-    <div class="right">
-        {#if user.isAuthenticated}
+    {#if !isMobile || show}
+    {#if user.isAuthenticated}
+
+    <div class="right" style="--nr:3">
         <a href="/" class="{path == '/' ? 'active' : ''}">Home</a>     
         <a href="/newjourney" class="{path == '/newjourney' ? 'active' : ''}">Start New!</a> 
         <a href="/journeys" class="{path == '/journeys' ? 'active' : ''}">Journeys</a>
         <a style="text-color:#eb8c6f" href="/logout" class="{path == '/logout' ? 'active' : ''}">Logout</a> 
-        {:else}
+    </div>
+    {:else}
+    <div class="right" style="--nr:1">
         <a href="/login" class="{path == '/login' ? 'active' : ''} login">Login</a>
         <a href="/register" class="{path == '/register' ? 'active' : ''} register">Register</a>
-        {/if}
     </div>
+    {/if}
+
     {/if}
 </nav>
 
@@ -80,21 +83,33 @@
         .btn{
             display:flex;
         }
+        .btn{
+            transform: rotate(0);
+        }
+        .btn{
+        transition: all 0.5s ease;
+
+        }
         nav{
             position:relative;
         }
 		.right{
             display: flex;
             background-color: var(--light);
+            /* background-color:red; */
             flex-direction: column;
             align-items: center;
             place-content: center;
             position: absolute;
             width: 100%;
             margin-inline: 0;
-            bottom: calc(-128px + -64px);
+            bottom: calc(var(--nr) * -64px - 1rem);
             left:0;
             height: auto;
+            padding: 1rem;
         }
+        /* a{
+            border: 1px solid black
+        } */
 	}
 </style>
