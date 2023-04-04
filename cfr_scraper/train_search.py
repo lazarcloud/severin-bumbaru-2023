@@ -24,8 +24,6 @@ class Trip:
         response = requests.get(self.url_builder(start_station,end_station,date_epoch)[0]).content
         soup = BeautifulSoup(response, 'html.parser')
 
-        """for comment in soup.findAll(text=lambda text:isinstance(text, Comment)):
-            print(comment)"""
         times = soup.find_all('span', {'class' : 'd-inline-block'})
         for time in times:
             print(time)
