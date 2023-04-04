@@ -6,8 +6,8 @@
 </script>
 <nav>
     <div class="left">
-        <img src="/logobig.png" alt="logo" />
-        <p class="bold">LazarMun</p>
+        <img src="/favicon.png" alt="logo" />
+        <p class="bold text-2xl">Journey</p>
     </div>
     <div class="right">
         {#if email}
