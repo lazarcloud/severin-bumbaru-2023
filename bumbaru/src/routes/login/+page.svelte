@@ -8,7 +8,7 @@
 </svelte:head>
 <section class = "gradient_bg" >
 <div>
-	<h1 class="bold">Authenticate</h1>
+	<h1 class="bold">Login</h1>
 	<!-- <h1>Providers</h1>
 	<div class="providers">
 	  <a href="">Login with Google</a>
@@ -47,7 +47,7 @@
 	}
 	
 	.gradient_bg{
-		background-image:
+		background:
 		linear-gradient(115deg, rgb(255, 255, 255) 35%, rgba(112, 173, 203, 0.45) 70%,  rgba(237, 255, 196, 0.70)),
 		url('./background3.jpg');
 		width: 100%;
@@ -90,12 +90,22 @@
 	}
 	div{
 		width: 50%;
-		
 		padding: 3rem 1rem;
 		border-radius: 0.5rem;
 		margin-left: 2rem;
 	}
 	p{
 		font-size: 1.2rem;
+	}
+	@media only screen and (max-width: 600px) {
+		.gradient_bg {
+			background: white;
+		}
+		div{
+			width: 90%;
+		}
+		input{
+			width: 92%;
+		}
 	}
 </style>

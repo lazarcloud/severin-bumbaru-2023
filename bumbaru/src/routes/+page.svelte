@@ -90,4 +90,17 @@
 		border-radius: 0.5rem;
 		margin-left: 2rem;
 	}
+	@media only screen and (max-width: 600px) {
+		.gradient_bg {
+			background: white;
+		}
+		div{
+			width: 100%;
+			margin: 0;
+
+		}
+		input{
+			width: 92%;
+		}
+	}
 </style>

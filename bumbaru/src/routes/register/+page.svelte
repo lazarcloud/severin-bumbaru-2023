@@ -110,4 +110,15 @@
     p{
       font-size: 1.2rem;
     }
+    @media only screen and (max-width: 600px) {
+		.gradient_bg {
+			background: white;
+		}
+		div{
+			width: 90%;
+		}
+		input{
+			width: 92%;
+		}
+	}
   </style>

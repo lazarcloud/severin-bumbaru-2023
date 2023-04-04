@@ -1,5 +1,3 @@
-<h1>radu e <span class="medium">bulangiu</span></h1>
-
 <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1181.71 833.88">
   <defs>
     
@@ -65,5 +63,9 @@
 
     .cls-2 {
       fill: #eb8c6f;
+    }
+
+    svg{
+      width: 90%;
     }
   </style>
