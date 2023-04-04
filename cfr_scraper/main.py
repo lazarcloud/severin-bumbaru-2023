@@ -39,7 +39,7 @@ if __name__=="__main__":
                #get next 30 days
                day = datetime.combine(datetime.today(), time.min)+ timedelta(i+1)
                day = day.timestamp()
-               train_search.best_train(start_station=comb[0],end_station=comb[1],prefer_no_changes=pref_dir,prefer_not_overnight=pref_not_on,dep_date=day)
+               train_search.best_train(start_station=comb[0],end_station=comb[1],prefer_no_changes=pref_dir,prefer_not_overnight=pref_not_on,dep_date=day,stations=all_stations)
                #train_search.best_train(start_station="Galati",end_station="Alba-Iulia",prefer_no_changes=pref_dir,prefer_not_overnight=pref_not_on,dep_date=datetime.combine(datetime.today(), time.min).timestamp())
                     
 

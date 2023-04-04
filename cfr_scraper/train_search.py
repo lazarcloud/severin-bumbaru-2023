@@ -1,5 +1,6 @@
 import time
 import datetime
+from datetime import timedelta
 from bs4 import BeautifulSoup
 from bs4 import Comment
 from selenium import webdriver
@@ -7,6 +8,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
+import redis
+import json
 
 def url_builder(start_station,end_station,date):
     if date-time.time()<2629743:
@@ -17,7 +20,7 @@ def url_builder(start_station,end_station,date):
         passed_already=True
     return ["https://mersultrenurilor.infofer.ro/ro-RO/Rute-trenuri/{}/{}?DepartureDate={}&TimeSelectionId=0&MinutesInDay=0&OrderingTypeId=2&ConnectionsTypeId=1&BetweenTrainsMinimumMinutes=5&ChangeStationName=".format(start_station,end_station,n_date),passed_already]
 
-def best_train(start_station,end_station,prefer_not_overnight,prefer_no_changes,dep_date):
+def best_train(stations,start_station,end_station,prefer_not_overnight,prefer_no_changes,dep_date):
 
     def is_direct_from_duration(duration_span):
         train_combs_div = duration_span.parent.find_previous_sibling('div')
@@ -140,6 +143,26 @@ def best_train(start_station,end_station,prefer_not_overnight,prefer_no_changes,
 
     #OUTPUT Redis
 
+    case_p = int(prefer_no_changes) + 2*int(prefer_not_overnight) 
+
+    red = redis.Redis(host='130.61.113.206', port=32773, db=0,password="byteforcespargelupiirosii")
+
+    start_station ={
+        stations.index(end_station):{
+            case_p:{"trip_duration":duration_epoch,
+                 "departure_time":get_dep_time_from_card(parent_card),
+                 "arrival_time":get_arrival_time_from_card(parent_card),
+                 "train_not_yet_scheduled":passed,
+                 "overnight":is_night_train_from_duration(selected_train_duration_span),
+                 "direct":is_direct_from_duration(selected_train_duration_span),
+                 "url":url}
+            
+        }
+    }
+    print(start_station)
+    
+        #start_station_list[stations.index(end_station)][case_p]={"trip_duration":duration_epoch,"departure_time":get_dep_time_from_card(parent_card),"arrival_time":get_arrival_time_from_card(parent_card),"train_not_yet_scheduled":passed,"overnight":is_night_train_from_duration(selected_train_duration_span),"direct":is_direct_from_duration(selected_train_duration_span),"url":url}
+
 
 """
 
@@ -147,14 +170,15 @@ def best_train(start_station,end_station,prefer_not_overnight,prefer_no_changes,
 start station index - int
 end station index - int
 pref case - int
-
 input day (epoch) - int (midnight)
+
 trip duration (seconds) - int
 ora plecare (seconds from midnight) - int
 ora sosire (seconds from midnight) - int
 train has not yet been scheduled - bool
 tren de noapte - bool
 direct - bool
+link - "string"
 
 PREF CASE = A+2B where b=pref not overnight, a= prefer direct
 
