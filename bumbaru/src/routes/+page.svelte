@@ -84,22 +84,6 @@
 		color: rgb(120, 120, 120);
 
 	}
-
-	input:focus{
-		outline: none;
-	}
-	input{
-        margin: 0.5rem 0;
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-        border: 1px solid var(--dark);
-		width:60%;
-    }
-	input[type="submit"]{
-		background-color: var(--primary);
-		color: white;
-		border: none;
-	}
 	h1{
 		font-size: 4rem;
 	}
@@ -121,9 +105,6 @@
 			width: 100%;
 			margin: 0;
 
-		}
-		input{
-			width: 92%;
 		}
 	}
 </style>
