@@ -2,7 +2,6 @@ import time
 import datetime
 from bs4 import BeautifulSoup
 from bs4 import Comment
-import requests
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -36,12 +35,30 @@ class Trip:
                 return False
             else: return True
 
-        def is_night_train_from_duration(duration_span):
-            parent_card = duration_span.findParent('div',{'class' : 'row div-itineraries-row-main'})
+        def is_night_train_from_card(parent_card):
             if parent_card.find('div',{'class',"div-itineraries-station-time-part-added-time-sm mr-sm-1"}).find('span'):
                 return True
             else:
                 return False
+        
+        def get_dep_time_from_card(card):
+            comment = card.find(string=lambda text: isinstance(text, Comment) and 'Departure time' in text)
+            dep_span = comment.find_next_sibling('div').find('span')
+            string_time_list = dep_span.text.strip().split(":")
+            minute = string_time_list[-1]
+            hour = string_time_list[-2]
+            dep_epoch_from_midnight= int(hour)*3600+int(minute)*60
+            return dep_epoch_from_midnight
+        
+        def get_arrival_time_from_card(card):
+            comment = card.find(string=lambda text: isinstance(text, Comment) and 'Arrival time' in text)
+            arrival_span = comment.find_next_sibling('div').find('span')
+            string_time_list = arrival_span.text.strip().split(":")
+            minute = string_time_list[-1]
+            hour = string_time_list[-2]
+            arrival_epoch_from_midnight= int(hour)*3600+int(minute)*60
+            return arrival_epoch_from_midnight
+
         
         #OPEN CFR WEB PAGE
         ###################################
@@ -74,11 +91,14 @@ class Trip:
             hours=0
             if "ore" in duration_span.text: hours = duration_span.text.strip().split(" ")[-4]
             duration_epoch=int(minutes)*60+int(hours)*3600
+            parent_card = duration_span.findParent('div',{'class' : 'row div-itineraries-row-main'})
             print(hours , " ", minutes)
             print("Direct = ",is_direct_from_duration(duration_span))
-            print("Este tren de noapte? = ", is_night_train_from_duration(duration_span))
+            print("Este tren de noapte? = ", is_night_train_from_card(parent_card))
             print("Calatoria dureaza (in epoch) = ",duration_epoch)
             print("Ai bagat o data prea tarzie? = ", passed)
+            print("Ora la care iti pleaca trenu = ",get_dep_time_from_card(parent_card))
+            print("Ora la care iti ajunje trenu = ",get_arrival_time_from_card(parent_card))
             print(url)
 
 
