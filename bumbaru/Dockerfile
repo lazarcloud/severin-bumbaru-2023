@@ -4,6 +4,7 @@ COPY ./package.json ./my-app/
 WORKDIR ./my-app
 RUN npm install
 
+COPY ./locations.json ./my-app/
 
 COPY ./bumbaru/package.json ./my-app/bumbaru/
 WORKDIR ./my-app/bumbaru/
