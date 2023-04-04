@@ -1,4 +1,10 @@
 {
+    "coords":{
+        "miny": 43.6186,
+        "maxy": 48.2664,
+        "minx": 20.2614,
+        "maxx": 29.6914
+    },
     "cities":{
         "Galati":{
             "Faleza Dunării": {

@@ -74,7 +74,8 @@
             id: data.id,
             departure: $forms.departure,
             cities: $cities,
-            methid: selectedVehicle,
+            method: selectedVehicle,
+            departureDate: $forms.departureDate,
             departureTime: $forms.departureTime
         }
         console.log(sms)
@@ -84,6 +85,15 @@
         console.log(sms)
     })
     let selectedVehicle = 'car';
+    function formatDate(dateStr){
+        const parts = dateStr.split('/');
+        const year = parts[2];
+        const month = parts[0].padStart(2, '0');
+        const day = parts[1].padStart(2, '0');
+        const newDateStr = `${year}-${month}-${day}`;
+        return newDateStr
+    }
+    $forms.departureDate = formatDate((new Date(Date.now())).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }))
 </script>
 <!-- <div class="debug" style="position:absolute;">
     { JSON.stringify($forms) }
@@ -101,6 +111,9 @@
                 {#each filteredData2 as city}
                     <button on:click={ addDepartureCity(city) }>{city}</button>
                 {/each}
+                <p>Departure date</p>
+                
+                <input type="date" bind:value={$forms.departureDate} />
                 <p>Departure time</p>
                 <div class="input">
                     <Timer time={$forms.departureTime}/>
@@ -152,7 +165,8 @@
         grid-template-columns: 1fr 2fr;
         column-gap: 1vw;
         background-color:var(--light);
-        min-height: calc(100vh - 64px)
+        min-height: calc(100vh - 64px);
+        counter-reset: section;
     }
     form{
         display:flex;
@@ -162,6 +176,22 @@
         border-radius: 0.5rem;
         margin: 1rem;
         min-height: 30vh;
+        position: relative;
+    }
+    form::before{
+        --size: 32px;
+        counter-increment: section;
+        content: counter(section);
+        position: absolute;
+        top: calc(-1 * var(--size) / 2);
+        left: calc(-1 * var(--size) / 2);
+        width: var(--size);
+        height: var(--size);
+        background-color: var(--primary);
+        border-radius: 69rem;
+        display: grid;
+        color:white;
+        place-content: center;
     }
     .small{
         min-height: 10vh;
