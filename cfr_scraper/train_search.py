@@ -126,7 +126,7 @@ def best_train(start_station,end_station,prefer_not_overnight,prefer_no_changes,
     #get parent card for selected train
     parent_card = selected_train_duration_span.findParent('div',{'class' : 'row div-itineraries-row-main'})
 
-    #OUTPUT
+    #OUTPUT debug
     print("prefer not overnight = ",prefer_not_overnight)
     print("prefer no changes = ",prefer_no_changes)    
     print(hours , " ", minutes)
@@ -137,6 +137,9 @@ def best_train(start_station,end_station,prefer_not_overnight,prefer_no_changes,
     print("Ora la care iti pleaca trenu = ",get_dep_time_from_card(parent_card))
     print("Ora la care iti ajunje trenu = ",get_arrival_time_from_card(parent_card))
     print(url)
+
+    #OUTPUT Redis
+    
 
 """
 
