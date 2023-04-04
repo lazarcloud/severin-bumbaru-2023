@@ -1,3 +1,5 @@
 ./bumbaru/node_modules/
 ./bumbaru/.svelte-kit/
+./unit_testing/ROUTING/node_modules
+./websockets/cfr/node_modules
 ./tasks.md
