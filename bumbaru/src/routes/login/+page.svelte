@@ -6,6 +6,7 @@
 	  <title>Journey - Login</title>
 	  <meta name="description" content="login" />
 </svelte:head>
+<img src="./background3.png" alt="background" style="display: none;">
 <section class = "gradient_bg" >
 <div>
 	<h1 class="bold">Login</h1>
@@ -49,9 +50,9 @@
 	.gradient_bg{
 		background:
 		linear-gradient(115deg, rgb(255, 255, 255) 35%, rgba(112, 173, 203, 0.45) 70%,  rgba(237, 255, 196, 0.70)),
-		url('./background3.jpg');
+		url('/background3.png');
 		width: 100%;
-		height: calc(100vh - 64px);
+		min-height: calc(100vh - 64px);
 		background-size: cover;
 		color: black;
 	}

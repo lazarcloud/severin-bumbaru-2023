@@ -1,4 +1,5 @@
 <script>
+    import logo from '$lib/imgs/favicon.png';
     import { page } from '$app/stores';
     import { onMount } from 'svelte';
     function query(e) {
@@ -25,7 +26,7 @@
 </script>
 <nav style="background-color:#ffffff">
     <div class="left" style="gap:0.5rem">
-        <img src="/favicon.png" alt="logo" />
+        <img src={logo} alt="logo" />
         <a href= '/' class="bold text-2xl">Journey</a>
     </div>
     <div class="btn">

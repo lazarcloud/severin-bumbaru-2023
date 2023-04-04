@@ -1,9 +1,11 @@
 <script>
+    import clockLong from '$lib/imgs/clockLong.png'
+    import clockShort from '$lib/imgs/clockShort.png'
     export let time = '8:00'
 </script>
 <section>
-    <img src="/clockLong.png" alt="clock" style="transform: rotate({time.split(':')[1]*360/60 - 90}deg);"/>
-    <img src="/clockShort.png" alt="clock" style="transform: rotate({time.split(':')[0]*360/12 - 90}deg);"/>
+    <img src={clockLong} alt="clock" style="transform: rotate({time.split(':')[1]*360/60 - 90}deg);"/>
+    <img src={clockShort} alt="clock" style="transform: rotate({time.split(':')[0]*360/12 - 90}deg);"/>
 </section>
 
 <style>

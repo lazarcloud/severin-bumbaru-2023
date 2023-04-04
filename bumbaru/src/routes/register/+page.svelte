@@ -59,9 +59,9 @@
     .gradient_bg{
       background-image:
       linear-gradient(115deg, rgb(255, 255, 255) 35%, rgba(223, 119, 103, 0.10)),
-      url('./background2.jpg');
+      url('/background2.png');
       width: 100%;
-      height: calc(100vh - 64px);
+      min-height: calc(100vh - 64px);
       background-size: cover;
       color: black;
     }
