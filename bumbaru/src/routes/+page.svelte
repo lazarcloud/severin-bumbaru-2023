@@ -21,10 +21,11 @@
 	<p>Forgot password? <a href="/" class = "font-bold text-mango" >Reset it!</a></p> -->
 	<div class="buttons">
 		{#if !data.user.isAuthenticated}
-		<a href="/login" class="button">Old friend?</a>
-		<a href="/register" class="button">New friend?</a>
-		{/if}
+		<a href="/login" class="button">Login</a>
+		<a href="/register" class="button">Register</a>
+		{:else}
 		<a href="/new" class="button" style="background-color: #000000;">New journey!</a>
+		{/if}
 	</div>
 </div>
 </section>
@@ -60,12 +61,12 @@
 		text-decoration: none;
 		background-color: var(--primary);
 
-      color: white;
-      border: none;
-	  margin: 0.5rem 0;
-          padding: 0.5rem;
-          border-radius: 0.5rem;
-		  min-width: 256px;
+		color: white;
+		border: none;
+		margin: 0.25rem 0.25rem;
+		padding: 0.5rem;
+		border-radius: 0.5rem;
+		min-width: 200px;
 	}
 	.gradient_bg{
 		background-image:
