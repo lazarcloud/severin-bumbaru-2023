@@ -23,8 +23,8 @@
 	  <input type = "password" name="password" placeholder="password"/>
 	  <input type = "submit" value="Login"/>
 	</form>
-	<p>Don't have an account? <a href="/register" class = "font-bold text-mango">Register!</a></p>
-	<p>Forgot password? <a href="/" class = "font-bold text-mango" >Reset it!</a></p>
+	<p>Don't have an account? <a href="/register" class = "text-mango">Register!</a></p>
+	<p>Forgot password? <a href="/" class = "text-mango" >Reset it!</a></p>
 </div>
 </section>
   
@@ -48,8 +48,8 @@
 	
 	.gradient_bg{
 		background-image:
-		linear-gradient(115deg, rgb(255, 255, 255) 35%, rgba(223, 119, 103, 0.10)),
-		url('./background.jpg');
+		linear-gradient(115deg, rgb(255, 255, 255) 35%, rgba(112, 173, 203, 0.45) 70%,  rgba(237, 255, 196, 0.70)),
+		url('./background3.jpg');
 		width: 100%;
 		height: calc(100vh - 64px);
 		background-size: cover;
@@ -75,7 +75,7 @@
         padding: 0.5rem;
         border-radius: 0.5rem;
         border: 1px solid var(--dark);
-		width:60%;
+		width:50%;
     }
 	input[type="submit"]{
 		background-color: var(--primary);
@@ -94,5 +94,8 @@
 		padding: 3rem 1rem;
 		border-radius: 0.5rem;
 		margin-left: 2rem;
+	}
+	p{
+		font-size: 1.2rem;
 	}
 </style>

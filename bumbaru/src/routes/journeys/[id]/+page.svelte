@@ -1,139 +1,133 @@
 <script>
-    import { slide, fly, fade } from 'svelte/transition';
+    import { forms, cities } from '$lib/store';
+    import { Timer, Map } from '$lib/components';
+    let orase = [
+        'Galați',
+        'Alba Iulia',
+        'București',
+        'Iași',
+        'Timișoara',
+    ]
+    let filteredData = []
+    let filteredData2 = []
+    function filterData(param){
+        let emptyArray
+        console.log(param)
+        if(param=='' || param==null || param==undefined){
+            emptyArray = []
+            return emptyArray
+        }
+        param = param.toLowerCase()
+
+        emptyArray = orase.filter(o => o.toLowerCase().includes(param.toLowerCase()))
+        console.log(emptyArray)
+        emptyArray.sort((a, b) => {
+            a = a.toLowerCase();
+            b = b.toLowerCase();
+            return a.indexOf(param) - b.indexOf(param);
+        });
+        if(emptyArray[0].toLowerCase() == param.toLowerCase()){
+            emptyArray = []
+        }
+        return emptyArray
+    }
+    $: filteredData = filterData($forms.new)
+    $: filteredData2 = filterData($forms.departure)
+    function addNewCity(city){
+        if($cities.includes(city)){
+            return
+        }
+        cities.update(n => [...n, city])
+        $forms.new = ''
+    }
+    function addNewCityForm(){
+        if(filteredData.length==0){
+            $forms.new = ''
+            return
+        }
+        addNewCity($forms.new)
+    }
+    function removeCity(city){
+        cities.update(n => n.filter(c => c !== city))
+    }
+    function addDepartureCity(){
+        if(filteredData2.length==0){
+            $forms.departure = ''
+            return
+        }
+        $forms.departure = filteredData2[0]
+    }
 </script>
-
-<svelte:head>
-	<title>Travel - Home</title>
-	<meta name="description" content="Travel" />
-</svelte:head>
-
+{ JSON.stringify($forms) }
+{ JSON.stringify($cities) }
+{ JSON.stringify(filteredData) }
+{ JSON.stringify(filteredData2) }
 <section>
-    <div class = "step">
-        <div class = "circle text-8xl">
-            1
-        </div>
-        <div>
-            <div class = "step-title text-5xl">
-                Your Departure
-            </div>
-            <div class = "step-under">
-                <div>
-                    lol
+    <div class="tab form">
+        <div class="forms">
+            <form class="form">
+                <h2 class="bold">Your departure</h2>
+                <p>Departure location</p>
+                <input type="text" placeholder="departure" bind:value={$forms.departure} />
+                {#each filteredData2 as city}
+                    <button on:click={ addDepartureCity(city) }>{city}</button>
+                {/each}
+                <p>Departure time</p>
+                <div class="input">
+                    <Timer time={$forms.departureTime}/>
+                    <input type="time" placeholder="10:00" bind:value={$forms.departureTime} />
                 </div>
-                <div>
-                    lol
-                </div>
-            </div>
+            </form>
+            <form class="form" autocomplete="off">
+                <h2 class="bold">Your destination(s)</h2>
+                <p>Add new destination</p>
+                <input type="text" placeholder="new city" bind:value={$forms.new} autocomplete="off" />
+                {#each filteredData as city}
+                    <button on:click={ addNewCity(city) }>{city}</button>
+                {/each}
+                <input type="submit" value="Add" on:click|preventDefault={() => addNewCityForm()} />
+                {#each $cities as city}
+                    <p>{city}</p>
+                    <button class="btn" on:click|preventDefault={() => removeCity(city)}>Remove</button>
+                {/each}
+            </form>
         </div>
+        
     </div>
-    <div class = "circle text-8xl">
-        2
-    </div>
-    <div class = "circle text-8xl">
-        3
+    <div class="tab map">
+        <Map />
     </div>
 </section>
-
 <style>
+    /* *{
+        outline: 1px solid red;
+    } */
     section{
-        width:100%;
-        background-color: var(--dark);
-        min-height: calc(100vh - 64px);
-    }
-    .step{
-        display: flex;
-    }
-    .step-title{
-        margin-top: 30px;
-        margin-bottom: 30px;
-    }
-    .step-under{
-        margin-left: 8px;
-        margin-right: 20px;
-        display: flex;
-    }
-    .circle{
-        margin-left: 78px;
-        margin-top: 40px;
-        border-radius: 50%;
-        width: 12rem;
-        height: 12rem;
-        background: #ffffff;
-
         display:grid;
-        place-items: center;
-    }    
-    .cell{
-        border-radius: 50%;
-        background: #ffffff;
-    }
-    .scroll{
-        height: 57.5%;
-        margin-bottom: 1rem;
-        overflow-y: auto;
-    }
-    .member{
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-        justify-content: space-between;
-        width: clamp(300px, 50%, 500px);
-        height: 64px;
-        border-radius: 0.5rem;
-    }
-    .container{
-        display:grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 2fr;
         column-gap: 1rem;
-        margin-inline: 1rem;
-    }
-    h1 .center, h2 .center, h3 .center{
-        text-align:center;
-    }
-    .panel{
-        background-color: var(--light);
-        padding: 1rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 0 0.5rem 0.1rem var(--shadow);
-        height: 60vh;
-        position: relative;
-    }
-    .text{
-        padding-block: 1.5rem;
-    }
-    h1{
-        font-size: 2.5rem;
     }
     form{
-        min-height: 2rem;
-        width: 100%;
-        margin-block: 1rem;
-    }
-    input, .btn{
-        all: unset;
-        background-color: var(--dark);
+        display:flex;
+        flex-direction: column;
+        background-color: aquamarine;
+        padding: 1rem;
         border-radius: 0.5rem;
-        padding-inline: 1rem;
-        padding-block: 0.75rem;
-        cursor: pointer;
-        margin: 4px;
+        margin: 1rem;
+        min-height: 30vh;
+    }
+    h2{
+        font-size: 2rem;
     }
     input{
-        height: 100%;
+        margin: 0.5rem 0;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid var(--dark);
     }
-    
-    input[type="submit"], .btn{
-        background-color: var(--primary);
-        color: white;
-    }
-    a.btn{
-        text-decoration: none;
-    }
-    button.btn{
-        text-align:center;
-    }
-    .bottom{
-        position: absolute;
-        bottom: 2rem;
+    .input{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
     }
 </style>

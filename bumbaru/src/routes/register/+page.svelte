@@ -21,7 +21,7 @@
       {/if}
   
       <form method="POST" action="?/register" use:enhance>
-        <input type="email" name="email" placeholder="john@lazar.lol"/>
+        <input type="email" name="email" placeholder="example@domain.com"/>
         {#if form && form.field=='email'}
         {JSON.stringify(form)}
         {/if}
@@ -59,7 +59,7 @@
     .gradient_bg{
       background-image:
       linear-gradient(115deg, rgb(255, 255, 255) 35%, rgba(223, 119, 103, 0.10)),
-      url('./background.jpg');
+      url('./background2.jpg');
       width: 100%;
       height: calc(100vh - 64px);
       background-size: cover;
@@ -85,7 +85,7 @@
           padding: 0.5rem;
           border-radius: 0.5rem;
           border: 1px solid var(--dark);
-      width:60%;
+      width:50%;
       }
     input[type="submit"]{
       background-color: var(--primary);
@@ -106,5 +106,8 @@
       padding: 3rem 1rem;
       border-radius: 0.5rem;
       margin-left: 2rem;
+    }
+    p{
+      font-size: 1.2rem;
     }
   </style>

@@ -1,7 +1,6 @@
 import Nav from './Nav.svelte';
-import Timer from './Timer.svelte';
-import Circle from './Circle.svelte';
-import Icons from './Icons.svelte';
 import Map from './Map.svelte';
+import NavAuth from './NavAuth.svelte'
+import Timer from './Timer.svelte'
 
-export { Nav, Timer, Circle, Icons, Map };
+export { Nav, Map, NavAuth, Timer };
