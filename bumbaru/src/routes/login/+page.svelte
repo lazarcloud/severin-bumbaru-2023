@@ -25,7 +25,7 @@
 	  <input type = "submit" value="Login"/>
 	</form>
 	<p>Don't have an account? <a href="/register" class = "text-mango">Register!</a></p>
-	<p>Forgot password? <a href="/" class = "text-mango" >Reset it!</a></p>
+	<p>Forgot password? <a href="/reset" class = "text-mango" >Reset it!</a></p>
 </div>
 </section>
   
