@@ -49,7 +49,7 @@
 	
 	.gradient_bg{
 		background:
-		linear-gradient(115deg, rgb(255, 255, 255) 35%, rgba(112, 173, 203, 0.45) 70%,  rgba(237, 255, 196, 0.70)),
+		linear-gradient(115deg, var(--light) 35%, rgba(112, 173, 203, 0.45) 70%,  rgba(237, 255, 196, 0.70)),
 		url('/background3.png');
 		width: 100%;
 		min-height: calc(100vh - 64px);

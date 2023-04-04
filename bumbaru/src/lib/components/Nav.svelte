@@ -22,7 +22,7 @@
     }
     export let user
 </script>
-<nav style="background-color:#ffffff">
+<nav>
     <div class="left" style="gap:0.5rem">
         <img src={logo} alt="logo" />
         <a href= '/' class="bold text-2xl">Journey</a>
@@ -59,6 +59,7 @@
         align-items: center;
         font-size: 1rem;
         height: 64px;
+        background-color: var(--dark);
     }
     div{
         display:flex;
@@ -94,7 +95,7 @@
         }
 		.right{
             display: flex;
-            background-color: var(--light);
+            background-color: var(--dark);
             /* background-color:red; */
             flex-direction: column;
             align-items: center;
@@ -102,7 +103,7 @@
             position: absolute;
             width: 100%;
             margin-inline: 0;
-            bottom: calc(var(--nr) * -64px - 1rem);
+            bottom: calc(var(--nr) * -64px - var(--nr) * -1rem + -64px);
             left:0;
             height: auto;
             padding: 1rem;

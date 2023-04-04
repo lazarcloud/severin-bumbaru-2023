@@ -35,7 +35,7 @@
         {/if}
         <input type="submit" value="Register"/>
       </form>
-      <p>Already have an account? <a href="/">Login!</a></p>
+      <p>Already have an account? <a href="/login">Login!</a></p>
     </div>
   </section>
   
@@ -58,7 +58,7 @@
     
     .gradient_bg{
       background-image:
-      linear-gradient(115deg, rgb(255, 255, 255) 35%, rgba(223, 119, 103, 0.10)),
+      linear-gradient(115deg, var(--light) 35%, rgba(223, 119, 103, 0.10)),
       url('/background2.png');
       width: 100%;
       min-height: calc(100vh - 64px);

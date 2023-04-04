@@ -49,6 +49,7 @@
 	.buttons{
 		display: flex;
 		justify-content: center;
+		flex-wrap: wrap;
 		gap: 1rem;
 		width:100%;
 	}
@@ -65,7 +66,7 @@
 	}
 	.gradient_bg{
 		background-image:
-		linear-gradient(180deg, rgb(255, 255, 255) 35%, rgba(223, 119, 103, 0.10)),
+		linear-gradient(180deg, var(--light) 35%, rgba(223, 119, 103, 0.10)),
 		url('./background1.png');
 		width: 100%;
 		min-height: calc(100vh - 64px);
