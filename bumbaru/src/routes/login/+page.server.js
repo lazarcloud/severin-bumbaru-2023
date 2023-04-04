@@ -1,10 +1,17 @@
 import { dbAuth } from '$db/mongo'
 import { checkEmail, checkPasswordLength, makeId, hashPassword, getUniqueTag, checkPassword, cleanSessions } from '$utils/auth/index.js'
 import { dev } from '$app/environment';
+import { redirect } from '@sveltejs/kit';
 const users = dbAuth.collection('Users')
 const sessions = dbAuth.collection('Sessions')
 export const actions = {
-    login: async({ request, cookies }) => {
+    login: async({ request, cookies, url }) => {
+        console.log(url)
+        // const redirectUrl = String(url.searchParams.get('link') ?? '0');
+        var queryString = request.headers.get("referer").split('?')[1]
+        const urlParams = new URLSearchParams(queryString);
+        var redirectUrl = urlParams.get("link") ?? '0'
+        console.log(redirectUrl)
         const data = await request.formData();
         const email = data.get('email')
         const password = data.get('password')
@@ -44,6 +51,9 @@ export const actions = {
             domain: dev?'localhost':'byteforce.ro'
         })
         cleanSessions(myuser._id)
+        if(redirectUrl!=0){
+            throw redirect(302, redirectUrl)
+        }
         return {field:0, password:password }
     }
 }
