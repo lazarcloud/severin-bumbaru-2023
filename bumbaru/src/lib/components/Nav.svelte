@@ -1,5 +1,6 @@
 <script>
     import { page } from '$app/stores';
+    export let email
     let path;
     $: path = $page.url.pathname;
 </script>
@@ -9,6 +10,9 @@
         <p class="bold">LazarMun</p>
     </div>
     <div class="right">
+        {#if email}
+            <p>{email}</p>
+        {/if}
         <a href="/" class="{path == '/' ? 'active' : ''}">Home</a>
         <a href="/dashboard" class="{path == '/dashboard' ? 'active' : ''}">Dashboard</a>
         <a href="/newmoderated" class="{path == '/newmoderated' ? 'active' : ''}">Moderated</a>

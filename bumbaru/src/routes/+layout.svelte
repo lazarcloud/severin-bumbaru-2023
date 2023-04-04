@@ -5,7 +5,8 @@
 	import { Nav } from '$lib/components'
 	export let data;
 </script>
-	<Nav />
+
+	<Nav email={data.user.userdata.email} />
 	<slot/>
 <style>
 	/* :global(*){

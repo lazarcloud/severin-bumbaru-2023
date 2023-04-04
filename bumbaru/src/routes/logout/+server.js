@@ -1,10 +1,10 @@
+import { dbAuth } from '$db/mongo'
 import { redirect } from '@sveltejs/kit';
-import db from '$db/mongo'
-const users = db.collection('Users')
+const users = dbAuth.collection('Users')
 import { cleanSessions } from '$utils/auth/index.js'
 import { dev } from '$app/environment';
 export async function GET({ cookies, locals, url, event, request }){
-  return new Response(JSON.stringify(request))
+  // return new Response(JSON.stringify(request))
   const redirect = String(url.searchParams.get('redirect') ?? '0');
 	locals.user = {
         isAuthenticated: false,

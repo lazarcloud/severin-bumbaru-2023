@@ -1,9 +1,10 @@
 import db from '$db/mongo'
-import { checkEmail, checkPasswordLength, makeId, hashPassword, getUniqueTag, randomName } from '$utils/auth/index.js'
-
+import { checkEmail, checkPasswordLength, makeId, hashPassword, getUniqueTag, randomName, cleanSessions } from '$utils/auth/index.js'
+import { dev } from '$app/environment';
 const users = db.collection('Users')
+const sessions = db.collection('Sessions')
 export const actions = {
-    register: async({ request }) => {
+    register: async({ request, cookies }) => {
         const data = await request.formData();
         const email = data.get('email')
         const password = data.get('password')
@@ -44,12 +45,35 @@ export const actions = {
         var confirmation_id = makeId()
         var salt = makeId()
         var hashed_password = hashPassword(password, salt)
-        const doc = { _id:makeId(), type:"lazar", salt:salt, username: username, tag:tag, email:email, password: hashed_password, created:now, confirmed:0, confirmation_id:confirmation_id }
-        const result = await users.insertOne(doc)
+        const myuser = { _id:makeId(), type:"lazar", salt:salt, username: username, tag:tag, email:email, password: hashed_password, created:now, confirmed:0, confirmation_id:confirmation_id }
+        const result = await users.insertOne(myuser)
         console.log(
             `A document was inserted with the _id: ${result.insertedId}`
         )
 
+        const sessionId = makeId()
+        const doc = { _id:sessionId, type:"lazar", user_id:myuser._id, created:Date.now(), expires:Date.now()+3600*1000 }
+        const result2 = await sessions.insertOne(doc)
+        console.log(
+            `A document was inserted with the _id: ${result2.insertedId}`
+        )
+
+        cookies.set('sessionId', sessionId,{
+            path: '/',
+            secure: !dev,
+            httpOnly: true,
+            maxAge: 60 * 60 * 24 * 7,
+            domain: dev?'localhost':'lazar.lol'
+          })
+        cookies.set('userId', myuser._id,{
+            path: '/',
+            secure: !dev,
+            httpOnly: true,
+            maxAge: 60 * 60 * 24 * 7,
+            domain: dev?'localhost':'lazar.lol'
+        })
+        cleanSessions(myuser._id)
+        
         return {field:0, email:{email:email, check:await checkEmail(email)}, password:password, password2:password2 }
     }
 }
