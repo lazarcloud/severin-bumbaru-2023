@@ -81,7 +81,7 @@ let urls = [
 ]
 export function urlIsPublic(url){
   console.log(url)
-  console.log(urls)
+  console.log(url)
   if(urls.includes(url)){
     return true
   }
@@ -91,6 +91,12 @@ export function urlIsPublic(url){
 
 export async function auth(sessionId, userId){
   if(sessionId==undefined || userId==undefined){
+    return {
+      isAuthenticated:false,
+      userdata:{},
+    }
+  }
+  if(sessionId=='' || userId==''){
     return {
       isAuthenticated:false,
       userdata:{},
