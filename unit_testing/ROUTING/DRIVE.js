@@ -1,21 +1,26 @@
 export function chart_driveROUTE(dep_place, dep_time, cities){
 
+    var RETURN = {}
+
     // 0 - Galați
     // 1 - Alba Iulia
     // 2 - București
-    // 3 - Cluj
+    // 3 - Iași
     // 4 - Timișoara
-
+    var citymap = ['Galați', 'Alba Iulia', 'București', 'Iași', 'Timișoara'];
     var drive_times = [ 
-        //    GL   AB    B   CJ   TM
-        [  0, 415, 167, 444, 499], // GL
-        [415,   0, 251,  76, 137], // AB
-        [167, 251,   0, 319, 367], // B
-        [444,  76, 319,   0, 228], // CJ
-        [499, 137, 367, 228,   0], // TM
+    //    GL   AB    B   IS   TM
+        [  0, 415, 167, 187, 499], // GL
+        [415,   0, 251, 373, 137], // AB
+        [167, 251,   0, 321, 367], // B
+        [187, 373, 321,   0, 500], // IS
+        [499, 137, 367, 500,   0], // TM
     ];
     var stack = [];
     var route = [];
+    var cityroute = []; 
+    var drivetimes = [];
+    var staytimes = [];
     var mintime = 9.0071993e+15;
 
     // console.log(cities);
@@ -50,7 +55,7 @@ export function chart_driveROUTE(dep_place, dep_time, cities){
             const stay = stack[i][1];
             if(fr.has(city) && fr.get(city) === stay){
 
-                //console.log('stopped ' + stack);
+                console.log('stopped ' + stack);
                 return false;
             }
             fr.set(city, stay);
@@ -82,9 +87,30 @@ export function chart_driveROUTE(dep_place, dep_time, cities){
 
  
     bck_loop(0, dep_place, dep_time, cities);
-    //console.log('\n')
+    console.log('\n')
 
-    
-    return route;
+    cityroute.push(citymap[dep_place]);
+    for(let i = 0; i < route.length; i ++)
+        cityroute.push(citymap[route[i][0]]);
+
+    RETURN['route'] = cityroute;
+    RETURN['arrival_epoch_time'] = mintime;
+    RETURN['duration'] = mintime - dep_time;
+
+    // console.log(dep_place + ' ' + route[0][0] + ' ' + get_time(dep_place, route[0][0]));
+
+    drivetimes.push([ cityroute[dep_place], cityroute[1], get_time(dep_place, route[0][0]) * 60 ]);
+    for(let i = 1; i < cityroute.length - 1; i ++){
+        drivetimes.push([cityroute[i], cityroute[i + 1], get_time(route[i - 1][0], route[i][0]) * 60 ]);
+        staytimes.push([cityroute[i], route[i][1]]);
+    }
+    drivetimes.push([cityroute[route.length], cityroute[dep_place], get_time(route[route.length - 1][0], route[dep_place][0]) * 60 ]);
+    staytimes.push([cityroute[route.length], route[route.length - 1][1]]);
+
+    RETURN['drivetimes'] = drivetimes;
+    RETURN['staytimes'] = staytimes;
+
+
+    return RETURN;
 }
 
