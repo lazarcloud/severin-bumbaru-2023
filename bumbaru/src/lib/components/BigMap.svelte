@@ -3,9 +3,9 @@
     import json from '$lib/locations.json';
     export let jud
     let coords = json.coords
-    let objs = json['cities'][jud]
+    let objs = json['cities'][jud] || json['cities']['Galați']
 </script>
-{jud}
+<h1 class="bold">{jud}</h1>
     <section>
         {#each Object.entries(objs) as [name, data]}
             <Obiectiv {name} {data} />
@@ -97,5 +97,9 @@ section{
       }
       path{
         transition: all 0.5s ease;
+      }
+      h1{
+        font-size: 2rem;
+        text-align: center;
       }
     </style>

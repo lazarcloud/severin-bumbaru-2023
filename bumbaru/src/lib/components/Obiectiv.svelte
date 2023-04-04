@@ -6,16 +6,21 @@ export let Y = data.Y || 45.4286167
 export let X = data.X || 28.0509547
 export let photo = data.photo || "https://live.staticflickr.com/33/98876773_f0da1d5bfb_b.jpg"
 export let type = data.type || "park"
+Y = parseFloat(Y).toFixed(2)
+X = parseFloat(X).toFixed(2)
 </script>
 <section>
     <img src={photo} alt={name} style="width:100%;height:100%;object-fit:cover;">
     <div class="data">
         <h1 class="bold">{name}</h1>
         <div class="other">
-            <p>{type}</p>
-            <a href={link}>Google Maps</a>
+            <div class="a">
+                <p>{type}</p>
             <p>{Y}</p>
             <p>{X}</p>
+            </div>
+            <a href={link}>Google Maps</a>
+            
         </div>
     </div>
 </section>
@@ -37,6 +42,7 @@ export let type = data.type || "park"
     a{
         background-color: var(--primary);
         color: white;
+        margin: 8px;
     }
     a, p{
         margin: 0.5rem 0;
@@ -44,5 +50,20 @@ export let type = data.type || "park"
         border-radius: 0.5rem;
         border: 1px solid var(--dark);
 		width:50%;
+    }
+    .other{
+        padding-bottom: 1rem;
+    }
+    @media only screen and (max-width: 600px){
+        .hid{
+            display:none;
+        }
+        .a{
+            display:grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        h1{
+            font-size: 1.5rem;
+        }
     }
 </style>

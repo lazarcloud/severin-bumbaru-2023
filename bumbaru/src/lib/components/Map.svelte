@@ -114,7 +114,7 @@
       }
   }
   let showOverlay = 0
-  let jud = 'Galați'
+  let jud = 'Apasă pe un judet pentru toate obiectivele'
   function toggle(id){
     if(id != undefined || id != null){
       jud = untranslate(id)
