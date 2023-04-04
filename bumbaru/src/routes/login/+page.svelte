@@ -6,7 +6,7 @@
 	  <title>Journey - Login</title>
 	  <meta name="description" content="login" />
 </svelte:head>
-<img src="./background3.png" alt="background" style="display: none;">
+<img src="https://cdn.kimkim.com/files/a/images/68a7c0627d89fe452c67f351efbd94bf6039ac0f/original-f902ae7e67fe3eebf7d6b898f3013b98.jpg" alt="background" style="display: none;">
 <section class = "gradient_bg" >
 <div>
 	<h1 class="bold">Login</h1>
@@ -50,7 +50,7 @@
 	.gradient_bg{
 		background:
 		linear-gradient(115deg, var(--light) 35%, rgba(112, 173, 203, 0.45) 70%,  rgba(237, 255, 196, 0.70)),
-		url('/background3.png');
+		url('https://cdn.kimkim.com/files/a/images/68a7c0627d89fe452c67f351efbd94bf6039ac0f/original-f902ae7e67fe3eebf7d6b898f3013b98.jpg');
 		width: 100%;
 		min-height: calc(100vh - 64px);
 		background-size: cover;

@@ -1,6 +1,7 @@
 <script>
 	import { enhance } from '$app/forms';
 	export let form
+	export let data
 </script>
 <svelte:head>
 	  <title>Journey - Home</title>
@@ -19,9 +20,12 @@
 	<!-- <p>Don't have an account? <a href="/register" class = "font-bold text-mango">Register!</a></p>
 	<p>Forgot password? <a href="/" class = "font-bold text-mango" >Reset it!</a></p> -->
 	<div class="buttons">
-		<a href="/login" class="button">Old friend?</a>
-		<a href="/register" class="button">New friend?</a>
-		<a href="/new" class="button">New journey?</a>
+		{#if !data.user.isAuthenticated}
+		<a href="/login" class="button">Login</a>
+		<a href="/register" class="button">Register</a>
+		{:else}
+		<a href="/new" class="button" style="background-color: #000000;">New journey!</a>
+		{/if}
 	</div>
 </div>
 </section>
@@ -57,17 +61,17 @@
 		text-decoration: none;
 		background-color: var(--primary);
 
-      color: white;
-      border: none;
-	  margin: 0.5rem 0;
-          padding: 0.5rem;
-          border-radius: 0.5rem;
-		  min-width: 256px;
+		color: white;
+		border: none;
+		margin: 0.25rem 0.25rem;
+		padding: 0.5rem;
+		border-radius: 0.5rem;
+		min-width: 200px;
 	}
 	.gradient_bg{
 		background-image:
 		linear-gradient(180deg, var(--light) 35%, rgba(58, 31, 215, 0.1)),
-		url('./background1.png');
+		url('https://ryderwalker.com/wp-content/uploads/2019/10/Romania-8.jpg');
 		width: 100%;
 		min-height: calc(100vh - 64px);
 		background-size: cover;

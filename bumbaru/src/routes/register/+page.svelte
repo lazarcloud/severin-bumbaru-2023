@@ -59,7 +59,7 @@
     .gradient_bg{
       background-image:
       linear-gradient(115deg, var(--light) 35%, rgba(0, 0, 0, 0) 60%, rgba(148, 79, 23, 0.63)),
-      url('/background2.webp');
+      url('https://i0.wp.com/picjumbo.com/wp-content/uploads/transfagarasan-road-in-romania.jpg?w=2210&quality=70');
       width: 100%;
       min-height: calc(100vh - 64px);
       background-size: cover;
