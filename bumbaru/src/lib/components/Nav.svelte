@@ -108,6 +108,7 @@
             left:0;
             height: auto;
             padding: 1rem;
+            z-index: 10000;
         }
         /* a{
             border: 1px solid black

@@ -93,6 +93,37 @@
         const newDateStr = `${year}-${month}-${day}`;
         return newDateStr
     }
+    let tab = 1
+    function setTab(t){
+        tab = t
+        document.getElementsByClassName('form1')[0].style.display = tab==1?'flex':'none'
+        document.getElementsByClassName('form2')[0].style.display = tab==2?'flex':'none'
+        document.getElementsByClassName('form3')[0].style.display = tab==3?'flex':'none'
+
+    }
+    import { onMount } from 'svelte';
+    let isMobile = true
+    function query(e) {
+        // Reset mobile state
+        console.log(e)
+        isMobile = e.matches;
+        if(isMobile==false){
+        document.getElementsByClassName('form1')[0].style.display ='flex'
+        document.getElementsByClassName('form2')[0].style.display ='flex'
+        document.getElementsByClassName('form3')[0].style.display ='flex'
+    }
+    if(isMobile==true){
+        setTab(1)
+    }
+    };
+    onMount(() => {
+        const mediaListener = window.matchMedia("(max-width: 600px)");
+        
+        mediaListener.addListener(query);
+        query(mediaListener)
+    });
+    
+    
     $forms.departureDate = formatDate((new Date(Date.now())).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }))
 </script>
 <!-- <div class="debug" style="position:absolute;">
@@ -104,7 +135,7 @@
 <section>
     <div class="tab form">
         <div class="forms">
-            <form class="form">
+            <form class="form form1">
                 <h2 class="bold">Your departure</h2>
                 <p>Departure location</p>
                 <input type="text" placeholder="departure" bind:value={$forms.departure} />
@@ -120,7 +151,7 @@
                     <input type="time" placeholder="10:00" bind:value={$forms.departureTime} />
                 </div>
             </form>
-            <form class="form" autocomplete="off">
+            <form class="form form2" autocomplete="off">
                 <h2 class="bold">Your destination(s)</h2>
                 <p>Add new destination</p>
                 <input type="text" placeholder="new city" bind:value={$forms.new} autocomplete="off" />
@@ -133,7 +164,7 @@
                     <button class="btn" on:click|preventDefault={() => removeCity(city)}>Remove</button>
                 {/each}
             </form>
-            <form class="form small">
+            <form class="form form3 small">
                 <h2 class="bold">Send</h2>
                 <div class="radio">
                     <label for="car-radio">Car</label>
@@ -143,6 +174,11 @@
                   </div>
                 <input type="submit" value="Get Route" on:click|preventDefault={()=>getRoute()}/>
             </form>
+            <div class="controls">
+                <button class="cbtn {tab==1?'selected':''}" on:click={() => setTab(1)}>1</button>
+                <button class="cbtn {tab==2?'selected':''}" on:click={() => setTab(2)}>2</button>
+                <button class="cbtn {tab==3?'selected':''}" on:click={() => setTab(3)}>3</button>
+            </div>
         </div>
         
     </div>
@@ -183,8 +219,8 @@
         counter-increment: section;
         content: counter(section);
         position: absolute;
-        top: calc(-1 * var(--size) / 2);
-        left: calc(-1 * var(--size) / 2);
+        top: calc(-1 * var(--size) / 2.5);
+        left: calc(-1 * var(--size) / 2.5);
         width: var(--size);
         height: var(--size);
         background-color: var(--primary);
@@ -225,12 +261,63 @@
         align-items: center;
         justify-content: center;
     }
+    .controls{
+        display: none;
+    }
     @media only screen and (max-width: 600px) {
 		section{
             display:grid;
-            grid-template-rows: 1fr 2fr;
+            grid-template-rows: 2fr 2fr;
             grid-template-columns: 1fr;
             row-gap: 1vw;
+        }
+        .forms{
+            position:relative;
+            width: 100%;
+            min-height: 40vh;
+            /* background-color:red; */
+            margin: 0 auto;
+            top: 0;
+            display: flex;
+            /* align-items: center; */
+            justify-content: center;
+        }
+        form{
+            position:absolute;
+            width: clamp(300px, 70vw, 500px);
+            border: 1px solid var(--primary)
+        }
+        form::before{
+            display:none;
+        }
+        .form1{
+            display:flex;
+        }
+        .form2{
+            display:none;
+        }
+        .form3{
+            display:none;
+        }
+        .controls{
+            display: flex;
+            position: absolute;
+        }
+        .cbtn{
+            --size: 32px;
+            width: var(--size);
+            height: var(--size);
+            background-color: white;
+            border: 1px solid var(--primary);
+            border-radius: 69rem;
+            display: grid;
+            color:black;
+            place-content: center;
+        }
+        .cbtn.selected{
+            background-color: var(--primary);
+            border: none;
+            color:white;
         }
 	}
 </style>
