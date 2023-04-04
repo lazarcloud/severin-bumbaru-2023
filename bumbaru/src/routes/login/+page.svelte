@@ -17,7 +17,7 @@
 	</div> -->
 	<h2>Continue your Journey</h2>
 	{#if form}
-	  {JSON.stringify(form)}
+	  <b>{JSON.stringify(form.error)}</b>
 	{/if}
 	<form method="POST" action="?/login" use:enhance autocomplete="off">
 	  <input type="email" name="email" placeholder="email@domain.com"/>
@@ -49,7 +49,7 @@
 	
 	.gradient_bg{
 		background:
-		linear-gradient(115deg, var(--light) 35%, rgba(112, 173, 203, 0.45) 70%,  rgba(237, 255, 196, 0.70)),
+		linear-gradient(115deg, var(--light) 35%, rgba(0, 0, 0, 0) 60%,  rgba(237, 255, 196, 0.70)),
 		url('https://cdn.kimkim.com/files/a/images/68a7c0627d89fe452c67f351efbd94bf6039ac0f/original-f902ae7e67fe3eebf7d6b898f3013b98.jpg');
 		width: 100%;
 		min-height: calc(100vh - 64px);

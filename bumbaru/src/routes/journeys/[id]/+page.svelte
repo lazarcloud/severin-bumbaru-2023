@@ -1,3 +1,8 @@
+<svelte:head>
+	<title>Journey - {data.id} </title>
+	<meta name="description" content="Travel" />
+</svelte:head>
+
 <script>
     import { forms, cities } from '$lib/store';
     import { Timer, Map } from '$lib/components';

@@ -1,9 +1,10 @@
 <script>
     import { slide, fly, fade } from 'svelte/transition';
+    export let data;
 </script>
 
 <svelte:head>
-	<title>Travel - Home</title>
+	<title>Journey - All </title>
 	<meta name="description" content="Travel" />
 </svelte:head>
 

@@ -6,9 +6,9 @@
 	export let data;
 </script>
 
-	{#if data.user.isAuthenticated && data.user.userdata.confirmed==0}
+	<!-- {#if data.user.isAuthenticated && data.user.userdata.confirmed==0}
 		<h1>Please confirm your account!</h1>
-	{/if}
+	{/if} -->
 	<Nav user={data.user} />
 
 	<slot/>

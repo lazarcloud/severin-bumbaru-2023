@@ -1,6 +1,11 @@
 export function chart_driveROUTE(dep_place, dep_time, cities){
 
     var RETURN = {}
+    
+    // unable to patch; do not call with an epmty 'cities' array
+
+    // if(dep_place == undefined || dep_time == undefined || cities == undefined)
+    //     return RETURN;
 
     // 0 - Galați
     // 1 - Alba Iulia
