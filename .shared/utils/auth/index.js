@@ -1,6 +1,6 @@
-import db from '$db/mongo'
-const users = db.collection('Users')
-const sessions = db.collection('Sessions')
+import { dbAuth } from '$db/mongo'
+const users = dbAuth.collection('Users')
+const sessions = dbAuth.collection('Sessions')
 
 export async function checkEmailSyntax(email){
     return !email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);  
@@ -152,6 +152,8 @@ export async function auth(sessionId, userId){
   }
   mysess.expires = Math.max(mysess.expires, now+7*3600*1000)
   const res2 = await sessions.replaceOne({_id:mysess._id}, {...mysess})
+  delete myuser["password"]
+  delete myuser["salt"]
   return {
     isAuthenticated:true,
     userdata:myuser,

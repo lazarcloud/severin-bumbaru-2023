@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb';
-let MONGO_URL = 'mongodb://lazar:lazar@130.61.113.206:27017/LazarServices?authMechanism=DEFAULT'
+let MONGO_URL = "mongodb://root:byteforcespargelupiirosii@130.61.113.206:32772/"
 
 const client = new MongoClient(MONGO_URL)
 
@@ -11,7 +11,6 @@ export function start_mongo() {
 export default client.db()
 
 import { dbAuth } from '$db/auth/mongo'
-import { dbChat } from '$db/chat/mongo'
-import { dbMessages } from '$db/messages/mongo'
+
 
 export { dbAuth }
