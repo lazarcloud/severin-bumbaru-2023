@@ -86,6 +86,7 @@ def best_train(stations,start_station,end_station,prefer_not_overnight,prefer_no
     switcher = int(prefer_no_changes)+int(prefer_not_overnight)
     if not switcher:
         selected_train_duration_span = next(iter(trip_durations_spans))
+        found = True
         print("huuhuu")
     elif switcher==1:
         if prefer_not_overnight==True:
