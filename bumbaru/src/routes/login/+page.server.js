@@ -1,8 +1,8 @@
-import db from '$db/mongo'
+import { dbAuth } from '$db/mongo'
 import { checkEmail, checkPasswordLength, makeId, hashPassword, getUniqueTag, checkPassword, cleanSessions } from '$utils/auth/index.js'
 import { dev } from '$app/environment';
-const users = db.collection('Users')
-const sessions = db.collection('Sessions')
+const users = dbAuth.collection('Users')
+const sessions = dbAuth.collection('Sessions')
 export const actions = {
     login: async({ request, cookies }) => {
         const data = await request.formData();
@@ -34,14 +34,14 @@ export const actions = {
             secure: !dev,
             httpOnly: true,
             maxAge: 60 * 60 * 24 * 7,
-            domain: dev?'localhost':'lazar.lol'
+            domain: dev?'localhost':'byteforce.ro'
           })
         cookies.set('userId', myuser._id,{
             path: '/',
             secure: !dev,
             httpOnly: true,
             maxAge: 60 * 60 * 24 * 7,
-            domain: dev?'localhost':'lazar.lol'
+            domain: dev?'localhost':'byteforce.ro'
         })
         cleanSessions(myuser._id)
         return {field:0, password:password }

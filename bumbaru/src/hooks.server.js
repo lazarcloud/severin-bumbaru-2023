@@ -4,7 +4,7 @@ start_mongo_Auth().then(() => {
 	console.log('Mongo started!');
 }).catch(e => {console.error(e)})
 
-
+console.log('lazarus')
 import { dbAuth } from '$db/mongo'
 
 const tutorials = dbAuth.collection('Data')
@@ -15,7 +15,7 @@ const result = await tutorials.insertOne(doc);
 console.log(
    `A document was inserted with the _id: ${result.insertedId}`,
 );
-import { auth, checkUrl } from '$utils/auth/index.js'
+import { auth, urlIsPublic } from '$utils/auth/index.js'
 
 export async function handle({ event, resolve }){
 
@@ -25,8 +25,8 @@ export async function handle({ event, resolve }){
    event.locals.user = await auth(sessionId, userId)
    //check route
    console.log((!event.locals.user.isAuthenticated)&&(event.url.pathname!=''))
-   if(!event.locals.user.isAuthenticated&&event.url.pathname!=''){
-     //return Response.redirect(`${event.url.origin}/auth/basic/login?session_expired=1&link=${event.url.pathname}`,301)
+   if(!event.locals.user.isAuthenticated&&!urlIsPublic(event.url.pathname)){
+     return Response.redirect(`${event.url.origin}/login?session_expired=1&link=${event.url.pathname}`,301)
    }
    const response = await resolve(event);
    return response;

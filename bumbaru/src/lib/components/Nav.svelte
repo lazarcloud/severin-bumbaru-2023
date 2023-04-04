@@ -2,6 +2,7 @@
     import { page } from '$app/stores';
     let path;
     $: path = $page.url.pathname;
+    export let user
 </script>
 <nav style="background-color:#ffffff">
     <div class="left" style="gap:0.5rem">
@@ -9,8 +10,15 @@
         <a href= '/' class="bold text-2xl">Journey</a>
     </div>
     <div class="right">
+        {#if user.isAuthenticated}
+        <a href="/" class="{path == '/' ? 'active' : ''}">Home</a>     
+        <a href="/newjourney" class="{path == '/newjourney' ? 'active' : ''}">Start New!</a> 
+        <a href="/journeys" class="{path == '/journeys' ? 'active' : ''}">Journeys</a>
+        <a style="text-color:#eb8c6f" href="/logout" class="{path == '/logout' ? 'active' : ''}">Logout</a> 
+        {:else}
         <a href="/login" class="{path == '/login' ? 'active' : ''} login">Login</a>
         <a href="/register" class="{path == '/register' ? 'active' : ''} register">Register</a>
+        {/if}
     </div>
 </nav>
 

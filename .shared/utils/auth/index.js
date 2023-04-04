@@ -74,37 +74,17 @@ export async function getUniqueTag(username){
     return tag
 }
 
-
-export function checkUrl(url){
+let urls = [
+  "/",
+  "/login",
+  "/register",
+]
+export function urlIsPublic(url){
+  if(urls.includes(url)){
+    return true
+  }
   return false
-  if(url === ""){
-    return false
-  }
-  if(url === "/"){
-    return false
-  }
-  if(url === "/about"){
-    return false
-  }
-  if(url === "/love"){
-    return false
-  }
-  if(url === "/code"){
-    return false
-  }
-  if(url === "/code/about"){
-    return false
-  }
-  if(url === "/code/pbs"){
-    return false
-  }
-  if(url.startsWith("/auth")){
-    return false
-  }
-  if(url.startsWith("/ws")){
-    return false
-  }
-  return true
+  // if(url.startsWith("/ws")){
 }
 
 export async function auth(sessionId, userId){

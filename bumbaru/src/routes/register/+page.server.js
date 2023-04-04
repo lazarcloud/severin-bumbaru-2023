@@ -1,8 +1,11 @@
-import db from '$db/mongo'
+import { dbAuth } from '$db/mongo'
 import { checkEmail, checkPasswordLength, makeId, hashPassword, getUniqueTag, randomName, cleanSessions } from '$utils/auth/index.js'
 import { dev } from '$app/environment';
-const users = db.collection('Users')
-const sessions = db.collection('Sessions')
+import { sendEmail } from "$lib/emails"
+import { renderMail } from 'svelte-mail';
+import { Confirmation } from '$lib/emails';
+const users = dbAuth.collection('Users')
+const sessions = dbAuth.collection('Sessions')
 export const actions = {
     register: async({ request, cookies }) => {
         const data = await request.formData();
@@ -63,17 +66,24 @@ export const actions = {
             secure: !dev,
             httpOnly: true,
             maxAge: 60 * 60 * 24 * 7,
-            domain: dev?'localhost':'lazar.lol'
+            domain: dev?'localhost':'byteforce.ro'
           })
         cookies.set('userId', myuser._id,{
             path: '/',
             secure: !dev,
             httpOnly: true,
             maxAge: 60 * 60 * 24 * 7,
-            domain: dev?'localhost':'lazar.lol'
+            domain: dev?'localhost':'byteforce.ro'
         })
         cleanSessions(myuser._id)
         
+
+        const { html, text } = await renderMail(Confirmation, { data: { user: username, id:confirmation_id, dev:dev } });
+        console.log(html)
+        await sendEmail(email, html, text)
+
+
+
         return {field:0, email:{email:email, check:await checkEmail(email)}, password:password, password2:password2 }
     }
 }

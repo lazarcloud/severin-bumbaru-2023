@@ -3,15 +3,14 @@
 	import "../app.css";
 	
 	import { Nav } from '$lib/components'
-	import { NavAuth } from '$lib/components'
 	export let data;
 </script>
-	{#if data.user.isAuthenticated}
-	<Nav />
-	{:else}
-	<NavAuth />
+
+	{#if data.user.isAuthenticated && data.user.userdata.confirmed==0}
+		<h1>Please confirm your account!</h1>
 	{/if}
-	<!-- <NavAuth /> -->
+	<Nav user={data.user} />
+
 	<slot/>
 <style>
 	/* :global(*){
