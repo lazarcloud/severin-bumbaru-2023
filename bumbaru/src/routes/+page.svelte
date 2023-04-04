@@ -14,7 +14,7 @@
 	  <a href="">Login with Google</a>
 	  <a href="">Login with Github</a>
 	</div> -->
-	<h2>Easily plan your travel routes</h2>
+	<h2>Pack your <span class="medium">bags</span> and let's explore de <span class="medium">world</span>!</h2>
 	<p>Don't have an account? <a href="/register" class = "font-bold text-mango">Register!</a></p>
 	<p>Forgot password? <a href="/" class = "font-bold text-mango" >Reset it!</a></p>
 </div>
