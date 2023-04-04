@@ -6,7 +6,7 @@
 	  <title>Journey - Login</title>
 	  <meta name="description" content="login" />
 </svelte:head>
-<img src="./background3.png" alt="background" style="display: none;">
+<img src="https://cdn.kimkim.com/files/a/images/68a7c0627d89fe452c67f351efbd94bf6039ac0f/original-f902ae7e67fe3eebf7d6b898f3013b98.jpg" alt="background" style="display: none;">
 <section class = "gradient_bg" >
 <div>
 	<h1 class="bold">Login</h1>
