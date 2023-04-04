@@ -26,7 +26,6 @@
     <div class="left" style="gap:0.5rem">
         <img src={logo} alt="logo" />
         <a href= '/' class="bold text-2xl">Journey</a>
-        {isMobile}
     </div>
     <div class="btn">
         <button on:click={()=>swap()} style="transform: rotate({show?'0':'90deg'});">|||</button>
