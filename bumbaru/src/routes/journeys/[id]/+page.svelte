@@ -10,6 +10,13 @@
     ]
     let filteredData = []
     let filteredData2 = []
+    let departurePrediction
+    let newPrediction
+    $: departurePrediction = filteredData2.length==0?$forms.departure:filteredData2[0]
+    $: newPrediction = filteredData.length==0?$forms.new:filteredData[0]
+    function removeSelectedCity(array){
+        return array.filter((element) => !$cities.includes(element));
+    }
     function filterData(param){
         let emptyArray
         console.log(param)
@@ -31,7 +38,7 @@
         }
         return emptyArray
     }
-    $: filteredData = filterData($forms.new)
+    $: filteredData = removeSelectedCity(filterData($forms.new))
     $: filteredData2 = filterData($forms.departure)
     function addNewCity(city){
         if($cities.includes(city)){
@@ -56,12 +63,15 @@
             return
         }
         $forms.departure = filteredData2[0]
+        // on:focus={()=>newCity = newCity} on:blur={()=>filteredData=[]} 
     }
 </script>
-{ JSON.stringify($forms) }
+<!-- <div class="debug" style="position:absolute;">
+    { JSON.stringify($forms) }
 { JSON.stringify($cities) }
 { JSON.stringify(filteredData) }
 { JSON.stringify(filteredData2) }
+</div> -->
 <section>
     <div class="tab form">
         <div class="forms">
@@ -95,7 +105,7 @@
         
     </div>
     <div class="tab map">
-        <Map />
+        <Map departurePrediction={departurePrediction} departure={$forms.departure} inAddCity={$forms.new} inAddCityPrediction={newPrediction} cities={$cities} />
     </div>
 </section>
 <style>
@@ -105,12 +115,14 @@
     section{
         display:grid;
         grid-template-columns: 1fr 2fr;
-        column-gap: 1rem;
+        column-gap: 1vw;
+        background-color:var(--light);
+        min-height: calc(100vh - 64px)
     }
     form{
         display:flex;
         flex-direction: column;
-        background-color: aquamarine;
+        background-color: white;
         padding: 1rem;
         border-radius: 0.5rem;
         margin: 1rem;
@@ -124,10 +136,28 @@
         padding: 0.5rem;
         border-radius: 0.5rem;
         border: 1px solid var(--dark);
+        width: 100%;
+    }
+    ::-webkit-calendar-picker-indicator {
+        display: none;
     }
     .input{
         display: flex;
         align-items: center;
         gap: 1rem;
     }
+    .tab{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    @media only screen and (max-width: 600px) {
+		section{
+            display:grid;
+            grid-template-rows: 1fr 2fr;
+            grid-template-columns: 1fr;
+            row-gap: 1vw;
+        }
+	}
 </style>

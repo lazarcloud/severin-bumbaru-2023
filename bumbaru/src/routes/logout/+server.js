@@ -18,21 +18,21 @@ export async function GET({ cookies, locals, url, event, request }){
   await cookies.delete('userId');
   await cookies.delete('sessionId');
   cleanSessions(_id)
-  cookies.delete('userId')
-  cookies.delete('sessionId')
-  // cookies.set('sessionId', '',{
-  //   path: '/',
-  //   secure: !dev,
-  //   httpOnly: true,
-  //   maxAge: 60 * 60 * 24 * 7,
-  //   domain: dev?'localhost':'byteforce.ro'
-  // })
-  // cookies.set('userId', '',{
-  //     path: '/',
-  //     secure: !dev,
-  //     httpOnly: true,
-  //     maxAge: 60 * 60 * 24 * 7,
-  //     domain: dev?'localhost':'byteforce.ro'
-  // })
+  // cookies.delete('userId')
+  // cookies.delete('sessionId')
+  cookies.set('sessionId', '',{
+    path: '/',
+    secure: !dev,
+    httpOnly: true,
+    maxAge: 60 * 60 * 24 * 7,
+    domain: dev?'localhost':'byteforce.ro'
+  })
+  cookies.set('userId', '',{
+      path: '/',
+      secure: !dev,
+      httpOnly: true,
+      maxAge: 60 * 60 * 24 * 7,
+      domain: dev?'localhost':'byteforce.ro'
+  })
 	throw redirect(303, '/');
 };

@@ -54,6 +54,7 @@ export const actions = {
         if(redirectUrl!=0){
             throw redirect(302, redirectUrl)
         }
-        return {field:0, password:password }
+        throw redirect(302, '/')
+
     }
 }
