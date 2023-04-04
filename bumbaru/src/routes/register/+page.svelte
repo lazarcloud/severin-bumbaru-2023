@@ -3,7 +3,7 @@
     export let form
   </script>
   <svelte:head>
-      <title>Register</title>
+      <title>Journey - Register</title>
       <meta name="description" content="Lazar Auth Register" />
   </svelte:head>
   <section class = "gradient_bg">
@@ -58,8 +58,8 @@
     
     .gradient_bg{
       background-image:
-      linear-gradient(115deg, var(--light) 35%, rgba(223, 119, 103, 0.10)),
-      url('/background2.png');
+      linear-gradient(115deg, var(--light) 35%, rgba(0, 0, 0, 0) 60%, rgba(148, 79, 23, 0.63)),
+      url('/background2.webp');
       width: 100%;
       min-height: calc(100vh - 64px);
       background-size: cover;

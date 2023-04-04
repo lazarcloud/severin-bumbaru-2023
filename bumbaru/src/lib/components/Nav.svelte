@@ -35,7 +35,7 @@
 
     <div class="right" style="--nr:3">
         <a href="/" class="{path == '/' ? 'active' : ''}">Home</a>     
-        <a href="/newjourney" class="{path == '/newjourney' ? 'active' : ''}">Start New!</a> 
+        <a href="/new" class="{path == '/new' ? 'active' : ''}">Start New!</a> 
         <a href="/journeys" class="{path == '/journeys' ? 'active' : ''}">Journeys</a>
         <a style="text-color:#eb8c6f" href="/logout" class="{path == '/logout' ? 'active' : ''}">Logout</a> 
     </div>

@@ -66,7 +66,7 @@
 	}
 	.gradient_bg{
 		background-image:
-		linear-gradient(180deg, var(--light) 35%, rgba(223, 119, 103, 0.10)),
+		linear-gradient(180deg, var(--light) 35%, rgba(58, 31, 215, 0.1)),
 		url('./background1.png');
 		width: 100%;
 		min-height: calc(100vh - 64px);
