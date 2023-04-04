@@ -27,9 +27,10 @@ io.on('connection', function(socket) {
   socket.join(chatId);
   //emit to all
   io.to(chatId).emit('welcome', { message: 'Welcome!', id: socket.id });
-  socket.on('message', (data) => {
+  socket.on('request', (data) => {
+    console.log(socket.id)
     console.log(data)
-    socket.to(chatId).emit('message', data);
+    socket.emit('response', { message: 'Response!', id: socket.id });
   })
 });
 
@@ -40,9 +41,9 @@ app.get("/", (req, res) => {
   res.send(helloMessage);
 });
 
-app.get('/home', (req, res) => {
-  res.sendFile('index.html', { root: __dirname });
-});
+// app.get('/home', (req, res) => {
+//   res.sendFile('index.html', { root: __dirname });
+// });
 
 httpServer.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

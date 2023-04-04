@@ -1,6 +1,7 @@
 <script>
     import { forms, cities } from '$lib/store';
     import { Timer, Map } from '$lib/components';
+    export let data
     let orase = [
         'Galați',
         'Alba Iulia',
@@ -65,6 +66,24 @@
         $forms.departure = filteredData2[0]
         // on:focus={()=>newCity = newCity} on:blur={()=>filteredData=[]} 
     }
+    import { socket } from '$lib/socket';
+  import { dataset_dev } from 'svelte/internal';
+    function getRoute(){
+        console.log('fetching route...')
+        const sms = {
+            id: data.id,
+            departure: $forms.departure,
+            cities: $cities,
+            methid: selectedVehicle,
+            departureTime: $forms.departureTime
+        }
+        console.log(sms)
+        $socket.emit('request', sms);
+    }
+    $socket.on('response', (sms) => {
+        console.log(sms)
+    })
+    let selectedVehicle = 'car';
 </script>
 <!-- <div class="debug" style="position:absolute;">
     { JSON.stringify($forms) }
@@ -101,6 +120,16 @@
                     <button class="btn" on:click|preventDefault={() => removeCity(city)}>Remove</button>
                 {/each}
             </form>
+            <form class="form small">
+                <h2 class="bold">Send</h2>
+                <div class="radio">
+                    <label for="car-radio">Car</label>
+                    <input type="radio" name="vehicle-type" id="car-radio" value="car" bind:group={selectedVehicle}>
+                    <label for="train-radio">Train</label>
+                    <input type="radio" name="vehicle-type" id="train-radio" value="train" bind:group={selectedVehicle}>
+                  </div>
+                <input type="submit" value="Get Route" on:click|preventDefault={()=>getRoute()}/>
+            </form>
         </div>
         
     </div>
@@ -109,6 +138,12 @@
     </div>
 </section>
 <style>
+    .radio{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
     /* *{
         outline: 1px solid red;
     } */
@@ -128,6 +163,9 @@
         margin: 1rem;
         min-height: 30vh;
     }
+    .small{
+        min-height: 10vh;
+    }
     h2{
         font-size: 2rem;
     }
@@ -138,6 +176,11 @@
         border: 1px solid var(--dark);
         width: 100%;
     }
+    input[type="submit"]{
+		background-color: var(--primary);
+		color: white;
+		border: none;
+	}
     ::-webkit-calendar-picker-indicator {
         display: none;
     }

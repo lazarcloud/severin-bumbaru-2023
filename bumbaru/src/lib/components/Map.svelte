@@ -49,7 +49,18 @@
     clearInterval(int);
     clearInterval(int2);
   });
+  function clearClasses(){
+    let svg = document.getElementById("Layer_2");
+    let paths = svg?.getElementsByClassName("cls-3");
+    for (let i = 0; i < paths.length; i++) {
+      paths[i].classList.remove("cls-3");
+    }
+  }
   function update(){
+    // console.log({
+    //   departure: departure,
+    //   departurePrediction: departurePrediction,
+    // })
     let svg = document.getElementById("Layer_2");
     let path = svg?.getElementsByClassName(translate(departurePrediction))[0];
     //loop tyhrough departures and set values to  0
@@ -59,6 +70,11 @@
       }else{
       departures[key] = 0;
       }
+    }
+    if(departure == '' || departurePrediction == undefined){
+      console.log('special case')
+      clearClasses()
+      return
     }
     //if key departure is in key departures set value to 1
     if(departure != departurePrediction){
