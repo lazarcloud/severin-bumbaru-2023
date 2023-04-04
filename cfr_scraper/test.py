@@ -10,11 +10,12 @@ import datetime
 
 url = "https://mersultrenurilor.infofer.ro/ro-RO/Rute-trenuri/Iasi/Timisoara-Nord?DepartureDate=04.04.2023&TimeSelectionId=0&MinutesInDay=0&OrderingTypeId=2&ConnectionsTypeId=1&BetweenTrainsMinimumMinutes=5&ChangeStationName="
 
+#################
 opts = webdriver.EdgeOptions()
 opts.add_argument("-headless")
 browser = webdriver.ChromiumEdge(options=opts)
 browser.get(url)
-
+#################3
 try:
     myElem = WebDriverWait(browser, 15).until(EC.presence_of_element_located((By.CSS_SELECTOR, '.bg-white')))
     print ("Page is ready!")
@@ -25,6 +26,7 @@ html = browser.page_source
 soup = BeautifulSoup(html, 'lxml')
 browser.close()
 
+#######
 def is_direct_from_duration(duration_span):
     train_combs_div = duration_span.parent.find_previous_sibling('div')
     if train_combs_div.find('i'):
@@ -37,13 +39,15 @@ def is_night_train_from_duration(duration_span):
         return True
     else:
         return False
+#########
+
 
 #div-itinerary-station - class for cards
-trip_durations = soup.find_all('span', {'class' : 'd-inline-block'})
+trip_durations_spans = soup.find_all('span', {'class' : 'd-inline-block'})
 """trip_duration = soup.find('span', {'class' : 'd-inline-block'})"""
 
 
-for duration in trip_durations:
+for duration in trip_durations_spans:
     minutes = duration.text.strip().split(" ")[-2]
     hours=0
     if "ore" in duration.text: hours = duration.text.strip().split(" ")[-4]
