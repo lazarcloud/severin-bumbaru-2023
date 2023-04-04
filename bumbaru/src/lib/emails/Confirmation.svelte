@@ -4,9 +4,8 @@
     export let dev
     let url = dev? "http://localhost:5173/" : "https://ro.byteforce.ro/"
     url = url + `confirm/${id}`
-  </script>
+</script>
   
-  <h1>Hello, {user}</h1>
-  <p>Please confirm your account here: <a href={url}>CONFIRM</a></p>
+    <h1>Hello, new user! </h1>
+    <p>Please confirm your account here: <a href={url}>CONFIRM</a></p>
   
-  <style>strong { color: red }</style>
