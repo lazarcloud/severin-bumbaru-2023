@@ -35,7 +35,8 @@ class Trip:
                 return False
             else: return True
 
-        def is_night_train_from_card(parent_card):
+        def is_night_train_from_duration(duration_span):
+            parent_card = duration_span.findParent('div',{'class' : 'row div-itineraries-row-main'})
             if parent_card.find('div',{'class',"div-itineraries-station-time-part-added-time-sm mr-sm-1"}).find('span'):
                 return True
             else:
@@ -86,7 +87,7 @@ class Trip:
 
         trip_durations_spans = soup.find_all('span', {'class' : 'd-inline-block'})
 
-        for duration_span in trip_durations_spans:
+        """for duration_span in trip_durations_spans:
             minutes = duration_span.text.strip().split(" ")[-2]
             hours=0
             if "ore" in duration_span.text: hours = duration_span.text.strip().split(" ")[-4]
@@ -94,12 +95,72 @@ class Trip:
             parent_card = duration_span.findParent('div',{'class' : 'row div-itineraries-row-main'})
             print(hours , " ", minutes)
             print("Direct = ",is_direct_from_duration(duration_span))
-            print("Este tren de noapte? = ", is_night_train_from_card(parent_card))
+            print("Este tren de noapte? = ", is_night_train_from_duration(duration_span))
             print("Calatoria dureaza (in epoch) = ",duration_epoch)
             print("Ai bagat o data prea tarzie? = ", passed)
             print("Ora la care iti pleaca trenu = ",get_dep_time_from_card(parent_card))
             print("Ora la care iti ajunje trenu = ",get_arrival_time_from_card(parent_card))
-            print(url)
+            print(url)"""
+        
+        #Select the best train with chosen prefs
+        found = False
+        switcher = int(prefer_no_changes)+int(prefer_not_overnight)
+        if not switcher:
+            selected_train_duration_span = next(iter(trip_durations_spans))
+            print("huuhuu")
+        elif switcher==1:
+            if prefer_not_overnight==True:
+                for duration_span in trip_durations_spans:
+                    if prefer_not_overnight != is_night_train_from_duration(duration_span):
+                        print("found in sw1 for prefered on")
+                        found = True
+                        selected_train_duration_span = duration_span
+                        break
+            else:
+                for duration_span in trip_durations_spans:
+                    if prefer_no_changes == is_direct_from_duration(duration_span):
+                        print("found in sw1 for prefered direct")
+                        found = True
+                        selected_train_duration_span = duration_span
+                        break
+
+        elif switcher==2:
+            for duration_span in trip_durations_spans:
+                if prefer_not_overnight != is_night_train_from_duration(duration_span) and prefer_no_changes == is_direct_from_duration(duration_span):
+                    print("found in sw2 meeting boths conds")
+                    found = True
+                    selected_train_duration_span = duration_span
+                    break
+            if found == False:
+                for duration_span in trip_durations_spans:
+                    if prefer_not_overnight != is_night_train_from_duration(duration_span) or prefer_no_changes == is_direct_from_duration(duration_span):
+                        print("found in sw2 meeting one cond")
+                        found = True
+                        selected_train_duration_span = duration_span
+                        break
+        if found==False:
+            print("gave up lol")
+            selected_train_duration_span = next(iter(trip_durations_spans))
+    
+
+        print("prefer not overnight = ",prefer_not_overnight)
+        print("prefer no changes = ",prefer_no_changes)
+
+        minutes = selected_train_duration_span.text.strip().split(" ")[-2]
+        hours=0
+        if "ore" in selected_train_duration_span.text: hours = selected_train_duration_span.text.strip().split(" ")[-4]
+        duration_epoch=int(minutes)*60+int(hours)*3600
+        parent_card = selected_train_duration_span.findParent('div',{'class' : 'row div-itineraries-row-main'})
+        print(hours , " ", minutes)
+        print("Direct = ",is_direct_from_duration(selected_train_duration_span))
+        print("Este tren de noapte? = ", is_night_train_from_duration(selected_train_duration_span))
+        print("Calatoria dureaza (in epoch) = ",duration_epoch)
+        print("Ai bagat o data prea tarzie? = ", passed)
+        print("Ora la care iti pleaca trenu = ",get_dep_time_from_card(parent_card))
+        print("Ora la care iti ajunje trenu = ",get_arrival_time_from_card(parent_card))
+        print(url)
+    
+
 
 
     
