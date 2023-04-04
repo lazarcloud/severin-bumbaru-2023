@@ -78,6 +78,7 @@ let urls = [
   "/",
   "/login",
   "/register",
+  "/logout",
 ]
 export function urlIsPublic(url){
   console.log(url)
