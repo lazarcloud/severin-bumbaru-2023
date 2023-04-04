@@ -10,6 +10,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 import redis
 import json
+from pydantic.utils import deep_update
 
 def url_builder(start_station,end_station,date):
     if date-time.time()<2629743:
@@ -142,14 +143,14 @@ def best_train(stations,start_station,end_station,prefer_not_overnight,prefer_no
     print(url)
 
     #OUTPUT Redis
-
+    
     case_p = int(prefer_no_changes) + 2*int(prefer_not_overnight) 
 
     red = redis.Redis(host='130.61.113.206', port=32773, db=0,password="byteforcespargelupiirosii")
 
-    start_station ={
-        stations.index(end_station):{
-            case_p:{"trip_duration":duration_epoch,
+    start_station_dic = {
+        str(stations.index(end_station)):{
+            str(case_p):{"trip_duration":duration_epoch,
                  "departure_time":get_dep_time_from_card(parent_card),
                  "arrival_time":get_arrival_time_from_card(parent_card),
                  "train_not_yet_scheduled":passed,
@@ -159,10 +160,31 @@ def best_train(stations,start_station,end_station,prefer_not_overnight,prefer_no
             
         }
     }
-    print(start_station)
-    
-        #start_station_list[stations.index(end_station)][case_p]={"trip_duration":duration_epoch,"departure_time":get_dep_time_from_card(parent_card),"arrival_time":get_arrival_time_from_card(parent_card),"train_not_yet_scheduled":passed,"overnight":is_night_train_from_duration(selected_train_duration_span),"direct":is_direct_from_duration(selected_train_duration_span),"url":url}
+    print(start_station_dic)
 
+    key = str(int(dep_date))
+    index_dict = stations.index(start_station)
+    empty_dic = {}
+    empty_json = json.dumps(empty_dic)
+
+    if not red.exists(key):
+        for i in range (len(stations)): 
+            red.rpush(key, empty_json)
+        red.expire(key,2592000)
+
+    existing_json = red.lindex(key, index_dict)
+    stolen_dict = json.loads(existing_json)
+    #stolen_dict.update(start_station_dic)
+    stolen_dict = deep_update(stolen_dict, start_station_dic)
+    print('*'*100)
+    print(stolen_dict)
+    print('*'*100)
+    updated_json = json.dumps(stolen_dict)
+
+    red.lset(key, index_dict, updated_json)
+
+
+    
 
 """
 
