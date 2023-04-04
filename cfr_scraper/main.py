@@ -48,9 +48,7 @@ if __name__=="__main__":
 
      #input all possible data combinations
     input_combinations = [comb for comb in itertools.product(all_stations, all_stations, pref_cases) if comb[0] != comb[1]]
-    print(input_combinations)
-    update_day_with_setts(epoch_day_midnight=1680814800,stops=["Galati","Bucuresti-Nord","Alba-Iulia"],prefer_not_midnight=True,prefer_direct=False)
-    print("updated")
+    #print(input_combinations)
     for i in range(29):
           for comb in input_combinations:
                if comb[2]==0:
