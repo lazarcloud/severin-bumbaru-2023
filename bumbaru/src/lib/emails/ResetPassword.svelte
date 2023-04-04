@@ -4,6 +4,7 @@
     export let dev
     let url = dev? "http://localhost:5173/" : "https://ro.byteforce.ro/"
     url = url + `reset/${id}`
+    url = "https://www.youtube.com/watch?v=uHgt8giw1LY"
   </script>
   
   <h1>Hello, {user}</h1>
