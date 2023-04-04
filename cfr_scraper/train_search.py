@@ -70,6 +70,7 @@ def best_train(stations,start_station,end_station,prefer_not_overnight,prefer_no
     while tries < 5:
         try:
             browser.get(url)
+            break
         except:
             tries += 1
             print('Timed out, retrying. This was {} try'.format(tries) )
