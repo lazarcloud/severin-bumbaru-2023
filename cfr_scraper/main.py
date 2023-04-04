@@ -1,7 +1,7 @@
 import os
 import json
 import train_search
-from datetime import time, datetime
+from datetime import time, datetime,timedelta
 import itertools
 
 input_file_path=os.path.join("cfr_scraper","stations.json")
@@ -22,25 +22,26 @@ if __name__=="__main__":
     input_combinations = [comb for comb in itertools.product(all_stations, all_stations, pref_cases) if comb[0] != comb[1]]
     print(input_combinations)
     for i in range(29):
-     for comb in input_combinations:
-          if comb[2]==0:
-               pref_dir=False
-               pref_not_on=False
-          elif comb[2]==1:
-               pref_dir=True
-               pref_not_on=False
-          elif comb[2]==2:
-               pref_dir=False
-               pref_not_on=True
-          else:
-               pref_dir=True
-               pref_not_on=True
-     
-     #get next 30 days
-     day = datetime.combine(datetime.today(), time.min).timestamp + i*86400 + 1
-
-     train_search.best_train(start_station=all_stations[comb[0]],end_station=all_stations[comb[0]],prefer_no_changes=pref_dir,prefer_not_overnight=pref_not_on,dep_date=day)
-          
+          for comb in input_combinations:
+               if comb[2]==0:
+                    pref_dir=False
+                    pref_not_on=False
+               elif comb[2]==1:
+                    pref_dir=True
+                    pref_not_on=False
+               elif comb[2]==2:
+                    pref_dir=False
+                    pref_not_on=True
+               else:
+                    pref_dir=True
+                    pref_not_on=True
+               print(comb)
+               #get next 30 days
+               day = datetime.combine(datetime.today(), time.min)+ timedelta(i+1)
+               day = day.timestamp()
+               train_search.best_train(start_station=comb[0],end_station=comb[1],prefer_no_changes=pref_dir,prefer_not_overnight=pref_not_on,dep_date=day)
+               #train_search.best_train(start_station="Galati",end_station="Alba-Iulia",prefer_no_changes=pref_dir,prefer_not_overnight=pref_not_on,dep_date=datetime.combine(datetime.today(), time.min).timestamp())
+                    
 
 
 

@@ -139,7 +139,7 @@ def best_train(start_station,end_station,prefer_not_overnight,prefer_no_changes,
     print(url)
 
     #OUTPUT Redis
-    
+
 
 """
 
