@@ -22,11 +22,11 @@ export const actions = {
 
         const result = await users.find( { email: email, type:"lazar" } ).toArray()
         if(result.length==0){
-            return {sms:'No user found!', status:0}
+            return {error:'No user found!', status:0}
         }
         const myuser = result[0]
         if(!checkPassword(password, myuser.password, myuser.salt)){
-            return {sms:'Wrong password!', status:0}
+            return {error:'Wrong password!', status:0}
         }
 
         const sessionId = makeId()

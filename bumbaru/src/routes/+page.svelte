@@ -71,7 +71,7 @@
 	.gradient_bg{
 		background-image:
 		linear-gradient(180deg, var(--light) 35%, rgba(58, 31, 215, 0.1)),
-		url('https://ryderwalker.com/wp-content/uploads/2019/10/Romania-8.jpg');
+		url('https://images.unsplash.com/photo-1526112982068-f899a62e118e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80');
 		width: 100%;
 		min-height: calc(100vh - 64px);
 		background-size: cover;

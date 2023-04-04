@@ -17,21 +17,21 @@
       <h2>Start your Journey</h2>
 
       {#if form && form.field==0}
-        {JSON.stringify(form)}
+      <b>{JSON.stringify(form.error)}</b>
       {/if}
   
       <form method="POST" action="?/register" use:enhance>
         <input type="email" name="email" placeholder="example@domain.com"/>
         {#if form && form.field=='email'}
-        {JSON.stringify(form)}
+        <b>{JSON.stringify(form.error)}</b>
         {/if}
         <input type="password" name="password" placeholder="password"/>
         {#if form && form.field=='password'}
-        {JSON.stringify(form)}
+        <b>{JSON.stringify(form.error)}</b>
         {/if}
         <input type="password" name="password2" placeholder="confirm password"/>
         {#if form && form.field=='password2'}
-        {JSON.stringify(form)}
+        <b>{JSON.stringify(form.error)}</b>
         {/if}
         <input type="submit" value="Register"/>
       </form>
