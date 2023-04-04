@@ -104,7 +104,7 @@ export function chart_driveROUTE(dep_place, dep_time, cities){
         drivetimes.push([cityroute[i], cityroute[i + 1], get_time(route[i - 1][0], route[i][0]) * 60 ]);
         staytimes.push([cityroute[i], route[i][1]]);
     }
-    drivetimes.push([cityroute[route.length], cityroute[dep_place], get_time(route[route.length - 1][0], route[dep_place][0]) * 60 ]);
+    drivetimes.push([cityroute[route.length], cityroute[dep_place], get_time(route[route.length - 1][0], dep_place) * 60 ]);
     staytimes.push([cityroute[route.length], route[route.length - 1][1]]);
 
     RETURN['drivetimes'] = drivetimes;
