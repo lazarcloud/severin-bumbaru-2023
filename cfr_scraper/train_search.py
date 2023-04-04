@@ -76,7 +76,7 @@ def best_train(stations,start_station,end_station,prefer_not_overnight,prefer_no
         print ("A picat netu vericu!")
 
     html = browser.page_source
-    browser.close()
+    browser.quit()
     soup = BeautifulSoup(html, 'lxml')
 
     trip_durations_spans = soup.find_all('span', {'class' : 'd-inline-block'})
