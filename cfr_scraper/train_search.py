@@ -67,13 +67,13 @@ def best_train(stations,start_station,end_station,prefer_not_overnight,prefer_no
     tries = 1
     browser = webdriver.ChromiumEdge(options=opts)
 
-    while tries < 5:
+    while tries < 10:
         try:
             browser.get(url)
             break
         except:
             tries += 1
-            print('Timed out, retrying. This was {} try'.format(tries) )
+            print('Timed out, retrying. This is {} try'.format(tries) )
         
 
     #hopefully load the page
