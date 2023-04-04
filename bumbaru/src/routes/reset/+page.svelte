@@ -16,8 +16,8 @@
       </div> -->
       <h2>password</h2>
 
-      {#if form && form.field==0}
-        {JSON.stringify(form)}
+      {#if form}
+        {form.sms}
       {/if}
   
       <form method="POST" action="?/reset" use:enhance>
