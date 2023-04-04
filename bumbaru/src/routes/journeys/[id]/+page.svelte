@@ -116,11 +116,13 @@
         display:grid;
         grid-template-columns: 1fr 2fr;
         column-gap: 1vw;
+        background-color:var(--light);
+        min-height: calc(100vh - 64px)
     }
     form{
         display:flex;
         flex-direction: column;
-        background-color: var(--light);
+        background-color: white;
         padding: 1rem;
         border-radius: 0.5rem;
         margin: 1rem;

@@ -27,9 +27,15 @@ export async function handle({ event, resolve }){
    console.log((!event.locals.user.isAuthenticated)&&(event.url.pathname!=''))
    console.log({'Auth':event.locals.user.isAuthenticated})
    console.log({'Url':urlIsPublic(event.url.pathname)})
-   if(!event.locals.user.isAuthenticated&&!urlIsPublic(event.url.pathname)){
-     return Response.redirect(`${event.url.origin}/login?session_expired=1&link=${event.url.pathname}`,301)
+   if(event.locals.user.isAuthenticated){
+    const response = await resolve(event);
+    return response;
    }
-   const response = await resolve(event);
-   return response;
+   if(urlIsPublic(event.url.pathname)){
+    const response = await resolve(event);
+    return response;
+   }
+
+   return Response.redirect(`${event.url.origin}/login?session_expired=1&link=${event.url.pathname}`,301)
+
  };

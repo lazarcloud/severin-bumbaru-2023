@@ -41,6 +41,7 @@
     </div>
     {:else}
     <div class="right" style="--nr:1">
+        <a href="/" class="{path == '/' ? 'active' : ''}">Home</a>     
         <a href="/login" class="{path == '/login' ? 'active' : ''} login">Login</a>
         <a href="/register" class="{path == '/register' ? 'active' : ''} register">Register</a>
     </div>

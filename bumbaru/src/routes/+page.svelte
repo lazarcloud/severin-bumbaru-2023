@@ -21,7 +21,7 @@
 	<div class="buttons">
 		<a href="/login" class="button">Old friend?</a>
 		<a href="/register" class="button">New friend?</a>
-		<a href="/journeys/lazar" class="button">New journey?</a>
+		<a href="/new" class="button">New journey?</a>
 	</div>
 </div>
 </section>
