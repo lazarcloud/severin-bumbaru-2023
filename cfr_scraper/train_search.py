@@ -13,7 +13,7 @@ def url_builder(start_station,end_station,date):
         n_date=datetime.datetime.utcfromtimestamp(date).strftime("%d.%m.%Y")
         passed_already=False
     else: 
-        n_date=datetime.datetime.utcfromtimestamp(time.time()).strftime("%d.%m.%Y")
+        n_date=datetime.datetime.utcfromtimestamp(time.time()+86400).strftime("%d.%m.%Y")
         passed_already=True
     return ["https://mersultrenurilor.infofer.ro/ro-RO/Rute-trenuri/{}/{}?DepartureDate={}&TimeSelectionId=0&MinutesInDay=0&OrderingTypeId=2&ConnectionsTypeId=1&BetweenTrainsMinimumMinutes=5&ChangeStationName=".format(start_station,end_station,n_date),passed_already]
 
@@ -117,17 +117,18 @@ def best_train(start_station,end_station,prefer_not_overnight,prefer_no_changes,
         print("gave up lol")
         selected_train_duration_span = next(iter(trip_durations_spans))
 
-
-
-
-    print("prefer not overnight = ",prefer_not_overnight)
-    print("prefer no changes = ",prefer_no_changes)
-
+    #get trip duration for selected train
     minutes = selected_train_duration_span.text.strip().split(" ")[-2]
     hours=0
     if "ore" in selected_train_duration_span.text: hours = selected_train_duration_span.text.strip().split(" ")[-4]
     duration_epoch=int(minutes)*60+int(hours)*3600
+
+    #get parent card for selected train
     parent_card = selected_train_duration_span.findParent('div',{'class' : 'row div-itineraries-row-main'})
+
+    #OUTPUT
+    print("prefer not overnight = ",prefer_not_overnight)
+    print("prefer no changes = ",prefer_no_changes)    
     print(hours , " ", minutes)
     print("Direct = ",is_direct_from_duration(selected_train_duration_span))
     print("Este tren de noapte? = ", is_night_train_from_duration(selected_train_duration_span))
@@ -136,6 +137,25 @@ def best_train(start_station,end_station,prefer_not_overnight,prefer_no_changes,
     print("Ora la care iti pleaca trenu = ",get_dep_time_from_card(parent_card))
     print("Ora la care iti ajunje trenu = ",get_arrival_time_from_card(parent_card))
     print(url)
+
+"""
+
+
+start station index - int
+end station index - int
+pref case - int
+
+input day (epoch) - int (midnight)
+trip duration (seconds) - int
+ora plecare (seconds from midnight) - int
+ora sosire (seconds from midnight) - int
+train has not yet been scheduled - bool
+tren de noapte - bool
+direct - bool
+
+PREF CASE = A+2B where b=pref not overnight, a= prefer direct
+
+"""
     
 
 
