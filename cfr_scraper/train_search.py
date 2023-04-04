@@ -64,8 +64,16 @@ def best_train(stations,start_station,end_station,prefer_not_overnight,prefer_no
     #open headless browser because the page is dynamic - de ce Radu? de ce vrei sa suferim?
     opts = webdriver.EdgeOptions()
     opts.add_argument("-headless")
+    tries = 1
     browser = webdriver.ChromiumEdge(options=opts)
-    browser.get(url)
+
+    while tries < 5:
+        try:
+            browser.get(url)
+        except:
+            tries += 1
+            print('Timed out, retrying. This was {} try'.format(tries) )
+        
 
     #hopefully load the page
     wait_for_load_secs = 15
