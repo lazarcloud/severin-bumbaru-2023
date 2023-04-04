@@ -25,6 +25,8 @@ export async function handle({ event, resolve }){
    event.locals.user = await auth(sessionId, userId)
    //check route
    console.log((!event.locals.user.isAuthenticated)&&(event.url.pathname!=''))
+   console.log({'Auth':event.locals.user.isAuthenticated})
+   console.log({'Url':urlIsPublic(event.url.pathname)})
    if(!event.locals.user.isAuthenticated&&!urlIsPublic(event.url.pathname)){
      return Response.redirect(`${event.url.origin}/login?session_expired=1&link=${event.url.pathname}`,301)
    }

@@ -80,6 +80,8 @@ let urls = [
   "/register",
 ]
 export function urlIsPublic(url){
+  console.log(url)
+  console.log(urls)
   if(urls.includes(url)){
     return true
   }

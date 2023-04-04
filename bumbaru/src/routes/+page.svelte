@@ -6,6 +6,7 @@
 	  <title>Journey - Home</title>
 	  <meta name="description" content="home" />
 </svelte:head>
+<img src="./background1.png" alt="background" style="display: none;">
 <section class="gradient_bg">
 <div>
 	<h1 class="bold">Journey</h1>
@@ -15,8 +16,13 @@
 	  <a href="">Login with Github</a>
 	</div> -->
 	<h2>Pack your <span class="medium">bags</span> and let's explore the <span class="medium">world</span>!</h2>
-	<p>Don't have an account? <a href="/register" class = "font-bold text-mango">Register!</a></p>
-	<p>Forgot password? <a href="/" class = "font-bold text-mango" >Reset it!</a></p>
+	<!-- <p>Don't have an account? <a href="/register" class = "font-bold text-mango">Register!</a></p>
+	<p>Forgot password? <a href="/" class = "font-bold text-mango" >Reset it!</a></p> -->
+	<div class="buttons">
+		<a href="/login" class="button">Old friend?</a>
+		<a href="/register" class="button">New friend?</a>
+		<a href="/journeys/lazar" class="button">New journey?</a>
+	</div>
 </div>
 </section>
   
@@ -40,7 +46,23 @@
     div{
         text-align: center;
     }
+	.buttons{
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		width:100%;
+	}
+	.buttons>a{
+		text-decoration: none;
+		background-color: var(--primary);
 
+      color: white;
+      border: none;
+	  margin: 0.5rem 0;
+          padding: 0.5rem;
+          border-radius: 0.5rem;
+		  min-width: 256px;
+	}
 	.gradient_bg{
 		background-image:
 		linear-gradient(180deg, rgb(255, 255, 255) 35%, rgba(223, 119, 103, 0.10)),
