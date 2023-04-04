@@ -1,8 +1,8 @@
 {
-  "name": "chat_socket",
+  "name": "socket",
   "type": "module",
   "version": "1.0.0",
-  "description": "chat.lazar.lol ws server",
+  "description": "ws server",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
