@@ -58,6 +58,17 @@
     
     {/each}
 </p>
+<p>
+    {#each ans.drivetimes as [o1, o2, zile], index}
+    {o1}
+    {o2}
+    {(zile/3600).toFixed(2)}ore
+    {#if index != cities.length - 1}
+    <span> - </span>
+    {/if}
+    
+    {/each}
+</p>
 <section>
 <MapDrive {departure} {departurePrediction} {inAddCity} {inAddCityPrediction} {cities} />
 

@@ -71,6 +71,13 @@ io.on('connection', function(socket) {
       }catch(e){
         console.log(e)
       }
+    }else{
+      try{
+        ans = chart_driveROUTE(translator[data.departure], epoch, data.cities.map(e => [translator[e], 1]))
+  
+        }catch(e){
+          console.log(e)
+        }
     }
     ans._id = data.myid
     let me = dbAuth.collection(data.myid)
