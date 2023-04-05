@@ -21,7 +21,7 @@ export async function read(epoch_date){
         for(let from = 0; from <= 4; from ++){
             for(let to = 0; to <= 4; to ++){
                 for(let c = 0; c <= 3; c ++)
-                    a[day][from][to][c] = batch.stringify(from).stringify(to).stringify(c);
+                    a[day][from][to][c] = batch[stringify(from)[stringify(to)[stringify(c)]]];
             }
         }
     }
