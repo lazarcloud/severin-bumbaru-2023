@@ -33,14 +33,14 @@
     {#if !isMobile || show}
     {#if user.isAuthenticated}
 
-    <div class="right" style="--nr:3">
+    <div class="right" style="--nr:3;--second:0;--off:0;">
         <a href="/" class="{path == '/' ? 'active' : ''}">Home</a>     
         <a href="/new" class="{path == '/new' ? 'active' : ''}">Start New!</a> 
         <a href="/journeys" class="{path == '/journeys' ? 'active' : ''}">Journeys</a>
         <a style="text-color:#eb8c6f" href="/logout" class="{path == '/logout' ? 'active' : ''}">Logout</a> 
     </div>
     {:else}
-    <div class="right" style="--nr:1">
+    <div class="right" style="--nr:1;--second:1;--off:1;">
         <a href="/" class="{path == '/' ? 'active' : ''}">Home</a>     
         <a href="/login" class="{path == '/login' ? 'active' : ''} login">Login</a>
         <a href="/register" class="{path == '/register' ? 'active' : ''} register">Register</a>
@@ -104,7 +104,7 @@
             position: absolute;
             width: 100%;
             margin-inline: 0;
-            bottom: calc(var(--nr) * -64px - var(--nr) * -1rem + -64px);
+            bottom: calc(var(--nr) * -64px - var(--nr) * -1rem + -64px + var(--second) * 1rem + var(--off) * -64px);
             left:0;
             height: auto;
             padding: 1rem;

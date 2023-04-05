@@ -16,15 +16,12 @@
       </div> -->
       <h2>password</h2>
 
-      {#if form}
+      {#if form.sms}
         {form.sms}
       {/if}
   
       <form method="POST" action="?/reset" use:enhance>
         <input type="email" name="email" placeholder="example@domain.com"/>
-        {#if form && form.field=='email'}
-        {JSON.stringify(form)}
-        {/if}
         <input type="submit" value="Reset"/>
       </form>
       <p>Changed your mind? <a href="/login">Login!</a></p>

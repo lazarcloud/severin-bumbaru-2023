@@ -7,6 +7,7 @@
     import { forms, cities } from '$lib/store';
     import { Timer, Map } from '$lib/components';
     export let data
+    let buttonStatus = 'Get Route'
     let orase = [
         'Galați',
         'Alba Iulia',
@@ -14,6 +15,7 @@
         'Iași',
         'Timișoara',
     ]
+    let anss = []
     let filteredData = []
     let filteredData2 = []
     let departurePrediction
@@ -39,7 +41,7 @@
             b = b.toLowerCase();
             return a.indexOf(param) - b.indexOf(param);
         });
-        if(emptyArray[0].toLowerCase() == param.toLowerCase()){
+        if(emptyArray.length > 0 && emptyArray[0].toLowerCase() == param.toLowerCase()){
             emptyArray = []
         }
         return emptyArray
@@ -75,6 +77,7 @@
   import { dataset_dev } from 'svelte/internal';
     function getRoute(){
         console.log('fetching route...')
+        buttonStatus = 'Loading...'
         const sms = {
             myid: data.user.userdata._id,
             id: data.id,
@@ -88,7 +91,37 @@
         $socket.emit('request', sms);
     }
     $socket.on('response', (sms) => {
+        buttonStatus = 'Fetched!'
+        // let ansswithoutid = anss.map((ans) => {
+        //     delete ans['_id']
+        //     return ans
+        // })
+        // let emptysms = sms.ans
+        // delete emptysms['_id']
+        // if(!ansswithoutid.includes(emptysms)){
+            
+        // }
         console.log(sms)
+
+        // if(sms.type=='new'){
+        //     anss.push(sms.ans)
+        //     anss = anss
+        // }else if(sms.type=='old'){
+        //     //replace dict from anss with id = sms.ans._id with sms.ans
+        //     anss = anss.map((ans) => {
+        //         if(ans._id==sms.ans._id){
+        //             return sms.ans
+        //         }else{
+        //             return ans
+        //         }
+        //     })
+        //     anss = anss
+
+        // }
+        anss[0] = sms.ans
+        let ur = sms._id
+        console.log(ur)
+            
     })
     let selectedVehicle = 'car';
     function formatDate(dateStr){
@@ -131,6 +164,7 @@
     
     
     $forms.departureDate = formatDate((new Date(Date.now())).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }))
+    import { Journey } from '$lib/components'
 </script>
 <!-- <div class="debug" style="position:absolute;">
     { JSON.stringify($forms) }
@@ -138,7 +172,18 @@
 { JSON.stringify(filteredData) }
 { JSON.stringify(filteredData2) }
 </div> -->
-<section>
+
+{#each anss as ans}
+<div class="ansss" style="">
+    <button class="cbtn selected" on:click={()=>{
+        buttonStatus = 'Get Route'
+        anss = []
+    }}>X</button>
+    <Journey ans={ans} />
+</div>
+{/each}
+
+<section style="display:{anss.length == 0?'grid':'none'};">
     <div class="tab form">
         <div class="forms">
             <form class="form form1">
@@ -178,7 +223,15 @@
                     <label for="train-radio">Train</label>
                     <input type="radio" name="vehicle-type" id="train-radio" value="train" bind:group={selectedVehicle}>
                   </div>
-                <input type="submit" value="Get Route" on:click|preventDefault={()=>getRoute()}/>
+                <input type="submit" value="{buttonStatus}" on:click|preventDefault={()=>getRoute()}/>
+                <input type="submit" value="Reset Form" on:click|preventDefault={()=>{
+                    $forms.departure = ''
+                    $forms.departureDate = ''
+                    $forms.departureTime = ''
+                    $forms.new = ''
+                    $cities = []
+                    buttonStatus = 'Get Route'
+                }}/>
             </form>
             <div class="controls">
                 <button class="cbtn {tab==1?'selected':''}" on:click={() => setTab(1)}>1</button>
@@ -192,7 +245,17 @@
         <Map departurePrediction={departurePrediction} departure={$forms.departure} inAddCity={$forms.new} inAddCityPrediction={newPrediction} cities={$cities} />
     </div>
 </section>
+
 <style>
+    .ansss{
+        width: 100%;
+        height: calc(100vh - 64px);
+        padding:1rem;
+        position:absolute;
+        z-index:1000000;
+        background-color: var(--dark);
+        overflow: hidden;
+    }
     .radio{
         display: flex;
         flex-direction: row;
@@ -326,4 +389,20 @@
             color:white;
         }
 	}
+    .cbtn{
+            --size: 32px;
+            width: var(--size);
+            height: var(--size);
+            background-color: white;
+            border: 1px solid var(--primary);
+            border-radius: 69rem;
+            display: grid;
+            color:black;
+            place-content: center;
+        }
+        .cbtn.selected{
+            background-color: var(--primary);
+            border: none;
+            color:white;
+        }
 </style>

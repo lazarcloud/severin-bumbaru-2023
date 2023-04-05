@@ -16,8 +16,8 @@
 	  <a href="">Login with Github</a>
 	</div> -->
 	<h2>Continue your Journey</h2>
-	{#if form}
-	  <b>{JSON.stringify(form.error)}</b>
+	{#if form?.error}
+	  <b>{form.error}</b>
 	{/if}
 	<form method="POST" action="?/login" use:enhance autocomplete="off">
 	  <input type="email" name="email" placeholder="email@domain.com"/>

@@ -4,4 +4,5 @@ import Timer from './Timer.svelte'
 import BigMap from './BigMap.svelte'
 import Obiectiv from './Obiectiv.svelte'
 import MapDrive from './MapDrive.svelte'
-export { Nav, Map, Timer, BigMap, Obiectiv, MapDrive };
+import Journey from './Journey.svelte';
+export { Nav, Map, Timer, BigMap, Obiectiv, MapDrive, Journey };

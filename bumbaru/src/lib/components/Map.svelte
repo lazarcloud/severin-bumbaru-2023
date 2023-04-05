@@ -204,6 +204,8 @@ function setContainer(sTop, sBottom){
   }
   import park from '$lib/icons/park.png'
   import restaurant from '$lib/icons/restaurant.png'
+  import institution from '$lib/icons/institution.png'
+  import museum from '$lib/icons/museum.png'
 </script>
 {jud}
 <!-- <div style="width:200px;">
@@ -224,10 +226,16 @@ function setContainer(sTop, sBottom){
 <section style="width:{zoom}%">
 {#if showIcons}
 {#each iconsData as icon}
-{#if icon.type == 'park'}
+{#if icon.type == 'text'}
+<p class="bold" style="--w:16px;position:absolute;bottom:calc({interprete(icon.X, icon.Y).Y}% + var(--w));left:calc({interprete(icon.X, icon.Y).X}% + var(--w));z-index:{parseInt(10000000-45*10000)};">{icon.value}</p>
+{:else if icon.type == 'park'}
 <img class="i" src={park} alt="park" style="--w:16px;position:absolute;bottom:calc({interprete(icon.X, icon.Y).Y}% + var(--w));left:calc({interprete(icon.X, icon.Y).X}% + var(--w));z-index:{parseInt(10000000-icon.Y*10000)};"/>
 {:else if icon.type == 'restaurant'}
 <img class="i" src={restaurant} alt="restaurant" style="--w:16px;position:absolute;bottom:calc({interprete(icon.X, icon.Y).Y}% + var(--w));left:calc({interprete(icon.X, icon.Y).X}% + var(--w));z-index:{parseInt(10000000-icon.Y*10000)};"/>
+{:else if icon.type == 'institution'}
+<img class="i" src={institution} alt="institution" style="--w:16px;position:absolute;bottom:calc({interprete(icon.X, icon.Y).Y}% + var(--w));left:calc({interprete(icon.X, icon.Y).X}% + var(--w));z-index:{parseInt(10000000-icon.Y*10000)};"/>
+{:else if icon.type == 'museum'}
+<img class="i" src={museum} alt="museum" style="--w:16px;position:absolute;bottom:calc({interprete(icon.X, icon.Y).Y}% + var(--w));left:calc({interprete(icon.X, icon.Y).X}% + var(--w));z-index:{parseInt(10000000-icon.Y*10000)};"/>
 {/if}
 
 {/each}
@@ -287,7 +295,7 @@ function setContainer(sTop, sBottom){
 </section>
 </div>
 {#if showOverlay}
-<div class="overlay">
+<div class="overlay" style="z-index:99999999999999999;">
   <button class="close" on:click={()=>{
     toggle()
   jud = 'Apasă pe un judet pentru toate obiectivele'
