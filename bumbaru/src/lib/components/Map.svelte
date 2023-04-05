@@ -227,15 +227,15 @@ function setContainer(sTop, sBottom){
 {#if showIcons}
 {#each iconsData as icon}
 {#if icon.type == 'text'}
-<p class="bold" style="--w:16px;position:absolute;bottom:calc({interprete(icon.X, icon.Y).Y}% + var(--w));left:calc({interprete(icon.X, icon.Y).X}% + var(--w));z-index:{parseInt(10000000-45*10000)};">{icon.value}</p>
+<p class="bold" style="--w:32px;position:absolute;bottom:calc({interprete(icon.X, icon.Y).Y}% + var(--w));left:calc({interprete(icon.X, icon.Y).X}% + var(--w));z-index:{parseInt(10000000-45*10000)};">{icon.value}</p>
 {:else if icon.type == 'park'}
-<img class="i" src={park} alt="park" style="--w:16px;position:absolute;bottom:calc({interprete(icon.X, icon.Y).Y}% + var(--w));left:calc({interprete(icon.X, icon.Y).X}% + var(--w));z-index:{parseInt(10000000-icon.Y*10000)};"/>
+<img class="i" src={park} alt="park" style="--w:32px;position:absolute;bottom:calc({interprete(icon.X, icon.Y).Y}% + var(--w));left:calc({interprete(icon.X, icon.Y).X}% + var(--w));z-index:{parseInt(10000000-icon.Y*10000)};"/>
 {:else if icon.type == 'restaurant'}
-<img class="i" src={restaurant} alt="restaurant" style="--w:16px;position:absolute;bottom:calc({interprete(icon.X, icon.Y).Y}% + var(--w));left:calc({interprete(icon.X, icon.Y).X}% + var(--w));z-index:{parseInt(10000000-icon.Y*10000)};"/>
+<img class="i" src={restaurant} alt="restaurant" style="--w:32px;position:absolute;bottom:calc({interprete(icon.X, icon.Y).Y}% + var(--w));left:calc({interprete(icon.X, icon.Y).X}% + var(--w));z-index:{parseInt(10000000-icon.Y*10000)};"/>
 {:else if icon.type == 'institution'}
-<img class="i" src={institution} alt="institution" style="--w:16px;position:absolute;bottom:calc({interprete(icon.X, icon.Y).Y}% + var(--w));left:calc({interprete(icon.X, icon.Y).X}% + var(--w));z-index:{parseInt(10000000-icon.Y*10000)};"/>
+<img class="i" src={institution} alt="institution" style="--w:32px;position:absolute;bottom:calc({interprete(icon.X, icon.Y).Y}% + var(--w));left:calc({interprete(icon.X, icon.Y).X}% + var(--w));z-index:{parseInt(10000000-icon.Y*10000)};"/>
 {:else if icon.type == 'museum'}
-<img class="i" src={museum} alt="museum" style="--w:16px;position:absolute;bottom:calc({interprete(icon.X, icon.Y).Y}% + var(--w));left:calc({interprete(icon.X, icon.Y).X}% + var(--w));z-index:{parseInt(10000000-icon.Y*10000)};"/>
+<img class="i" src={museum} alt="museum" style="--w:32px;position:absolute;bottom:calc({interprete(icon.X, icon.Y).Y}% + var(--w));left:calc({interprete(icon.X, icon.Y).X}% + var(--w));z-index:{parseInt(10000000-icon.Y*10000)};"/>
 {/if}
 
 {/each}

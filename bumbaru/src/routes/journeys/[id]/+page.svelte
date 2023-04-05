@@ -77,6 +77,12 @@
   import { dataset_dev } from 'svelte/internal';
     function getRoute(){
         console.log('fetching route...')
+        if($forms.departure != departurePrediction){
+            return
+        }
+        if(!orase.includes($forms.departure)){
+            return
+        }
         buttonStatus = 'Loading...'
         const sms = {
             myid: data.user.userdata._id,
@@ -223,6 +229,12 @@
                     <label for="train-radio">Train</label>
                     <input type="radio" name="vehicle-type" id="train-radio" value="train" bind:group={selectedVehicle}>
                   </div>
+                  <div class="radio">
+                    <label for="car-radio" style="font-size:0.8rem;">Direct train</label>
+                    <input type="checkbox" name="vehicle-type" id="car-radio" value="car">
+                    <label for="train-radio" style="font-size:0.8rem;">Not night train</label>
+                    <input type="checkbox" name="vehicle-type" id="train-radio" value="train">
+                  </div>
                 <input type="submit" value="{buttonStatus}" on:click|preventDefault={()=>getRoute()}/>
                 <input type="submit" value="Reset Form" on:click|preventDefault={()=>{
                     $forms.departure = ''
@@ -254,7 +266,7 @@
         position:absolute;
         z-index:1000000;
         background-color: var(--dark);
-        overflow: hidden;
+        overflow-y: scroll;
     }
     .radio{
         display: flex;

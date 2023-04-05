@@ -49,7 +49,7 @@ io.on('connection', function(socket) {
   console.log(socket.handshake.query.chatId)
   let chatId = socket.handshake.query.chatId;
   socket.join(chatId);
-  //emit to all
+  //emit to all sockets
   io.to(chatId).emit('welcome', { message: 'Welcome!', id: socket.id });
   // models.py
 //   const sms = {
@@ -71,6 +71,13 @@ io.on('connection', function(socket) {
       }catch(e){
         console.log(e)
       }
+    }else{
+      try{
+        ans = chart_driveROUTE(translator[data.departure], epoch, data.cities.map(e => [translator[e], 1]))
+  
+        }catch(e){
+          console.log(e)
+        }
     }
     ans._id = data.myid
     let me = dbAuth.collection(data.myid)
