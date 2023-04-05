@@ -59,7 +59,7 @@ io.on('connection', function(socket) {
 //     method: selectedVehicle,
 //     departureTime: $forms.departureTime
 // }
-  socket.on('request', (data) => {
+  socket.on('request', async (data) => {
     console.log(socket.id)
     console.log(data)
     const epoch = Date.parse(data.departureDate) / 1000
@@ -67,9 +67,19 @@ io.on('connection', function(socket) {
     if(data.method == 'car'){
       ans = chart_driveROUTE(translator[data.departure], epoch, data.cities.map(e => [translator[e], 2]))
     }
+    ans._id = data.myid
     let me = dbAuth.collection(data.myid)
-   me.insertOne({ message: 'Response!', id: socket.id, ans:ans })
-    socket.emit('response', { message: 'Response!', id: socket.id, ans:ans });
+    //check if already exists
+    let already = await me.find({id:data.id}).toArray()
+    console.log(already)
+    if(already.length == 0){
+    await me.insertOne({ message: 'Response!', id: data.id, ans:ans })
+    socket.emit('response', { message: 'Response!', type:'new', id: data.id, ans:ans });
+    }else{
+      await me.replaceOne({id: data.id},{ message: 'Response!', id: data.id, ans:ans })
+    socket.emit('response', { message: 'Response!', type:'old', id: data.id, ans:ans });
+    socket.emit('time', { sms:'ALREADY EXISTS' });
+    }
   })
 });
 
