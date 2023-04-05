@@ -1,5 +1,6 @@
 <script>
   import { getIconsData, coords, interprete } from '$lib/icons'
+  let showIcons = false
   let iconsData = getIconsData()
   console.log(iconsData)
   export let departure
@@ -126,6 +127,7 @@
       jud = untranslate(id)
     }
     showOverlay = !showOverlay;
+
   }
   let zoom = 100
   let scrollContainer;
@@ -138,6 +140,10 @@ const preBakedPositions = {
   'București': {scrollLeft: 0.6339223922659817, scrollTop: 0.9115431424204856, zoom: '839'},
 }
 function setPreBakedPosition(jud, id=1) {
+  showIcons = true
+  if(jud=='none'){
+    showIcons = false
+  }
   let dict = preBakedPositions[jud]
   setZoom(dict.zoom)
   let width = scrollContainer.scrollWidth - scrollContainer.clientWidth
@@ -196,9 +202,10 @@ function setContainer(sTop, sBottom){
 
     }
   }
-  
+  import park from '$lib/icons/park.png'
+  import restaurant from '$lib/icons/restaurant.png'
 </script>
-
+{jud}
 <!-- <div style="width:200px;">
   {departurePrediction}
 {departure}
@@ -215,9 +222,16 @@ function setContainer(sTop, sBottom){
 
 <div class="map" bind:this={scrollContainer} on:wheel={handleWheel}>
 <section style="width:{zoom}%">
+{#if showIcons}
 {#each iconsData as icon}
-<div class="icon" style="position:absolute;bottom:{interprete(icon.X, icon.Y).Y}%;left:{interprete(icon.X, icon.Y).X}%;">{icon.type}</div>
+{#if icon.type == 'park'}
+<img class="i" src={park} alt="park" style="--w:16px;position:absolute;bottom:calc({interprete(icon.X, icon.Y).Y}% + var(--w));left:calc({interprete(icon.X, icon.Y).X}% + var(--w));z-index:{parseInt(10000000-icon.Y*10000)};"/>
+{:else if icon.type == 'restaurant'}
+<img class="i" src={restaurant} alt="restaurant" style="--w:16px;position:absolute;bottom:calc({interprete(icon.X, icon.Y).Y}% + var(--w));left:calc({interprete(icon.X, icon.Y).X}% + var(--w));z-index:{parseInt(10000000-icon.Y*10000)};"/>
+{/if}
+
 {/each}
+{/if}
 
 <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1181.71 833.88">
   <defs>
@@ -274,11 +288,18 @@ function setContainer(sTop, sBottom){
 </div>
 {#if showOverlay}
 <div class="overlay">
-  <button class="close" on:click={()=>toggle()}>X</button>
+  <button class="close" on:click={()=>{
+    toggle()
+  jud = 'Apasă pe un judet pentru toate obiectivele'
+    }}>X</button>
   <BigMap {jud} />
 </div>
 {/if}
 <style>
+  .i{
+    width: var(--w);
+    aspect-ratio: 1;
+  }
   .close{
         --size: 32px;
         counter-increment: section;
@@ -333,6 +354,7 @@ function setContainer(sTop, sBottom){
   height: calc(100vh - 100px);
   overflow: hidden;
   position: relative;
+  border-radius: 0.5rem;
 }
     section{
       position: relative;
@@ -342,5 +364,13 @@ function setContainer(sTop, sBottom){
     }
     path{
       transition: all 0.5s ease;
+    }
+    @media only screen and (max-width: 600px) {
+      .map{
+        width: 95%;
+        max-height: calc(50vh - 100px);
+        overflow: hidden;
+        position: relative;
+      }
     }
   </style>

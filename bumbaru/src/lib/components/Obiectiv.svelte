@@ -16,8 +16,8 @@ X = parseFloat(X).toFixed(2)
         <div class="other">
             <div class="a">
                 <p>{type}</p>
-            <p>{Y}</p>
-            <p>{X}</p>
+            <!-- <p>{Y}</p>
+            <p>{X}</p> -->
             </div>
             <a href={link}>Google Maps</a>
             

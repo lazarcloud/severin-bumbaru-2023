@@ -272,7 +272,7 @@
     @media only screen and (max-width: 600px) {
 		section{
             display:grid;
-            grid-template-rows: 2fr 2fr;
+            grid-template-rows: 4fr 2fr;
             grid-template-columns: 1fr;
             row-gap: 1vw;
         }
