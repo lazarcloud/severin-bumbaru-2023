@@ -76,6 +76,7 @@
     function getRoute(){
         console.log('fetching route...')
         const sms = {
+            myid: data.user.userdata._id,
             id: data.id,
             departure: $forms.departure,
             cities: $cities,

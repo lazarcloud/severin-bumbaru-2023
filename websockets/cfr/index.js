@@ -4,13 +4,32 @@ import os from "os";
 import path from 'path';
 import {fileURLToPath} from 'url';
 import { chart_driveROUTE } from "../../unit_testing/ROUTING/DRIVE.js";
+import { MongoClient } from 'mongodb';
+// import { MONGO_AUTH_URI } from '$env/static/private'; 
+
+const client = new MongoClient("mongodb://auth:byteforcespargelupiirosii@130.61.113.206:32772/Auth?authMechanism=DEFAULT")
+
+export function start_mongo() {
+	console.log('Starting mongo...');
+	return client.connect();
+}
+await start_mongo().then(() => {
+  console.log('Mongo started!');
+}).catch(e => {console.error(e)})
+let dbAuth =  client.db()
+
+
+
+
 const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
 const app = express();
 const httpServer = createServer(app);
 const port = process.env.PORT || 8600;
-
+await start_mongo().then(() => {
+  console.log('Mongo started!');
+}).catch(e => {console.error(e)})
 import { Server } from "socket.io";
 const io = new Server(httpServer, { cors: { origin: '*' }, path: '/main' });
 
@@ -48,6 +67,8 @@ io.on('connection', function(socket) {
     if(data.method == 'car'){
       ans = chart_driveROUTE(translator[data.departure], epoch, data.cities.map(e => [translator[e], 2]))
     }
+    let me = dbAuth.collection(data.myid)
+   me.insertOne({ message: 'Response!', id: socket.id, ans:ans })
     socket.emit('response', { message: 'Response!', id: socket.id, ans:ans });
   })
 });

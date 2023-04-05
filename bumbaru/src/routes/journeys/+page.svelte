@@ -11,48 +11,34 @@
 <section>
 <div style="display: flex">
     <div style="display:flex flex-direction:column width:50%">
+        {#each data.journeys as j, index}
         <div class = "journey" style = "margin-top: 80px">
             <div class = "circle text-8xl">
-                <a href = "/journeys/1">1</a>
+                <a href = "/getjourney/{j._id}">{index + 1}</a>
             </div>
             <div class = "details">
                 <div class = "journey-trail">
-                    Galați - București - Brăila
+                    
+                    <p>
+                    {#each j.ans.route as oras}
+                    {oras}
+                    {#if oras != j.ans.route[j.ans.route.length - 1]}
+                    <span> - </span>
+                    {/if}
+                    
+                    {/each}
+                </p>
                 </div>
                 <div class = "places">
-                    5 Parks - 3 Museums - 3 Restaurants
+                    <p>{parseInt(j.ans.duration / 3600)} hours {parseInt((j.ans.duration / 3600-parseInt(j.ans.duration / 3600))*60)} minutes</p>
+                    <a href="/getjourney/{j._id}">details</a>
                 </div>
             </div>
         </div>
+        {/each}
         <div class = "journey">
             <div class = "circle text-8xl">
-                <a href = "/journeys/2">2</a>
-            </div>
-            <div class = "details">
-                <div class = "journey-trail">
-                    Iași - Timișoara - București
-                </div>
-                <div class = "places">
-                    0 Parks - 16 Museums - 4 Restaurants
-                </div>
-            </div>
-        </div>
-        <div class = "journey">
-            <div class = "circle text-8xl">
-                <a href = "/journeys/3">3</a>
-            </div>
-            <div class = "details">
-                <div class = "journey-trail">
-                    Galați - București
-                </div>
-                <div class = "places">
-                    1 Park - 0 Museums - 1 Restaurant
-                </div>
-            </div>
-        </div>
-        <div class = "journey">
-            <div class = "circle text-8xl">
-                <a href = "/journeys/4">+</a>
+                <a href = "/new">+</a>
             </div>
             <div class = "details">
                 <div class = "journey-trail" style = "margin-top: 60px">

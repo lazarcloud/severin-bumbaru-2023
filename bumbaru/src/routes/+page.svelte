@@ -55,7 +55,8 @@
 		justify-content: center;
 		flex-wrap: wrap;
 		gap: 1rem;
-		width:100%;
+		width:50%;
+		margin: 0 auto;
 	}
 	.buttons>a{
 		text-decoration: none;
