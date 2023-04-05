@@ -266,7 +266,7 @@
         position:absolute;
         z-index:1000000;
         background-color: var(--dark);
-        overflow: hidden;
+        overflow-y: scroll;
     }
     .radio{
         display: flex;
