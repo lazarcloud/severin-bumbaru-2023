@@ -49,7 +49,9 @@ if __name__=="__main__":
      #input all possible data combinations
     input_combinations = [comb for comb in itertools.product(all_stations, all_stations, pref_cases) if comb[0] != comb[1]]
     #print(input_combinations)
-    for i in range(29):
+
+    #which days to scan
+    for i in range(1,29):
           for comb in input_combinations:
                if comb[2]==0:
                     pref_dir=False

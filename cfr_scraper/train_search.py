@@ -11,6 +11,14 @@ from selenium.common.exceptions import TimeoutException
 import redis
 import json
 from pydantic.utils import deep_update
+#import undetected_chromedriver as uc
+import threading
+
+#ALARM
+class TimeoutException(Exception):
+    pass
+#############
+
 
 def url_builder(start_station,end_station,date):
     if date-time.time()<2629743:
@@ -63,17 +71,29 @@ def best_train(stations,start_station,end_station,prefer_not_overnight,prefer_no
 
     #open headless browser because the page is dynamic - de ce Radu? de ce vrei sa suferim?
     opts = webdriver.EdgeOptions()
-    opts.add_argument("-headless")
+    opts.add_argument("--headless")
     tries = 1
     browser = webdriver.ChromiumEdge(options=opts)
 
-    while tries < 10:
+    def worker():
+        browser.get(url)
+    timeout = 30.0
+
+    while tries < 11:
+        
         try:
-            browser.get(url)
+            t = threading.Thread(target=worker)
+            t.start()
+            t.join(timeout)
+            if t.is_alive():
+                print("O luat cam mult")
+                raise TimeoutException()
             break
         except:
             tries += 1
-            print('Timed out, retrying. This is {} try'.format(tries) )
+            print('Timed out, retrying. This is try {}'.format(tries) )
+        browser.quit()
+        
         
 
     #hopefully load the page
