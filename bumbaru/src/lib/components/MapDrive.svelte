@@ -337,17 +337,22 @@ function setContainer(sTop, sBottom){
     }
 
     .cls-2 {
-      fill: #eb8c6f;
-      opacity: 0.4;
+      fill: #fff;
+      opacity: 1;
     }
     .cls-3{
       fill: red;
+      opacity: 0.5;
     }
     .cls-4{
       fill: blue;
+      opacity: 0.5;
+
     }
     .cls-3.cls-4{
       fill: purple;
+      opacity: 0.5;
+
     }
 .map{
   width: 90%;

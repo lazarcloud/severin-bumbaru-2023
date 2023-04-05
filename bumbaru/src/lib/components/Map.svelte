@@ -287,7 +287,7 @@ function setContainer(sTop, sBottom){
 </section>
 </div>
 {#if showOverlay}
-<div class="overlay">
+<div class="overlay" style="z-index:99999999999999999;">
   <button class="close" on:click={()=>{
     toggle()
   jud = 'Apasă pe un judet pentru toate obiectivele'
