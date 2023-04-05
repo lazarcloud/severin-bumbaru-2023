@@ -1,86 +1,168 @@
 {
-    "coords":{
-        "miny": 43.618560,
-        "maxy": 48.265630,
-        "minx": 20.261900,
-        "maxx": 29.691048
+    "coords": {
+      "miny": 43.6186,
+      "maxy": 48.2664,
+      "minx": 20.2614,
+      "maxx": 29.6914
     },
-    "cities":{
-        "Galați":{
-            "Faleza Dunării": {
-                "link":"https://www.google.com/maps/place/Faleza+Dunării/@45.4286167,28.0509547,17z/data=!3m1!4b1!4m6!3m5!1s0x40b6df019fc191cb:0x36e2479e7acfe1c0!8m2!3d45.4286167!4d28.0531487!16s%2Fg%2F11gf9gdwmk",
-                "Y": 45.4286167,
-                "X": 28.0509547,
-                "photo": "https://live.staticflickr.com/33/98876773_f0da1d5bfb_b.jpg",
-                "type": "park"
-            },
-            "Grădina Publică": {
-                "link":"https://www.google.com/maps/place/Grădina+Publică/@45.4521507,28.0511017,17z/data=!3m1!4b1!4m6!3m5!1s0x40b6de47165cd97b:0x6797e5883e2be213!8m2!3d45.4521507!4d28.0532957!16s%2Fg%2F1tcxh8bh",
-                "Y": 45.4521507,
-                "X": 28.0511017,
-                "photo": "https://destepti.ro/wp-content/uploads/2016/08/fantana-arteziana-din-gradina-publica-din-galati-judetul-galati.jpg",
-                "type": "park"
-            },
-            "Colegiul Național „Vasile Alecsandri”": {
-                "link":"https://www.google.com/maps/place/Colegiul+Național+\"Vasile+Alecsandri\"/@45.4407762,28.0495392,17z/data=!3m1!4b1!4m6!3m5!1s0x40b6de50e440d681:0xac0b9a8494776ecb!8m2!3d45.4407762!4d28.0517332!16s%2Fg%2F120ry0xk",
-                "Y": 45.4407762,
-                "X": 28.0495392,
-                "photo": "https://www.monitoruldegalati.ro/media/k2/items/cache/63a9f899f11accbf51f4cab4be286622_XL.jpg",
-                "type": "institution"
-            },
-            "Restaurant Gossip Café": {
-                "link":"https://www.google.com/maps/place/Colegiul+Național+\"Vasile+Alecsandri\"/@45.4407762,28.0495392,17z/data=!3m1!4b1!4m6!3m5!1s0x40b6de50e440d681:0xac0b9a8494776ecb!8m2!3d45.4407762!4d28.0517332!16s%2Fg%2F120ry0xk",
-                "Y": 45.4407762,
-                "X": 28.0495392,
-                "photo": "https://b.zmtcdn.com/data/reviews_photos/e87/dbe415bc5be5c50ffacf9c67fb458e87_1539024064.jpg?fit=around|750:500&crop=750:500;*,*",
-                "type": "restaurant"
-            },
-            "Grădina Botanică": {
-                "link":"https://www.google.com/maps/place/Grădina+Botanică+Galați/@45.4239805,28.0136551,15z/data=!4m10!1m2!2m1!1sgradina+botanica!3m6!1s0x40b6dee67535eb07:0xe8877b089f42755!8m2!3d45.4239805!4d28.0311646!15sChBncmFkaW5hIGJvdGFuaWNhWhIiEGdyYWRpbmEgYm90YW5pY2GSARBib3RhbmljYWxfZ2FyZGVumgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVVJsZW1GcFVtcFJSUkFC4AEA!16s%2Fg%2F11c2npb9s_",
-                "Y": 45.4239805,
-                "X": 28.0136551,
-                "photo": "https://www.uaic.ro/wp-content/uploads/2018/02/Foto-1-660x495.jpg",
-                "type": "park"
-            }
+    "cities": {
+      "Galați": {
+        "Faleza Dunării": {
+          "link": "https://www.google.com/maps/place/Faleza+Dunării/@45.4286167,28.0509547,17z/data=!3m1!4b1!4m6!3m5!1s0x40b6df019fc191cb:0x36e2479e7acfe1c0!8m2!3d45.4286167!4d28.0531487!16s%2Fg%2F11gf9gdwmk",
+          "Y": 45.4286167,
+          "X": 28.0509547,
+          "photo": "https://live.staticflickr.com/33/98876773_f0da1d5bfb_b.jpg",
+          "type": "park"
         },
-
-
-        "Iași":{
-            "Palas Mall": {
-                "link":"https://www.google.com/maps/place/Palas+Mall/@47.154861,27.586497,14z/data=!4m15!1m8!3m7!1s0x40cafb7cf639ddbb:0x7ccb80da5426f53c!2zSWHImWk!3b1!8m2!3d47.1584549!4d27.6014418!16zL20vMDFmaGcz!3m5!1s0x40cafb8385e01959:0xe7e5d1b7395595d2!8m2!3d47.1580137!4d27.5889761!16s%2Fg%2F11fn4fnkzq",
-                "Y": 47.154861,
-                "X": 27.586497,
-                "photo": "https://www.palasiasi.ro/img/slider/1.jpg",
-                "type": "institution"
-            },
-            "Palatul Culturii": {
-                "link":"https://www.google.com/maps/place/Palatul+Culturii,+Piața+Palat+1,+Iași+700259/@47.1573057,27.5847881,17z/data=!3m1!4b1!4m6!3m5!1s0x40cafb9dd37e0113:0x6eb561c8b6601469!8m2!3d47.1573021!4d27.5869821!16s%2Fg%2F1hjgq0ys0",
-                "Y": 47.1573057,
-                "X": 27.5847881,
-                "photo": "https://palatulculturii.ro/web/img/og_image.jpg",
-                "type": "museum"
-            },
-            "Catedrala Mitropolitană": {
-                "link":"https://www.google.com/maps/place/Catedrala+Mitropolitană/@47.161531,27.5798232,17z/data=!3m1!4b1!4m6!3m5!1s0x40cafb770e34bd65:0x6335a34794a2a5a9!8m2!3d47.1615274!4d27.5820172!16s%2Fm%2F04gjxc3",
-                "Y": 47.161531,
-                "X": 27.5798232,
-                "photo": "https://www.trecator.ro/wp-content/uploads/2020/10/Catedrala-Mitropolitana-din-Iasi-18-1024x768.jpg",
-                "type": "institution"
-            },
-            "Grădina Botanică „Anastasie Fătu”": {
-                "link":"https://www.google.com/maps/place/Grădina+Botanică+\"Anastasie+Fătu\"/@47.1868712,27.5599407,18z/data=!4m6!3m5!1s0x40cafcabc43e3455:0x57f7e74d7dd7255a!8m2!3d47.1868028!4d27.5572035!16s%2Fm%2F05b06qd",
-                "Y": 47.186871,
-                "X": 27.5599407,
-                "photo": "https://www.uaic.ro/wp-content/uploads/2019/12/Expozitie-Flori-de-toamna_XLIII_2019.jpg",
-                "type": "park"
-            },
-            "Teiul lui Eminescu": {
-                "link":"https://www.google.com/maps/place/Teiul+lui+Eminescu/@47.1784154,27.5645337,17z/data=!3m1!4b1!4m6!3m5!1s0x40cafca07e79761d:0x1401736fc4586f8f!8m2!3d47.1784118!4d27.5667277!16s%2Fm%2F012ds8vt",
-                "Y": 47.178415,
-                "X": 27.5645337,
-                "photo": "https://playtech.ro/wp-content/uploads/2022/06/Teiul-lui-Mihai-Eminescu-si-fenomenul-misterios-care-l-a-tinut-in-viata-540-de-ani.jpg",
-                "type": "park"
-            }
+        "Grădina Publică": {
+          "link": "https://www.google.com/maps/place/Grădina+Publică/@45.4521507,28.0511017,17z/data=!3m1!4b1!4m6!3m5!1s0x40b6de47165cd97b:0x6797e5883e2be213!8m2!3d45.4521507!4d28.0532957!16s%2Fg%2F1tcxh8bh",
+          "Y": 45.4521507,
+          "X": 28.0511017,
+          "photo": "https://destepti.ro/wp-content/uploads/2016/08/fantana-arteziana-din-gradina-publica-din-galati-judetul-galati.jpg",
+          "type": "park"
+        },
+        "Colegiul Național „Vasile Alecsandri”": {
+          "link": "https://www.google.com/maps/place/Colegiul+Național+\"Vasile+Alecsandri\"/@45.4407762,28.0495392,17z/data=!3m1!4b1!4m6!3m5!1s0x40b6de50e440d681:0xac0b9a8494776ecb!8m2!3d45.4407762!4d28.0517332!16s%2Fg%2F120ry0xk",
+          "Y": 45.4407762,
+          "X": 28.0495392,
+          "photo": "https://www.monitoruldegalati.ro/media/k2/items/cache/63a9f899f11accbf51f4cab4be286622_XL.jpg",
+          "type": "institution"
+        },
+        "Restaurant Gossip Café": {
+          "link": "https://www.google.com/maps/place/Colegiul+Național+\"Vasile+Alecsandri\"/@45.4407762,28.0495392,17z/data=!3m1!4b1!4m6!3m5!1s0x40b6de50e440d681:0xac0b9a8494776ecb!8m2!3d45.4407762!4d28.0517332!16s%2Fg%2F120ry0xk",
+          "Y": 45.4407762,
+          "X": 28.0495392,
+          "photo": "https://b.zmtcdn.com/data/reviews_photos/e87/dbe415bc5be5c50ffacf9c67fb458e87_1539024064.jpg?fit=around|750:500&crop=750:500;*,*",
+          "type": "restaurant"
+        },
+        "Grădina Botanică": {
+          "link": "https://www.google.com/maps/place/Grădina+Botanică+Galați/@45.4239805,28.0136551,15z/data=!4m10!1m2!2m1!1sgradina+botanica!3m6!1s0x40b6dee67535eb07:0xe8877b089f42755!8m2!3d45.4239805!4d28.0311646!15sChBncmFkaW5hIGJvdGFuaWNhWhIiEGdyYWRpbmEgYm90YW5pY2GSARBib3RhbmljYWxfZ2FyZGVumgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVVJsZW1GcFVtcFJSUkFC4AEA!16s%2Fg%2F11c2npb9s_",
+          "Y": 45.4239805,
+          "X": 28.0136551,
+          "photo": "https://www.uaic.ro/wp-content/uploads/2018/02/Foto-1-660x495.jpg",
+          "type": "park"
         }
+      },
+      "Iași": {
+        "Palas Mall": {
+          "link": "https://www.google.com/maps/place/Palas+Mall/@47.154861,27.586497,14z/data=!4m15!1m8!3m7!1s0x40cafb7cf639ddbb:0x7ccb80da5426f53c!2zSWHImWk!3b1!8m2!3d47.1584549!4d27.6014418!16zL20vMDFmaGcz!3m5!1s0x40cafb8385e01959:0xe7e5d1b7395595d2!8m2!3d47.1580137!4d27.5889761!16s%2Fg%2F11fn4fnkzq",
+          "Y": 47.154861,
+          "X": 27.586497,
+          "photo": "https://www.palasiasi.ro/img/slider/1.jpg",
+          "type": "institution"
+        },
+        "Palatul Culturii": {
+          "link": "https://www.google.com/maps/place/Palatul+Culturii,+Piața+Palat+1,+Iași+700259/@47.1573057,27.5847881,17z/data=!3m1!4b1!4m6!3m5!1s0x40cafb9dd37e0113:0x6eb561c8b6601469!8m2!3d47.1573021!4d27.5869821!16s%2Fg%2F1hjgq0ys0",
+          "Y": 47.1573057,
+          "X": 27.5847881,
+          "photo": "https://palatulculturii.ro/web/img/og_image.jpg",
+          "type": "museum"
+        },
+        "Catedrala Mitropolitană": {
+          "link": "https://www.google.com/maps/place/Catedrala+Mitropolitană/@47.161531,27.5798232,17z/data=!3m1!4b1!4m6!3m5!1s0x40cafb770e34bd65:0x6335a34794a2a5a9!8m2!3d47.1615274!4d27.5820172!16s%2Fm%2F04gjxc3",
+          "Y": 47.161531,
+          "X": 27.5798232,
+          "photo": "https://www.trecator.ro/wp-content/uploads/2020/10/Catedrala-Mitropolitana-din-Iasi-18-1024x768.jpg",
+          "type": "institution"
+        },
+        "Grădina Botanică „Anastasie Fătu”": {
+          "link": "https://www.google.com/maps/place/Grădina+Botanică+\"Anastasie+Fătu\"/@47.1868712,27.5599407,18z/data=!4m6!3m5!1s0x40cafcabc43e3455:0x57f7e74d7dd7255a!8m2!3d47.1868028!4d27.5572035!16s%2Fm%2F05b06qd",
+          "Y": 47.186871,
+          "X": 27.5599407,
+          "photo": "https://www.uaic.ro/wp-content/uploads/2019/12/Expozitie-Flori-de-toamna_XLIII_2019.jpg",
+          "type": "park"
+        },
+        "Teiul lui Eminescu": {
+          "link": "https://www.google.com/maps/place/Teiul+lui+Eminescu/@47.1784154,27.5645337,17z/data=!3m1!4b1!4m6!3m5!1s0x40cafca07e79761d:0x1401736fc4586f8f!8m2!3d47.1784118!4d27.5667277!16s%2Fm%2F012ds8vt",
+          "Y": 47.178415,
+          "X": 27.5645337,
+          "photo": "https://playtech.ro/wp-content/uploads/2022/06/Teiul-lui-Mihai-Eminescu-si-fenomenul-misterios-care-l-a-tinut-in-viata-540-de-ani.jpg",
+          "type": "park"
+        }
+      },
+      "București": {
+        "Palatul Parlamentului": {
+          "link": "https://www.google.com/maps/place/Palatul+Parlamentului/@44.4275035,26.0873506,17z/data=!3m1!4b1!4m6!3m5!1s0x40b1ff427bee28c1:0x2b1089f802abaddc!8m2!3d44.4275035!4d26.0873506!16zL20vMDF6aHNr",
+          "Y": "44.4275035",
+          "X": "26.0873506",
+          "photo": "http://storage0.dms.mpinteractiv.ro/media/1/1481/25566/18406427/1/1-casa-poporului0.jpg",
+          "type": "institution"
+        },
+        "Ateneul Român": {
+          "link": "https://www.google.com/maps/place/Ateneul+Rom%C3%A2n/@44.441365,26.0951039,17z/data=!3m1!4b1!4m6!3m5!1s0x40b1ff4f6e6d7997:0x5a73af5fe07876f2!8m2!3d44.441365!4d26.0972926!16zL20vMDRrdGp5",
+          "Y": "44.441365",
+          "X": "26.0951039",
+          "photo": "https://www.descopera.ro/wp-content/uploads/2020/02/15074058/1-ateneul-roman.jpg",
+          "type": "institution"
+        },
+        "Muzeul Național de Istorie Naturală „Grigore Antipa”": {
+          "link": "https://www.google.com/maps/place/Muzeul+Na%C8%9Bional+de+Istorie+Natural%C4%83+%E2%80%9EGrigore+Antipa%E2%80%9D/@44.4531131,26.0824495,17z/data=!3m1!4b1!4m6!3m5!1s0x40b201ff7eb6eee5:0x120b912fe44ec81d!8m2!3d44.4531131!4d26.0846382!16s%2Fm%2F0vb3j71",
+          "Y": "44.4531131",
+          "X": "26.0846382",
+          "photo": "https://editiadedimineata.ro/wp-content/uploads/2018/11/7ce4a85efa9adb8d98fc8a4a52594584-grigore-antipa-natural-history-museum.jpg",
+          "type": "museum"
+        },
+        "Teatrul Național Bucuresti": {
+          "link": "https://www.google.com/maps/search/teatrul+national+bucuresti/@44.4367314,26.1015069,17z?hl=en-US",
+          "Y": "44.4367314",
+          "X": "26.1015069",
+          "photo": "https://img.directbooking.ro/getimage.ashx?f=Obiective&w=440&file=150708e7-bec6-4343-af5e-8af6ea5d9d45_tnb.jpg",
+          "type": "institution"
+        },
+        "Mausoleul din Parcul Carol": {
+          "link": "https://www.google.com/maps/place/Nation's+Heroes+Memorial/@44.4115431,23.8555875,8z/data=!4m10!1m2!2m1!1smausoleul+din+parcul+carol!3m6!1s0x40b1ff07f2ee63ad:0x3e7635bc09da2!8m2!3d44.4115431!4d26.0967984!15sChptYXVzb2xldWwgZGluIHBhcmN1bCBjYXJvbJIBCG1vbnVtZW504AEA!16zL20vMDRsazhr?hl=en-US",
+          "Y": "44.4115431",
+          "X": "23.8555875",
+          "photo": "https://upload.wikimedia.org/wikipedia/ro/9/91/Mausoleul_din_Parcul_Carol.jpg",
+          "type": "museum"
+        }
+      },
+      "Timișoara": {
+        "Catedrala Metropolitana": {
+          "link": "https://www.google.com/maps/place/Orthodox+Metropolitan+Cathedral/@45.7507057,21.2220297,17z/data=!3m1!4b1!4m6!3m5!1s0x47455d78ad1df08b:0xa6d770774ae8d8f0!8m2!3d45.7507057!4d21.2242184!16zL20vMDVjd2gy?hl=en-US",
+          "Y": "45.7507057",
+          "X": "21.2220297",
+          "photo": "https://www.crestinortodox.ro/files/image/biserici%20din%20romania/catedrala%20-%20timisoara/catedrala-mitropolitana-timisoara-1.jpg",
+          "type": "institution"
+        },
+        "Parcul Rozelor": {
+          "link": "https://www.google.com/maps/place/Roses+Park/@45.7503068,21.2302278,17z/data=!4m14!1m7!3m6!1s0x47455d81525cb4d5:0xd8179b2d28e5587b!2sRoses+Park!8m2!3d45.7503068!4d21.2324165!16s%2Fg%2F121g6hs8!3m5!1s0x47455d81525cb4d5:0xd8179b2d28e5587b!8m2!3d45.7503068!4d21.2324165!16s%2Fg%2F121g6hs8?hl=en-US",
+          "Y": "45.7503068",
+          "X": "21.2302278",
+          "photo": "https://img.theculturetrip.com/wp-content/uploads/2018/05/red-roses-in-bloom.jpg",
+          "type": "park"
+        },
+        "Muzeul Satului Bănățean": {
+          "link": "https://www.google.com/maps/place/Banat+Village+Museum/@45.7772085,21.2637615,17z/data=!3m1!4b1!4m6!3m5!1s0x4745671ac72ba0b5:0x5651f796a88e2742!8m2!3d45.7772085!4d21.2659502!16s%2Fg%2F15dpg2xs?hl=en-US",
+          "Y": "45.7772085",
+          "X": "21.2637615",
+          "photo": "https://media.safarway.com/content/a14a4991-1610-4c69-8dd9-00eaa19f83a1_sm.jpg",
+          "type": "museum"
+        },
+        "Piața Libertății": {
+          "link": "https://www.google.com/maps/search/Pia%C8%9Ba+Libert%C4%83%C8%9Bii+din+Timi%C8%99oara/@45.7557609,21.2248014,17z/data=!3m1!4b1?hl=en-US",
+          "Y": "45.7557609",
+          "X": "21.2248014",
+          "photo": "https://s.inyourpocket.com/img/figure/2018-05/pta-libertatii-inaugurare-3012-9.jpg",
+          "type": "park"
+        },
+        "Bastionul Theresia": {
+          "link": "https://www.google.com/maps/place/Maria+Theresia+Bastion/@45.7572585,21.2317731,17z/data=!3m1!4b1!4m6!3m5!1s0x4745677ee251afe1:0x89a972e4adf52d7!8m2!3d45.7572585!4d21.2339618!16s%2Fm%2F0117z5sy?hl=en-US",
+          "Y": "45.7572585",
+          "X": "21.2317731",
+          "photo": "https://spotlight-timisoara.eu/wp-content/uploads/2022/06/bastionnew1.jpg",
+          "type": "museum"
+        }
+      },
+      "Alba Iulia": {
+        "Fortăreața Alba-Carolina": {
+          "link": "https://www.google.com/maps/place/The+Citadel+Alba-Carolina/@46.0686127,23.5694752,17z/data=!3m1!4b1!4m6!3m5!1s0x474ea7de25fe0c55:0x96cf87ecf31ecbb9!8m2!3d46.0686127!4d23.5716639!16s%2Fg%2F1ywpnjjcv?hl=en-US",
+          "y": "46.0686127",
+          "x": "23.5694752",
+          "photo": "https://lp-cms-production.imgix.net/2022-03/Romania%20Alba%20lulia%20Calin%20Stan%20shutterstock_675419281%20RFC%20crop.jpg",
+          "type": "museum"
+        }
+      }
     }
-}
+  }
+  
