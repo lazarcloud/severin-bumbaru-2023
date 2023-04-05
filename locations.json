@@ -158,13 +158,41 @@
             }
           
         },
-"Alba Iulia":{
-    "Fortăreața Alba-Carolina":{
-        "link":"https://www.google.com/maps/place/The+Citadel+Alba-Carolina/@46.0686127,23.5694752,17z/data=!3m1!4b1!4m6!3m5!1s0x474ea7de25fe0c55:0x96cf87ecf31ecbb9!8m2!3d46.0686127!4d23.5716639!16s%2Fg%2F1ywpnjjcv?hl=en-US",
-        "y":"46.0686127",
-        "x":"23.5694752",
-        "photo":"https://lp-cms-production.imgix.net/2022-03/Romania%20Alba%20lulia%20Calin%20Stan%20shutterstock_675419281%20RFC%20crop.jpg",
-        "type":"museum"}
-    }}
-
+        "Alba Iulia":{
+            "Fortăreața Alba-Carolina":{
+                "link":"https://www.google.com/maps/place/The+Citadel+Alba-Carolina/@46.0686127,23.5694752,17z/data=!3m1!4b1!4m6!3m5!1s0x474ea7de25fe0c55:0x96cf87ecf31ecbb9!8m2!3d46.0686127!4d23.5716639!16s%2Fg%2F1ywpnjjcv?hl=en-US",
+                "Y":"46.0686127",
+                "x":"23.5694752",
+                "photo":"https://lp-cms-production.imgix.net/2022-03/Romania%20Alba%20lulia%20Calin%20Stan%20shutterstock_675419281%20RFC%20crop.jpg",
+                "type":"museum"},
+            "Catedrala Încoronării":{
+                "link":"https://www.google.com/maps/place/Reunification+Cathedral/@46.0684433,23.5673895,17z/data=!3m1!4b1!4m6!3m5!1s0x474ea7de5d42eb85:0x5a46bdcc8633226f!8m2!3d46.0684433!4d23.5695782!16s%2Fm%2F0hhvwhs?hl=en-US",
+                "Y":"46.0684433",
+                "X":"23.5673895",
+                "photo":"https://img.directbooking.ro/getimage.ashx?f=Obiective&w=440&file=d60335e9-4e3f-460b-8cb1-9ca51037b20b_catedrala-reintregirii-alba-iulia-1.jpg",
+                "type":"institution"
+                },
+            "Muzeul Național al Unirii":{
+                "link":"https://www.google.com/maps/place/The+National+Museum+of+the+Union/@46.0681591,23.5688197,17z/data=!3m1!4b1!4m6!3m5!1s0x474ea7de3ef8d6d3:0x4a99b3ea09ea7435!8m2!3d46.0681591!4d23.5710084!16s%2Fm%2F0gh7x_3?hl=en-US",
+                "Y":"46.0681591",
+                "X":"23.5688197",
+                "photo":"https://upload.wikimedia.org/wikipedia/commons/e/e4/Alba_Iulia_-_Muzeul_Unirii.jpg",
+                "type":"museum"
+            },
+            "Biblioteca Batthyaneum":{
+                "link":"https://www.google.com/maps/place/Batthyaneum+Library/@46.070213,23.5682932,17z/data=!3m1!4b1!4m6!3m5!1s0x474ea7dfbb032f03:0x914c528bf60649b0!8m2!3d46.070213!4d23.5704819!16s%2Fg%2F121xw8s1?hl=en-US",
+                "Y":"46.070213",
+                "X":"23.5682932",
+                "photo":"http://www.bibnat.ro/dyn-img/filiala-batthyaneum-3.jpg",
+                "type":"museum"
+            },
+            "Grădina Japoneză":{
+                "link":"https://www.google.com/maps/place/Gr%C4%83dina+Japonez%C4%83/@46.070213,23.5682932,17z/data=!4m14!1m7!3m6!1s0x474ea7dfbb032f03:0x914c528bf60649b0!2sBatthyaneum+Library!8m2!3d46.070213!4d23.5704819!16s%2Fg%2F121xw8s1!3m5!1s0x474ea7428b2301f3:0xce9de74273ec215a!8m2!3d46.0703713!4d23.5694588!16s%2Fg%2F11jnqv3tsy?hl=en-US",
+                "Y":"46.070213",
+                "X":"23.5682932",
+                "photo":"https://holidayandtrips.com/wp-content/uploads/2021/07/The-Japanese-garden-Alba-Carolina-1.jpg",
+                "type":"park"
+            }
+        }
+    }     
 }

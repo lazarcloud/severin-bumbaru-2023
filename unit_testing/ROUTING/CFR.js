@@ -21,7 +21,7 @@ await client.disconnect();
 
 export async function read(epoch_date){
 
-    const data = [[[[{}]]]];
+    let data = [[[[{}]]]];
 
     for (let i = 0; i < 28; i ++) {
         data[i] = [];
@@ -57,7 +57,7 @@ export async function read(epoch_date){
 
         var newlist = ['0'];
         var batch = await client.lRange((0 * 86400 + epoch_date).toString(), 0, -1);
-        console.log(batch);
+        //console.log(typeof batch);
         for(let From = 0; From <= 4; From ++){
             for(let to = 0; to <= 4; to ++){
                 for(let c = 0; c <= 3; c ++){
@@ -66,7 +66,7 @@ export async function read(epoch_date){
               
                     newlist[0] = JSON.parse(batch[0]);
 
-                    // console.log('batch = ' + newlist);
+                    //console.log('batch = ' + JSON.stringify(newlist));
 
                     // console.log('batch[0] = ' + JSON.stringify(newlist[0]));
                     // console.log('batch[0][\'1\'] = ' + JSON.stringify(newlist[0]['1']['0'].trip_duration));
@@ -76,6 +76,12 @@ export async function read(epoch_date){
                         let dict = batch[From][To][C];
 
                         console.log('\n\n\n' + JSON.stringify(dict));
+                        
+                        data[day] = {};
+                        data[day][From] = {};
+                        data[day][From][to] = {};
+                        data[day][From][to][c] = {};
+
                         data[day][From][to][c] = dict;
 
                         //console.log('data = ' + JSON.stringify(data));
@@ -97,7 +103,7 @@ export async function chart_trainROUTE(no_train_overnight, no_train_change, dep_
 
     var citymap = ['Galați', 'Alba Iulia', 'București', 'Iași', 'Timișoara'];
     var stack = [];
-    var route = [];
+    var route = [[]];
     var cityroute = []; 
     var traintimes = [];
     var staytimes = [];
@@ -162,8 +168,8 @@ export async function chart_trainROUTE(no_train_overnight, no_train_change, dep_
             if(unique(k))
                 if(k == cities.length - 1){
 
-                        check(get_total_time(dep_place, dep_time, stack));
-                        return 0;
+                    check(get_total_time(dep_place, dep_time, stack));
+                    return 0;
                 }
                 else
                     bck_loop(k + 1, dep_place, dep_time, cities);
