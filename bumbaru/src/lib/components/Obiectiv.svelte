@@ -66,4 +66,12 @@ X = parseFloat(X).toFixed(2)
             font-size: 1.5rem;
         }
     }
+    @media only screen and (max-width: 460px){
+        h1{
+            font-size: 1.2rem;
+        }
+        p{
+            font-size: 0.8rem;
+        }
+    }
 </style>

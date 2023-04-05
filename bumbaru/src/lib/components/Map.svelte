@@ -1,4 +1,7 @@
 <script>
+  import { getIconsData, coords, interprete } from '$lib/icons'
+  let iconsData = getIconsData()
+  console.log(iconsData)
   export let departure
   export let departurePrediction
   export let inAddCity
@@ -42,13 +45,16 @@
   import { onDestroy, onMount } from "svelte";
   let int
   let int2
+  let int3
   onMount(() => {
     int = setInterval(update, 400);
     int2 = setInterval(update2, 400);
+    int3 = setInterval(autoZoom, 400);
   });
   onDestroy(() => {
     clearInterval(int);
     clearInterval(int2);
+    clearInterval(int3);
   });
   function clearClasses(){
     let svg = document.getElementById("Layer_2");
@@ -121,17 +127,98 @@
     }
     showOverlay = !showOverlay;
   }
+  let zoom = 100
+  let scrollContainer;
+const preBakedPositions = {
+  'none': {scrollLeft: 0, scrollTop: 0, zoom: '100'},
+  'Galați': {scrollLeft: 0.8369014838261124, scrollTop: 0.5848749575407609, zoom: '725'},
+  'Iași': {scrollLeft: 0.8017140643420277, scrollTop: 0.18601252633502258, zoom: '558'},
+  'Timișoara': {scrollLeft: 0, scrollTop: 0.6175958041487069, zoom: '384'},
+  'Alba Iulia': {scrollLeft: 0.2878054262807074, scrollTop: 0.5180335708811313, zoom: '442'},
+  'București': {scrollLeft: 0.6339223922659817, scrollTop: 0.9115431424204856, zoom: '839'},
+}
+function setPreBakedPosition(jud, id=1) {
+  let dict = preBakedPositions[jud]
+  setZoom(dict.zoom)
+  let width = scrollContainer.scrollWidth - scrollContainer.clientWidth
+  let height = scrollContainer.scrollHeight - scrollContainer.clientHeight
+
+  setContainer((dict.scrollTop-0.03) * height, dict.scrollLeft * width)
+  if(id==1){
+    setTimeout(()=>
+    setPreBakedPosition(jud, 0), 1)
+  }
+}
+function setZoom(z){
+  zoom = z
+}
+function setContainer(sTop, sBottom){
+  scrollContainer.scrollTop = sTop
+  scrollContainer.scrollLeft = sBottom
+}
+  function handleWheel(event) {
+    return
+    const { deltaX, deltaY } = event;
+    scrollContainer.scrollLeft += deltaX;
+    scrollContainer.scrollTop += deltaY;
+    console.log(scrollContainer.scrollLeft)
+    console.log(scrollContainer.scrollWidth - scrollContainer.clientWidth)
+    let w = scrollContainer.scrollLeft
+    let width = scrollContainer.scrollWidth - scrollContainer.clientWidth
+    console.log({'w':w/width})
+    console.log(scrollContainer.scrollTop)
+    console.log(scrollContainer.scrollHeight - scrollContainer.clientHeight)
+    let h = scrollContainer.scrollTop
+    let height = scrollContainer.scrollHeight - scrollContainer.clientHeight
+    console.log({'h':h/height})
+    console.log({
+      'scrollLeft':w/width,
+      'scrollTop':h/height,
+      'zoom': zoom
+    })
+    
+
+    console.log(zoom)
+  }
+  function handleZoom(e){
+    zoom = e.target.value
+    handleWheel(e)
+  }
+  function autoZoom(){
+    if(inAddCityPrediction!=inAddCity){
+      console.log(['zoom',inAddCityPrediction])
+      setPreBakedPosition(inAddCityPrediction)
+    }else if(departurePrediction!=departure){
+      console.log(['zoom',departurePrediction])
+      setPreBakedPosition(departurePrediction)
+    }else{
+      setPreBakedPosition('none')
+
+    }
+  }
+  
 </script>
-{jud}
+
 <!-- <div style="width:200px;">
   {departurePrediction}
-{departure}{translate(departurePrediction)}<br>
-{JSON.stringify(news)}<br>
-{JSON.stringify(cities)}
-
+{departure}
 <br>
-{JSON.stringify(departures)}
+{inAddCityPrediction}
+{inAddCity}
 </div> -->
+<!-- <input type="range" min="100" max="1000" value="100" on:change={(e)=> handleZoom(e)}> -->
+<!-- <button on:click={()=>setPreBakedPosition('Galati')}>Galati</button>
+<button on:click={()=>setPreBakedPosition('Iași')}>Iași</button>
+<button on:click={()=>setPreBakedPosition('Timișoara')}>Timișoara</button>
+<button on:click={()=>setPreBakedPosition('Alba Iulia')}>Alba Iulia</button>
+<button on:click={()=>setPreBakedPosition('București')}>București</button> -->
+
+<div class="map" bind:this={scrollContainer} on:wheel={handleWheel}>
+<section style="width:{zoom}%">
+{#each iconsData as icon}
+<div class="icon" style="position:absolute;bottom:{interprete(icon.X, icon.Y).Y}%;left:{interprete(icon.X, icon.Y).X}%;">{icon.type}</div>
+{/each}
+
 <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1181.71 833.88">
   <defs>
     
@@ -183,6 +270,8 @@
     </g>
   </g>
 </svg>
+</section>
+</div>
 {#if showOverlay}
 <div class="overlay">
   <button class="close" on:click={()=>toggle()}>X</button>
@@ -239,9 +328,17 @@
     .cls-3.cls-4{
       fill: purple;
     }
-
+.map{
+  width: 90%;
+  height: calc(100vh - 100px);
+  overflow: hidden;
+  position: relative;
+}
+    section{
+      position: relative;
+    }
     svg{
-      width: 90%;
+      width: 100%;
     }
     path{
       transition: all 0.5s ease;
