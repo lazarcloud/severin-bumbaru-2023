@@ -223,6 +223,12 @@
                     <label for="train-radio">Train</label>
                     <input type="radio" name="vehicle-type" id="train-radio" value="train" bind:group={selectedVehicle}>
                   </div>
+                  <div class="radio">
+                    <label for="car-radio" style="font-size:0.8rem;">Direct train</label>
+                    <input type="checkbox" name="vehicle-type" id="car-radio" value="car">
+                    <label for="train-radio" style="font-size:0.8rem;">Not night train</label>
+                    <input type="checkbox" name="vehicle-type" id="train-radio" value="train">
+                  </div>
                 <input type="submit" value="{buttonStatus}" on:click|preventDefault={()=>getRoute()}/>
                 <input type="submit" value="Reset Form" on:click|preventDefault={()=>{
                     $forms.departure = ''
