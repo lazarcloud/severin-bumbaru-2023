@@ -17,7 +17,7 @@
       <h2>Start your Journey</h2>
 
       {#if form && form.field==0}
-      <b>{JSON.stringify(form.error)}</b>
+      <b>{JSON.stringify(form.sms)}</b>
       {/if}
   
       <form method="POST" action="?/register" use:enhance>

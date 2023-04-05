@@ -65,7 +65,7 @@ io.on('connection', function(socket) {
     const epoch = Date.parse(data.departureDate) / 1000
     let ans
     if(data.method == 'car'){
-      ans = chart_driveROUTE(translator[data.departure], epoch, data.cities.map(e => [translator[e], 2]))
+      ans = chart_driveROUTE(translator[data.departure], epoch, data.cities.map(e => [translator[e], 1]))
     }
     ans._id = data.myid
     let me = dbAuth.collection(data.myid)

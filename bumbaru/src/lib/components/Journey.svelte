@@ -34,11 +34,6 @@
     let cities = ans.route
 </script>
 
-
-<div style="position:absolute">
-<!-- {JSON.stringify(data.data)} -->
-
-</div>
 <h1>
     <p>
         {#each cities as oras}
@@ -54,6 +49,15 @@
     Journey: {ans._id}
 </p>
 <p>{parseInt(ans.duration / 3600)} hours {parseInt((ans.duration / 3600-parseInt(ans.duration / 3600))*60)} minutes</p>
+<p>
+    {#each ans.staytimes as oras}
+    {oras}zile
+    {#if oras != ans.staytimes[cities.length - 1]}
+    <span> - </span>
+    {/if}
+    
+    {/each}
+</p>
 <section>
 <MapDrive {departure} {departurePrediction} {inAddCity} {inAddCityPrediction} {cities} />
 

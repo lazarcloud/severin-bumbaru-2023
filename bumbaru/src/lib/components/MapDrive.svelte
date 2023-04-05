@@ -8,7 +8,8 @@
   export let inAddCity
   export let inAddCityPrediction
   export let cities
-  let lineData = getLines(cities)
+  let lineData = []
+  // getLines(cities)
 
   import { BigMap } from '$lib/components'
   let news = {

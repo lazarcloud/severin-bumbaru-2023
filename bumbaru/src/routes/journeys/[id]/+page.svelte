@@ -224,6 +224,14 @@
                     <input type="radio" name="vehicle-type" id="train-radio" value="train" bind:group={selectedVehicle}>
                   </div>
                 <input type="submit" value="{buttonStatus}" on:click|preventDefault={()=>getRoute()}/>
+                <input type="submit" value="Reset Form" on:click|preventDefault={()=>{
+                    $forms.departure = ''
+                    $forms.departureDate = ''
+                    $forms.departureTime = ''
+                    $forms.new = ''
+                    $cities = []
+                    buttonStatus = 'Get Route'
+                }}/>
             </form>
             <div class="controls">
                 <button class="cbtn {tab==1?'selected':''}" on:click={() => setTab(1)}>1</button>

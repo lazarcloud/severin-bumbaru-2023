@@ -1,4 +1,6 @@
 import { dbAuth } from '$db/mongo'
+import { redirect } from '@sveltejs/kit';
+
 import { checkEmail, checkPasswordLength, makeId, hashPassword, getUniqueTag, randomName, cleanSessions } from '$utils/auth/index.js'
 import { dev } from '$app/environment';
 import { sendEmail } from "$lib/emails"
@@ -83,7 +85,7 @@ export const actions = {
         await sendEmail(email, html, text)
 
 
-
-        return {field:0, email:{email:email, check:await checkEmail(email)}, password:password, password2:password2 }
+        throw redirect(303, '/');
+        return {field:0,sms: 'Registered!', email:{email:email, check:await checkEmail(email)}, password:password, password2:password2 }
     }
 }
