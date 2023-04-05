@@ -77,6 +77,12 @@
   import { dataset_dev } from 'svelte/internal';
     function getRoute(){
         console.log('fetching route...')
+        if($forms.departure != departurePrediction){
+            return
+        }
+        if(!orase.includes($forms.departure)){
+            return
+        }
         buttonStatus = 'Loading...'
         const sms = {
             myid: data.user.userdata._id,
