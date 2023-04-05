@@ -41,7 +41,7 @@
             b = b.toLowerCase();
             return a.indexOf(param) - b.indexOf(param);
         });
-        if(emptyArray[0].toLowerCase() == param.toLowerCase()){
+        if(emptyArray.length > 0 && emptyArray[0].toLowerCase() == param.toLowerCase()){
             emptyArray = []
         }
         return emptyArray

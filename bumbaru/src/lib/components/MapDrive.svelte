@@ -121,7 +121,7 @@
       }
   }
   let showOverlay = 0
-  let jud = 'Apasă pe un judet pentru toate obiectivele'
+  let jud = 'Press on region for destinations.'
   function toggle(id){
     if(id != undefined || id != null){
       jud = untranslate(id)
@@ -290,7 +290,7 @@ function setContainer(sTop, sBottom){
 <div class="overlay">
   <button class="close" on:click={()=>{
     toggle()
-  jud = 'Apasă pe un judet pentru toate obiectivele'
+  jud = 'Press on region for destinations.'
     }}>X</button>
   <BigMap {jud} />
 </div>

@@ -7,6 +7,13 @@ export function getIconsData(){
     //js loop through data dict with key and value
     for (const [key, value] of Object.entries(data)) {
         let oras = value
+        let icon = {
+            type: 'text',
+            value: key,
+            X: getMediumCoords(key).X,
+            Y: getMediumCoords(key).Y
+        }
+        icons.push(icon)
         for (const [key2, value2] of Object.entries(oras)) {
             let icon = {
                 type: value2.type,
@@ -27,7 +34,9 @@ const { minx, miny, maxx, maxy } = coords
   }
 
  export function getMediumCoords(jud){
+    console.log(jud)
     let objs = data[jud]
+    console.log(objs)
     let x = 0
     let y = 0
     let n = 0
