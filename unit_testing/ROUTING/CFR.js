@@ -7,10 +7,12 @@ const client = createClient({
     },
     password: 'byteforcespargelupiirosii'
 });
-const storage = [];
-
+var storage;
 
 await client.connect();
+// let batch = await client.lRange((1680728400).toString(), 0, -1);
+// batch[1] = JSON.parse(batch[1]);
+// console.log(batch[1]);
 
 client.on('error', err => console.log('Redis Client Error', err));
 await read(Date.now());
@@ -19,22 +21,66 @@ await client.disconnect();
 
 export async function read(epoch_date){
 
-    const data = [];
+    const data = [[[[{}]]]];
 
+    for (let i = 0; i < 28; i ++) {
+        data[i] = [];
+        data[i].push([]);
+        for (let j = 0; j < 5; j ++) {
+            data[i][j] = [];
+            data[i][j].push([]);
+            for (let k = 0; k < 5; k ++) {
+                data[i][j][k] = [];
+                data[i][j][k].push([]);
+                for (let l = 0; l < 4; l ++) {
+                    data[i][j][k][l] = [];
+                    data[i][j][k][l].push([]);
+                }
+            }
+        }
+    }
+
+    // console.log(epoch_date)
     epoch_date /= 1000; //for miliseconds
+    epoch_date = parseInt(epoch_date)
 
     epoch_date /= 86400;
+    epoch_date = parseInt(epoch_date)
     epoch_date *= 86400;
 
     epoch_date += 75600; 
+    //epoch_date = parseInt(epoch_date)
 
-    for(let day = 0; day < 28; day ++){
+    console.log(epoch_date)
 
-        const batch = await client.get((day * 86400 + epoch_date).toString());
-        for(let from = 0; from <= 4; from ++){
+    for(let day = 0; day < 4; day ++){
+
+        var newlist = ['0'];
+        var batch = await client.lRange((0 * 86400 + epoch_date).toString(), 0, -1);
+        console.log(batch);
+        for(let From = 0; From <= 4; From ++){
             for(let to = 0; to <= 4; to ++){
-                for(let c = 0; c <= 3; c ++)
-                    data[day][from][to][c] = batch[from.toString()[to.toString()[c.toString()]]];
+                for(let c = 0; c <= 3; c ++){
+                    let To = to.toString();
+                    let C = c.toString();
+              
+                    newlist[0] = JSON.parse(batch[0]);
+
+                    // console.log('batch = ' + newlist);
+
+                    // console.log('batch[0] = ' + JSON.stringify(newlist[0]));
+                    // console.log('batch[0][\'1\'] = ' + JSON.stringify(newlist[0]['1']['0'].trip_duration));
+                    // console.log('batch = ' + batch);
+
+                    if(batch[From][To][C] != undefined){
+                        let dict = batch[From][To][C];
+
+                        console.log('\n\n\n' + JSON.stringify(dict));
+                        data[day][From][to][c] = dict;
+
+                        //console.log('data = ' + JSON.stringify(data));
+                    }
+                }
             }
         }
     }
@@ -46,8 +92,8 @@ export async function chart_trainROUTE(no_train_overnight, no_train_change, dep_
 
     var c = no_train_overnight + no_train_change * 2;
 
-    var data = storage
-    var RETURN = {}
+    var data = [...storage];
+    var RETURN = {};
 
     var citymap = ['Galați', 'Alba Iulia', 'București', 'Iași', 'Timișoara'];
     var stack = [];
@@ -92,12 +138,12 @@ export async function chart_trainROUTE(no_train_overnight, no_train_change, dep_
         for(let i = 0; i <= k; i++){
             const city = stack[i][0];
             const stay = stack[i][1];
-            if(fr.has(city) && fr.get(city) === stay){
+            if(fr.has(city)){
 
                 console.log('stopped ' + stack);
                 return false;
             }
-            fr.set(city, stay);
+            fr.set(city, 'la hoha');
         }
         return true;
     }
@@ -142,11 +188,12 @@ export async function chart_trainROUTE(no_train_overnight, no_train_change, dep_
     [ 
         citymap[dep_place],
         cityroute[1],
-        data[dep_place][route[0][0]][c].departure_time,
-        data[dep_place][route[0][0]][c].arrival_time,
+        data[dep_place][route[0][0]][c]['departure_time'],
+        data[dep_place][route[0][0]][c]['arrival_time'],
         get_time(dep_place, route[0][0]) * 60,
-        data[dep_place][route[0][0]][c].url, 
-        data[dep_place][route[0][0]][c].url, 
+        data[dep_place][route[0][0]][c]['url'], 
+        data[dep_place][route[0][0]][c]['overnight'], 
+        !data[dep_place][route[0][0]][c]['direct'], 
 
     ]);
     for(let i = 1; i < cityroute.length - 1; i ++){
@@ -154,11 +201,12 @@ export async function chart_trainROUTE(no_train_overnight, no_train_change, dep_
         [
             cityroute[i], 
             cityroute[i + 1],
-            data[route[i - 1][0]][i][c].departure_time, 
-            data[route[i - 1][0]][i][c].arrival_time, 
+            data[route[i - 1][0]][i][c]['departure_time'], 
+            data[route[i - 1][0]][i][c]['arrival_time'], 
             get_time(route[i - 1][0], route[i][0]) * 60,
-            data[route[i - 1][0]][i][c].overnight,
-            !data[route[i - 1][0]][i][c].direct,
+            data[route[i - 1][0]][i][c]['url'],
+            data[route[i - 1][0]][i][c]['overnight'],
+            !data[route[i - 1][0]][i][c]['direct'],
         ]);
         staytimes.push([cityroute[i], route[i][1]]);
     }
@@ -166,12 +214,12 @@ export async function chart_trainROUTE(no_train_overnight, no_train_change, dep_
     [
         cityroute[route.length], 
         citymap[dep_place], 
-        data[route[route.length - 1][0]][dep_place][c].departure_time, 
-        data[route[route.length - 1][0]][dep_place][c].arrival_time,  
+        data[route[route.length - 1][0]][dep_place][c]['departure_time'], 
+        data[route[route.length - 1][0]][dep_place][c]['arrival_time'],  
         get_time(route[route.length - 1][0], dep_place) * 60, 
-        data[route[route.length - 1][0]][dep_place][c].url,
-        data[route[route.length - 1][0]][dep_place][c].overnight,
-        !data[route[route.length - 1][0]][dep_place][c].direct,  
+        data[route[route.length - 1][0]][dep_place][c]['url'],
+        data[route[route.length - 1][0]][dep_place][c]['overnight'],
+        !data[route[route.length - 1][0]][dep_place][c]['direct'],  
     ]);
     staytimes.push([cityroute[route.length], route[route.length - 1][1]]);
 
